@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>理解BFC | Kxs&#39;s Blog</title>
+
+<link rel="alternate" href="/atom.xml" title="Kxs&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">Kxs&#39;s Blog</h1>
+        </a>
+        
+        <h2 class="subtitle">分享是一个程序员的基本美德！</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/about"><i class="fa fa-user"></i>关于我</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>欢迎光临我的博客</p>
+<p>我是Kxs，一个兴趣使然的前端技术爱好者！</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%84%9F%E6%82%9F%E5%88%86%E4%BA%AB/"><i class="fa" aria-hidden="true">感悟分享</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><i class="fa" aria-hidden="true">技术分享</i></a><span class="category-list-count">5</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/"><i class="fa" aria-hidden="true">十一月 2020</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/"><i class="fa" aria-hidden="true">十月 2020</i></a><span class="archive-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">标签云</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/JS%E7%89%B9%E6%95%88/" style="font-size: 0.14rem; color: #69c">JS特效</a> <a href="/tags/Git/" style="font-size: 0.14rem; color: #69c">Git</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.14rem; color: #69c">博客</a> <a href="/tags/CSS/" style="font-size: 0.2rem; color: #0a407c">CSS</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 0.14rem; color: #69c">读书笔记</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://azirkxs.gitee.io" class="fa" target="_blank">AzirKxs</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="理解BFC">
+                
+                理解BFC
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>技术分享</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            CSS
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2020/11/21</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="理解BFC"
+              data-leadcloud-url="/2020/11/21/%E7%90%86%E8%A7%A3BFC/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <h2 id="0-开头例行废话"><a href="#0-开头例行废话" class="headerlink" title="0.开头例行废话"></a>0.开头例行废话</h2><p>​        CSS真是有一堆奇技淫巧，之前知道了如何清除浮动以及解决margin上下边距重叠，但却不知道原理。原来这些奇奇怪怪的解决方案是通过触发BFC实现的！</p>
+<h2 id="1-BFC的基本概念"><a href="#1-BFC的基本概念" class="headerlink" title="1.BFC的基本概念"></a>1.BFC的基本概念</h2><p>​        先扯点专业术语，<font color=#ff3838>BFC</font>全称Block Formatting Context(块级格式化上下文)。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
+<table><tr><td bgcolor=yellow color=red>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</td></tr></table>
+
+<h2 id="2-如何触发BFC？"><a href="#2-如何触发BFC？" class="headerlink" title="2.如何触发BFC？"></a>2.如何触发BFC？</h2><p>1.body根元素</p>
+<p>2.浮动元素</p>
+<p>3.绝对定位元素（包括absolute，fixed）</p>
+<p>4.display为inline-block,table-cells,flex</p>
+<p>5.overflow为除了visible的值</p>
+<h2 id="3-通过触发BFC来解决上下边距重叠"><a href="#3-通过触发BFC来解决上下边距重叠" class="headerlink" title="3.通过触发BFC来解决上下边距重叠"></a>3.通过触发BFC来解决上下边距重叠</h2><p>​        两个垂直排列的 div盒子，我们为上面的盒子设置margin-bottom:100px,为下面的盒子设置margin-top:200px</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container1</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container2</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        之后我们在浏览器中查看效果时可以发现，两个盒子的间距为较大的200px而不是100px+200px=300px，<font color=red>这不是CSS的bug，我们可以理解为一种规范</font>。而这种规范有点不符合常理，我们有时想要避免外边距重叠，我们可以让上下两个盒子触发BFC成为与外界隔绝的独立容器！</p>
+<p>​        我们为div设置display:inline-block之后</p>
+<img src="/medias/image/BFC/01.png">
+
+<p>​        可以看到上边距重合的问题已经解决了。</p>
+<p><font color=red>注意：为什么设置overflow:hidden无法解决上边距重合？</font></p>
+<p>​        不知道，根据某乎上热心网友的解答（👴没看懂），他们的子元素确实形成了不同的BFC，而他们的父元素在同一BFC盒子中.</p>
+<h2 id="4-通过触发BFC来解决浮动造成的高度坍塌"><a href="#4-通过触发BFC来解决浮动造成的高度坍塌" class="headerlink" title="4.通过触发BFC来解决浮动造成的高度坍塌"></a>4.通过触发BFC来解决浮动造成的高度坍塌</h2><p>​        浮动会使普通的元素脱离普通流，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">248</span>, <span class="number">248</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/medias/image/BFC/02.png">
+
+<p>​        如图所示子元素因为设置了浮动并没有撑开父元素，如果我们触发了容器的BFC（设置overflow，float，display），那么子元素将会撑开父元素。</p>
+<img src="/medias/image/BFC/03.png">
+
+<p>​        如图所示已经大功告成了😄！</p>
+<h2 id="5-结尾例行废话"><a href="#5-结尾例行废话" class="headerlink" title="5.结尾例行废话"></a>5.结尾例行废话</h2><p>​        关于BFC还有一些其他应用，由于自己也是刚接触BFC这个概念，有一些东西还不是很清楚，但愿将来在不断应用之后我可以理解的更透彻吧！</p>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="/medias/avatar.jpg" alt="avatar"/>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about">Kxs</a>
+                </li>
+                
+                <li>发表日期: <span>2020-11-21  22:23:10</span></li>
+                
+                <li>最后编辑日期: <span>2020-11-21  23:53:56</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                    <a href="/tags/CSS/">CSS</a>
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="/medias/zfb.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="/medias/vx.jpg" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        
+        <a href="/2020/11/01/widthAndHeight/" class="next-post fa">读《CSS世界》总结(1)----width与height</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://github.com/AzirKxs" class="fa fa-github" target="_blank" title="github"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Kxs</a>&copy;2015 - 2020.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E5%BC%80%E5%A4%B4%E4%BE%8B%E8%A1%8C%E5%BA%9F%E8%AF%9D"><span class="toc-number">1.</span> <span class="toc-text">0.开头例行废话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-BFC%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">1.BFC的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91BFC%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">2.如何触发BFC？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%80%9A%E8%BF%87%E8%A7%A6%E5%8F%91BFC%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%B8%8A%E4%B8%8B%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0"><span class="toc-number">4.</span> <span class="toc-text">3.通过触发BFC来解决上下边距重叠</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%9A%E8%BF%87%E8%A7%A6%E5%8F%91BFC%E6%9D%A5%E8%A7%A3%E5%86%B3%E6%B5%AE%E5%8A%A8%E9%80%A0%E6%88%90%E7%9A%84%E9%AB%98%E5%BA%A6%E5%9D%8D%E5%A1%8C"><span class="toc-number">5.</span> <span class="toc-text">4.通过触发BFC来解决浮动造成的高度坍塌</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%93%E5%B0%BE%E4%BE%8B%E8%A1%8C%E5%BA%9F%E8%AF%9D"><span class="toc-number">6.</span> <span class="toc-text">5.结尾例行废话</span></a></li></ol>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>
