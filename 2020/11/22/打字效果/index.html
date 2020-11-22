@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable"  content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    
+    
+    <!--Simple SEO-->
+
+
+<meta name="robots" content=all />
+<meta name="google" content=all />
+<meta name="googlebot" content=all />
+<meta name="verify" content=all />
+    <!--Title-->
+
+<title>使用CSS+JS实现打字效果 | Kxs&#39;s Blog</title>
+
+<link rel="alternate" href="/atom.xml" title="Kxs&#39;s Blog" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+
+    <!--script-->
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<script>
+  var admin = "GeekaholicLin";
+  admin = admin.split(",");
+  var gitalk = new Gitalk({
+    clientID: "xxxxx",
+    clientSecret: "xxxxx",
+    repo: "geekaholiclin.github.io",
+    owner: "GeekaholicLin",
+    admin: admin,
+    id: decodeURIComponent(location.pathname),
+    distractionFreeMode: false
+  })
+
+</script>
+
+    
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header  style="position: absolute;" >
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">Kxs&#39;s Blog</h1>
+        </a>
+        
+        <h2 class="subtitle">分享是一个程序员的基本美德！</h2>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/about"><i class="fa fa-user"></i>关于我</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p>欢迎光临我的博客</p>
+<p>我是Kxs，一个兴趣使然的前端技术爱好者！</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%84%9F%E6%82%9F%E5%88%86%E4%BA%AB/"><i class="fa" aria-hidden="true">感悟分享</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><i class="fa" aria-hidden="true">技术分享</i></a><span class="category-list-count">6</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/"><i class="fa" aria-hidden="true">十一月 2020</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/"><i class="fa" aria-hidden="true">十月 2020</i></a><span class="archive-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">标签云</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/JS%E7%89%B9%E6%95%88/" style="font-size: 0.14rem; color: #69c">JS特效</a> <a href="/tags/Git/" style="font-size: 0.14rem; color: #69c">Git</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 0.14rem; color: #69c">博客</a> <a href="/tags/CSS/" style="font-size: 0.2rem; color: #0a407c">CSS</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 0.14rem; color: #69c">读书笔记</a> <a href="/tags/CSS-JS/" style="font-size: 0.14rem; color: #69c">CSS JS</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br/>
+
+    
+        <a href="http://azirkxs.gitee.io" class="fa" target="_blank">AzirKxs</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="使用CSS+JS实现打字效果">
+                
+                使用CSS+JS实现打字效果
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>技术分享</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            CSS JS
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2020/11/22</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="使用CSS+JS实现打字效果"
+              data-leadcloud-url="/2020/11/22/%E6%89%93%E5%AD%97%E6%95%88%E6%9E%9C/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <h1 id="特效展示"><a href="#特效展示" class="headerlink" title="特效展示"></a>特效展示</h1><img src="/medias/image/打字特效/打字特效.gif">
+
+<h1 id="制作要领"><a href="#制作要领" class="headerlink" title="制作要领"></a>制作要领</h1><p>（1）光标闪烁动画的制作</p>
+<p>（2）文字不停变换</p>
+<p>（3）循环播放</p>
+<h1 id="开始制作"><a href="#开始制作" class="headerlink" title="开始制作"></a>开始制作</h1><h3 id="1-网页布局"><a href="#1-网页布局" class="headerlink" title="1.网页布局"></a>1.网页布局</h3><p>首先，完成页面的基本结构和布局</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 文本内容 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 显示光标 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100vw</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">radial-gradient</span>(rgb(<span class="number">77</span>, <span class="number">193</span>, <span class="number">197</span>), <span class="built_in">rgb</span>(<span class="number">1</span>, <span class="number">141</span>, <span class="number">255</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.text</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">231</span>, <span class="number">216</span>, <span class="number">79</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.line</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-css实现闪烁的光标"><a href="#2-css实现闪烁的光标" class="headerlink" title="2.css实现闪烁的光标"></a>2.css实现闪烁的光标</h3><p>使用CSS3 @keyframes 制作一个不断循环的闪烁动画来实现这个效果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@keyframes twinkle &#123;</span><br><span class="line"></span><br><span class="line">    /* 注意不要使用display */</span><br><span class="line">    from &#123;</span><br><span class="line">        opacity: 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    to &#123;</span><br><span class="line">        opacity: 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后为光标设置该动画</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.line</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">animation</span>: twinkle <span class="number">0.6s</span> linear infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-js实现文字变换的基本原理"><a href="#3-js实现文字变换的基本原理" class="headerlink" title="3.js实现文字变换的基本原理"></a>3.js实现文字变换的基本原理</h3><p>​        如何实现文字的变换呢？它的基本原理实际上非常简单，利用定时器，我们让0.1s时出现第一个字，让0.2s时出现第二个字…依次类推<del>~</del></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取相关元素节点</span></span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&#x27;text&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="comment">//设置文本内容</span></span><br><span class="line"><span class="keyword">var</span> word = <span class="string">&quot;每个不曾起舞的日子，都是对生命的辜负！---Kxs（误）&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> t = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">//基本思路</span></span><br><span class="line">text.innerHTML = <span class="string">&quot;我&quot;</span>;</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">text.innerHTML = <span class="string">&quot;我是&quot;</span>;</span><br><span class="line">&#125;,<span class="number">300</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">text.innerHTML = <span class="string">&quot;我是一&quot;</span>;</span><br><span class="line">&#125;,<span class="number">600</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-嵌套循环函数实现"><a href="#4-嵌套循环函数实现" class="headerlink" title="4.嵌套循环函数实现"></a>4.嵌套循环函数实现</h3><p>明白了它实现的基本原理后，我们就可以使用循环来实现它了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">for</span>(<span class="params"><span class="keyword">let</span> i=<span class="number">0</span>;i&lt;=word.length;i++</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		text.innerHTML=word.substr(<span class="number">0</span>,i);</span><br><span class="line">&#125;,i*<span class="number">100</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>以上就已经实现了一个一次性的打字效果了！</p>
+<h3 id="5-如何循环播放？"><a href="#5-如何循环播放？" class="headerlink" title="5.如何循环播放？"></a>5.如何循环播放？</h3><p>基本效果已经完成了，但是还不够完美，我们想让它实现无限循环！</p>
+<p>起初我使用了递归，但却因为造成了无限递归而导致了js栈内存溢出，从而使网页完全无法加载了。因为还没有学视频中的async函数，我决定寻找另一种方法，在思考过后，最终决定使用定时器来解决无限循环播放！</p>
+<p>具体思路为：</p>
+<p>引入一个temp变量为ture，每调用一次就对temp进行一次取反。</p>
+<p>接着将正着的效果代码和反着的效果代码封装到一个函数中，加入if判断，当temp为true时执行正着的代码，当temp为false执行反着的代码。</p>
+<p>最后我们需要每隔一定的时间反复调用这个方法！</p>
+<h3 id="6-完成升级"><a href="#6-完成升级" class="headerlink" title="6.完成升级"></a>6.完成升级</h3><p>了解了如何实现循环播放后，我们使用js将它实现！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">      <span class="keyword">let</span> temp=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">let</span> setText = <span class="function"><span class="keyword">function</span> (<span class="params">temp</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (temp) &#123;</span><br><span class="line">              <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= word.length; i++) &#123;</span><br><span class="line">                  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                      text.innerHTML = word.substr(<span class="number">0</span>, i);</span><br><span class="line">                  &#125;, i*<span class="number">100</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">for</span> (<span class="keyword">let</span> t = word.length ; t &gt;=<span class="number">0</span>; t--) &#123;</span><br><span class="line">                  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                      text.innerHTML = word.substr(<span class="number">0</span>, t);</span><br><span class="line">                  &#125;, (L-t)*<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      setText(temp);</span><br><span class="line">       <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           setText(temp=!temp);</span><br><span class="line">      &#125;,L*<span class="number">100</span>+<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>引用视频：[『JS特效』15分钟两种方式实现不一样的打字机效果_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](</p>
+</blockquote>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar" >
+                <img src="/medias/avatar.jpg" alt="avatar"/>
+                
+                
+                <a href="javascript:void(0)" class="donate fa">赠我一杯 &#128536;</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about">Kxs</a>
+                </li>
+                
+                <li>发表日期: <span>2020-11-22  20:24:50</span></li>
+                
+                <li>最后编辑日期: <span>2020-11-22  20:28:24</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                    <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                    <a href="/tags/CSS-JS/">CSS JS</a>
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="/medias/zfb.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="/medias/vx.jpg" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        
+        <a href="/2020/11/21/%E7%90%86%E8%A7%A3BFC/" class="next-post fa">理解BFC</a>
+        
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitalk.render("comments");
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://github.com/AzirKxs" class="fa fa-github" target="_blank" title="github"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">Kxs</a>&copy;2015 - 2020.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a
+                href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
+    
+    
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
+    
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text"
+                       placeholder="search this website..."/>
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E6%95%88%E5%B1%95%E7%A4%BA"><span class="toc-number">1.</span> <span class="toc-text">特效展示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E8%A6%81%E9%A2%86"><span class="toc-number">2.</span> <span class="toc-text">制作要领</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%88%B6%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">开始制作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.网页布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-css%E5%AE%9E%E7%8E%B0%E9%97%AA%E7%83%81%E7%9A%84%E5%85%89%E6%A0%87"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.css实现闪烁的光标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-js%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E5%8F%98%E6%8D%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.js实现文字变换的基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.0.4.</span> <span class="toc-text">4.嵌套循环函数实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A6%82%E4%BD%95%E5%BE%AA%E7%8E%AF%E6%92%AD%E6%94%BE%EF%BC%9F"><span class="toc-number">3.0.5.</span> <span class="toc-text">5.如何循环播放？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%8C%E6%88%90%E5%8D%87%E7%BA%A7"><span class="toc-number">3.0.6.</span> <span class="toc-text">6.完成升级</span></a></li></ol></li></ol></li></ol>
+
+
+
+
+
+<script src="/js/search.js"></script>
+
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+
+<script src="/js/app.js"></script>
+
+
+
+</body>
+</html>
