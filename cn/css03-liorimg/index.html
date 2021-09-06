@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -361,7 +361,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">416</span> In Total
+              Words <span class="post-count">412</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -423,28 +423,14 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="inline-block的间距处理">inline-block的间距处理</h2>
-<p>在写代码时，你是否也遇到过这种情况，明明没有给元素设置边距，它们之间却有了间隙，就很烦。这是什么原因造成的呢？经过我的调查与学习终于知道了！原来，设置为inline-block的元素的后面会由于换行产生了一个空格字符(inline元素也会有)，大小为4px，这也就是造成间隙的主要原因，对于这些间隙，有以下的解决方案。<br>
-<img src="/img/image/jx-inline.jpg"></p>
-<h3 id="1-设置字体大小为0">1.设置字体大小为0</h3>
-<p>对于有文字的内容，拿ul与li来举例，为保证文字正常显示，设置方式如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">0px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span>&gt;<span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-标签写在同一行（不靠谱，会扰乱结构）">2.标签写在同一行（不靠谱，会扰乱结构）</h3>
-<h3 id="3-标签不闭合（会被浏览器解析成正确的形式）（不靠谱，不规范）">3.标签不闭合（会被浏览器解析成正确的形式）（不靠谱，不规范）</h3>
-<h3 id="4-设置字体间距为负间距（letter-spacing-5px）">4.设置字体间距为负间距（letter-spacing: -5px）</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">   <span class="attribute">letter-spacing</span>: -<span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span>&gt;<span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">letter-spacing</span>: normal;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="5-用浮动代替inline-block">5.用浮动代替inline-block</h3>
-<h2 id="img下方的间距处理">img下方的间距处理</h2>
-<p>img元素是行块元素，水平方向也会出现间隙，按照上面的方式处理就ok了，然而，img元素下方会出现多余的空白，因为img默认是根据基线对齐的，由于我对基线啥的不太了解，直接提供解决方案。<br>
-<img src="/img/image/jx-img.jpg"></p>
-<h3 id="1-将图片设置为块级对象">1.将图片设置为块级对象</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span> : block ;</span><br></pre></td></tr></table></figure>
-<h3 id="2-将图片的垂直对齐方式改为top">2.将图片的垂直对齐方式改为top</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vertical-align</span> : top ;</span><br></pre></td></tr></table></figure>
-<h3 id="3-将字体大小改为0">3.将字体大小改为0</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-size</span> : <span class="number">0px</span> ;</span><br></pre></td></tr></table></figure>
-<h3 id="4-将图片设置为浮动">4.将图片设置为浮动</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">float</span> : left ;</span><br></pre></td></tr></table></figure>
+        <h2 id="inline-block的间距处理"><a href="#inline-block的间距处理" class="headerlink" title="inline-block的间距处理"></a>inline-block的间距处理</h2><p>在写代码时，你是否也遇到过这种情况，明明没有给元素设置边距，它们之间却有了间隙，就很烦。这是什么原因造成的呢？经过我的调查与学习终于知道了！原来，设置为inline-block的元素的后面会由于换行产生了一个空格字符(inline元素也会有)，大小为4px，这也就是造成间隙的主要原因，对于这些间隙，有以下的解决方案。<br><img src="/img/image/jx-inline.jpg"> </p>
+<h3 id="1-设置字体大小为0"><a href="#1-设置字体大小为0" class="headerlink" title="1.设置字体大小为0"></a>1.设置字体大小为0</h3><p>对于有文字的内容，拿ul与li来举例，为保证文字正常显示，设置方式如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">0px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span>&gt;<span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-标签写在同一行（不靠谱，会扰乱结构）"><a href="#2-标签写在同一行（不靠谱，会扰乱结构）" class="headerlink" title="2.标签写在同一行（不靠谱，会扰乱结构）"></a>2.标签写在同一行（不靠谱，会扰乱结构）</h3><h3 id="3-标签不闭合（会被浏览器解析成正确的形式）（不靠谱，不规范）"><a href="#3-标签不闭合（会被浏览器解析成正确的形式）（不靠谱，不规范）" class="headerlink" title="3.标签不闭合（会被浏览器解析成正确的形式）（不靠谱，不规范）"></a>3.标签不闭合（会被浏览器解析成正确的形式）（不靠谱，不规范）</h3><h3 id="4-设置字体间距为负间距（letter-spacing-5px）"><a href="#4-设置字体间距为负间距（letter-spacing-5px）" class="headerlink" title="4.设置字体间距为负间距（letter-spacing: -5px）"></a>4.设置字体间距为负间距（letter-spacing: -5px）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span>&#123;</span><br><span class="line">   <span class="attribute">letter-spacing</span>: -<span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span>&gt;<span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">    <span class="attribute">letter-spacing</span>: normal;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-用浮动代替inline-block"><a href="#5-用浮动代替inline-block" class="headerlink" title="5.用浮动代替inline-block"></a>5.用浮动代替inline-block</h3><h2 id="img下方的间距处理"><a href="#img下方的间距处理" class="headerlink" title="img下方的间距处理"></a>img下方的间距处理</h2><p>img元素是行块元素，水平方向也会出现间隙，按照上面的方式处理就ok了，然而，img元素下方会出现多余的空白，因为img默认是根据基线对齐的，由于我对基线啥的不太了解，直接提供解决方案。<br><img src="/img/image/jx-img.jpg"> </p>
+<h3 id="1-将图片设置为块级对象"><a href="#1-将图片设置为块级对象" class="headerlink" title="1.将图片设置为块级对象"></a>1.将图片设置为块级对象</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span> : block ;</span><br></pre></td></tr></table></figure>
+<h3 id="2-将图片的垂直对齐方式改为top"><a href="#2-将图片的垂直对齐方式改为top" class="headerlink" title="2.将图片的垂直对齐方式改为top"></a>2.将图片的垂直对齐方式改为top</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vertical-align</span> : top ;</span><br></pre></td></tr></table></figure>
+<h3 id="3-将字体大小改为0"><a href="#3-将字体大小改为0" class="headerlink" title="3.将字体大小改为0"></a>3.将字体大小改为0</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-size</span> : <span class="number">0px</span> ;</span><br></pre></td></tr></table></figure>
+<h3 id="4-将图片设置为浮动"><a href="#4-将图片设置为浮动" class="headerlink" title="4.将图片设置为浮动"></a>4.将图片设置为浮动</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">float</span> : left ;</span><br></pre></td></tr></table></figure>
 <p>=============================结束================================</p>
 
 

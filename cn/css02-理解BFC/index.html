@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -423,37 +423,33 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="0-开头例行废话">0.开头例行废话</h2>
-<p>​		CSS真是有一堆奇技淫巧，之前知道了如何清除浮动以及解决margin上下边距重叠，但却不知道原理。原来这些奇奇怪怪的解决方案是通过触发BFC实现的！</p>
-<h2 id="1-BFC的基本概念">1.BFC的基本概念</h2>
-<p>​		先扯点专业术语，<font color=#ff3838>BFC</font>全称Block Formatting Context(块级格式化上下文)。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
+        <h2 id="0-开头例行废话"><a href="#0-开头例行废话" class="headerlink" title="0.开头例行废话"></a>0.开头例行废话</h2><p>​        CSS真是有一堆奇技淫巧，之前知道了如何清除浮动以及解决margin上下边距重叠，但却不知道原理。原来这些奇奇怪怪的解决方案是通过触发BFC实现的！</p>
+<h2 id="1-BFC的基本概念"><a href="#1-BFC的基本概念" class="headerlink" title="1.BFC的基本概念"></a>1.BFC的基本概念</h2><p>​        先扯点专业术语，<font color=#ff3838>BFC</font>全称Block Formatting Context(块级格式化上下文)。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
 <table><tr><td bgcolor=yellow color=red>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</td></tr></table>
-<h2 id="2-如何触发BFC？">2.如何触发BFC？</h2>
-<p>1.body根元素</p>
+
+<h2 id="2-如何触发BFC？"><a href="#2-如何触发BFC？" class="headerlink" title="2.如何触发BFC？"></a>2.如何触发BFC？</h2><p>1.body根元素</p>
 <p>2.浮动元素</p>
 <p>3.绝对定位元素（包括absolute，fixed）</p>
 <p>4.display为inline-block,table-cells,flex</p>
 <p>5.overflow为除了visible的值</p>
-<h2 id="3-通过触发BFC来解决上下边距重叠">3.通过触发BFC来解决上下边距重叠</h2>
-<p>​		两个垂直排列的 div盒子，我们为上面的盒子设置margin-bottom:100px,为下面的盒子设置margin-top:200px</p>
+<h2 id="3-通过触发BFC来解决上下边距重叠"><a href="#3-通过触发BFC来解决上下边距重叠" class="headerlink" title="3.通过触发BFC来解决上下边距重叠"></a>3.通过触发BFC来解决上下边距重叠</h2><p>​        两个垂直排列的 div盒子，我们为上面的盒子设置margin-bottom:100px,为下面的盒子设置margin-top:200px</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container1</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container2</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​		之后我们在浏览器中查看效果时可以发现，两个盒子的间距为较大的200px而不是100px+200px=300px，<font color=red>这不是CSS的bug，我们可以理解为一种规范</font>。而这种规范有点不符合常理，我们有时想要避免外边距重叠，我们可以让上下两个盒子触发BFC成为与外界隔绝的独立容器！</p>
-<p>​		我们为div设置display:inline-block之后</p>
-<img src="/img/image/BFC/01.png">
-<p>​		可以看到上边距重合的问题已经解决了。</p>
-<p><font color=red>注意：为什么设置overflow:hidden无法解决上边距重合？</font></p>
-<p>​		不知道，根据某乎上热心网友的解答（👴没看懂），他们的子元素确实形成了不同的BFC，而他们的父元素在同一BFC盒子中.</p>
-<h2 id="4-通过触发BFC来解决浮动造成的高度坍塌">4.通过触发BFC来解决浮动造成的高度坍塌</h2>
-<p>​		浮动会使普通的元素脱离普通流，如下：</p>
+<p>​        之后我们在浏览器中查看效果时可以发现，两个盒子的间距为较大的200px而不是100px+200px=300px，<font color=red>这不是CSS的bug，我们可以理解为一种规范</font>。而这种规范有点不符合常理，我们有时想要避免外边距重叠，我们可以让上下两个盒子触发BFC成为与外界隔绝的独立容器！</p>
+<p>​        我们为div设置display:inline-block之后</p>
+<p><img src="/img/image/BFC/01.png"></p>
+<p>​        可以看到上边距重合的问题已经解决了。</p>
+<font color=red>注意：为什么设置overflow:hidden无法解决上边距重合？</font>
+
+<p>​        不知道，根据某乎上热心网友的解答（👴没看懂），他们的子元素确实形成了不同的BFC，而他们的父元素在同一BFC盒子中.</p>
+<h2 id="4-通过触发BFC来解决浮动造成的高度坍塌"><a href="#4-通过触发BFC来解决浮动造成的高度坍塌" class="headerlink" title="4.通过触发BFC来解决浮动造成的高度坍塌"></a>4.通过触发BFC来解决浮动造成的高度坍塌</h2><p>​        浮动会使普通的元素脱离普通流，如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">248</span>, <span class="number">248</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/img/image/BFC/02.png">
-<p>​		如图所示子元素因为设置了浮动并没有撑开父元素，如果我们触发了容器的BFC（设置overflow，float，display），那么子元素将会撑开父元素。</p>
-<img src="/img/image/BFC/03.png">
-<p>​		如图所示已经大功告成了😄！</p>
-<h2 id="5-结尾例行废话">5.结尾例行废话</h2>
-<p>​		关于BFC还有一些其他应用，由于自己也是刚接触BFC这个概念，有一些东西还不是很清楚，但愿将来在不断应用之后我可以理解的更透彻吧！</p>
+<p><img src="/img/image/BFC/02.png"></p>
+<p>​        如图所示子元素因为设置了浮动并没有撑开父元素，如果我们触发了容器的BFC（设置overflow，float，display），那么子元素将会撑开父元素。</p>
+<p><img src="/img/image/BFC/03.png"></p>
+<p>​        如图所示已经大功告成了😄！</p>
+<h2 id="5-结尾例行废话"><a href="#5-结尾例行废话" class="headerlink" title="5.结尾例行废话"></a>5.结尾例行废话</h2><p>​        关于BFC还有一些其他应用，由于自己也是刚接触BFC这个概念，有一些东西还不是很清楚，但愿将来在不断应用之后我可以理解的更透彻吧！</p>
 
 
         <hr>

@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -425,55 +425,36 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1>虚幻四学习笔记Day4</h1>
-<hr>
-<h2 id="七-光照">七.光照</h2>
-<h3 id="1-光照的种类">1.光照的种类</h3>
-<p>点开光照面板，可以看到全部的光照类型</p>
+        <h1 id="虚幻四学习笔记Day4"><a href="#虚幻四学习笔记Day4" class="headerlink" title="虚幻四学习笔记Day4"></a>虚幻四学习笔记Day4</h1><hr>
+<h2 id="七-光照"><a href="#七-光照" class="headerlink" title="七.光照"></a>七.光照</h2><h3 id="1-光照的种类"><a href="#1-光照的种类" class="headerlink" title="1.光照的种类"></a>1.光照的种类</h3><p>点开光照面板，可以看到全部的光照类型</p>
 <p><img src="/img/image/ue4/ue4-1.png" alt="ue4-1"></p>
-<h4 id="①定向光源">①定向光源</h4>
-<p>​	一半用于模拟显示生活中的太阳，只有一个方向</p>
-<h4 id="②点光源">②点光源</h4>
-<p>​	类似于灯泡，向四面八方散出光</p>
-<h4 id="③聚光源">③聚光源</h4>
-<p>​	照亮一个圆锥形的区域,可以自行调节方向</p>
-<h4 id="④矩形光源">④矩形光源</h4>
-<p>​	只照亮一个方向</p>
-<h4 id="⑤天光">⑤天光</h4>
-<p>​	一个全局照亮的效果</p>
-<h3 id="2-灯光的移动性">2.灯光的移动性</h3>
-<p>​	灯光分为静态的，固定的和可移动的</p>
-<p>​	静态的：每次对细节面板的参数作出修改都需要重新构建光照，不会对可移动物体做出阴影渲染</p>
-<p>​	固定的：对细节面板的参数作出修改不需要重新构建，如果移动了该物体阴影位置还是相对于原来物体的位置，会对可移动物体做出阴影渲染</p>
-<p>​	可移动的：光照实时渲染</p>
-<h3 id="3-自动曝光">3.自动曝光</h3>
-<p>​	可以模拟现实生活中的明暗变化的过度，可在设置中选择关闭或者开启</p>
-<h3 id="4-指数级高度雾">4.指数级高度雾</h3>
-<p>​	可以为远处添加一种朦胧的感觉，详细的参数可以自行调整</p>
-<h3 id="5-实现光束">5.实现光束</h3>
-<p><img src="/img/image/ue4/ue4-2.png" alt="ue4-2"></p>
-<h4 id="①调节光源参数实现">①调节光源参数实现</h4>
-<p>在你光源的细节面板中将光束遮挡和光束泛光开启并调节参数达到这种效果</p>
+<h4 id="①定向光源"><a href="#①定向光源" class="headerlink" title="①定向光源"></a>①定向光源</h4><p>​    一半用于模拟显示生活中的太阳，只有一个方向</p>
+<h4 id="②点光源"><a href="#②点光源" class="headerlink" title="②点光源"></a>②点光源</h4><p>​    类似于灯泡，向四面八方散出光</p>
+<h4 id="③聚光源"><a href="#③聚光源" class="headerlink" title="③聚光源"></a>③聚光源</h4><p>​    照亮一个圆锥形的区域,可以自行调节方向</p>
+<h4 id="④矩形光源"><a href="#④矩形光源" class="headerlink" title="④矩形光源"></a>④矩形光源</h4><p>​    只照亮一个方向</p>
+<h4 id="⑤天光"><a href="#⑤天光" class="headerlink" title="⑤天光"></a>⑤天光</h4><p>​    一个全局照亮的效果</p>
+<h3 id="2-灯光的移动性"><a href="#2-灯光的移动性" class="headerlink" title="2.灯光的移动性"></a>2.灯光的移动性</h3><p>​    灯光分为静态的，固定的和可移动的</p>
+<p>​    静态的：每次对细节面板的参数作出修改都需要重新构建光照，不会对可移动物体做出阴影渲染</p>
+<p>​    固定的：对细节面板的参数作出修改不需要重新构建，如果移动了该物体阴影位置还是相对于原来物体的位置，会对可移动物体做出阴影渲染</p>
+<p>​    可移动的：光照实时渲染</p>
+<h3 id="3-自动曝光"><a href="#3-自动曝光" class="headerlink" title="3.自动曝光"></a>3.自动曝光</h3><p>​    可以模拟现实生活中的明暗变化的过度，可在设置中选择关闭或者开启</p>
+<h3 id="4-指数级高度雾"><a href="#4-指数级高度雾" class="headerlink" title="4.指数级高度雾"></a>4.指数级高度雾</h3><p>​    可以为远处添加一种朦胧的感觉，详细的参数可以自行调整</p>
+<h3 id="5-实现光束"><a href="#5-实现光束" class="headerlink" title="5.实现光束"></a>5.实现光束</h3><p><img src="/img/image/ue4/ue4-2.png" alt="ue4-2"></p>
+<h4 id="①调节光源参数实现"><a href="#①调节光源参数实现" class="headerlink" title="①调节光源参数实现"></a>①调节光源参数实现</h4><p>在你光源的细节面板中将光束遮挡和光束泛光开启并调节参数达到这种效果</p>
 <p><img src="/img/image/ue4/ue4-3.png" alt="ue4-3"></p>
-<h4 id="②使用体积雾实现">②使用体积雾实现</h4>
-<p>添加指数级高度雾，要设置高的雾密度，打开体积雾，调节参数达到该效果（才发现光源放歪了）</p>
+<h4 id="②使用体积雾实现"><a href="#②使用体积雾实现" class="headerlink" title="②使用体积雾实现"></a>②使用体积雾实现</h4><p>添加指数级高度雾，要设置高的雾密度，打开体积雾，调节参数达到该效果（才发现光源放歪了）</p>
 <p><img src="/img/image/ue4/ue4-4.png" alt="ue4-4"></p>
-<h4 id="③体积雾搭配光源设置实现">③体积雾搭配光源设置实现</h4>
-<p>设置指数型高度雾，雾密度可以小一点，打开体积雾，调整光源的体积散射强度并调节并较低体积雾的散射距离为1000左右</p>
+<h4 id="③体积雾搭配光源设置实现"><a href="#③体积雾搭配光源设置实现" class="headerlink" title="③体积雾搭配光源设置实现"></a>③体积雾搭配光源设置实现</h4><p>设置指数型高度雾，雾密度可以小一点，打开体积雾，调整光源的体积散射强度并调节并较低体积雾的散射距离为1000左右</p>
 <p><img src="/img/image/ue4/ue4-5.png" alt="ue4-5"></p>
 <p>也可以对别的光源进行单独设置</p>
 <p><img src="/img/image/ue4/ue4-6.png" alt="ue4-6"></p>
 <p>以上方式都有一定的局限性，只有移动到特定的角度才会看的特别清楚！</p>
-<h3 id="6-天空球">6.天空球</h3>
-<p>​	我们的项目会默认自带一个天空球，就是世界大纲中的Sky Sphere</p>
-<p>​	我们天空求中的太阳默认不会自动根据定向光源来改变太阳的位置，需要在天空求的细节面板中点击刷心材质才可以更新位置</p>
-<p>​	其次在天空球的细节面板还可以调节昼夜的显示，太阳的亮度，云的速度，云的透明度，自定义天空颜色等</p>
-<h2 id="八-游戏">八.游戏</h2>
-<h3 id="1-角色控制权">1.角色控制权</h3>
-<p>​	方法1：拖入小人细节面板设置pawn为玩家0</p>
-<p>​	方法2：在世界场景设置中设置对应的游戏模式，设置游戏出生点后会自动创建小人供玩家操作</p>
-<h3 id="2-打包游戏">2.打包游戏</h3>
-<p>首先进行项目设置，其次需要安装VS，之后再进行打包,点击上方编辑栏下的打包游戏导出即可~</p>
+<h3 id="6-天空球"><a href="#6-天空球" class="headerlink" title="6.天空球"></a>6.天空球</h3><p>​    我们的项目会默认自带一个天空球，就是世界大纲中的Sky Sphere</p>
+<p>​    我们天空求中的太阳默认不会自动根据定向光源来改变太阳的位置，需要在天空求的细节面板中点击刷心材质才可以更新位置</p>
+<p>​    其次在天空球的细节面板还可以调节昼夜的显示，太阳的亮度，云的速度，云的透明度，自定义天空颜色等</p>
+<h2 id="八-游戏"><a href="#八-游戏" class="headerlink" title="八.游戏"></a>八.游戏</h2><h3 id="1-角色控制权"><a href="#1-角色控制权" class="headerlink" title="1.角色控制权"></a>1.角色控制权</h3><p>​    方法1：拖入小人细节面板设置pawn为玩家0</p>
+<p>​    方法2：在世界场景设置中设置对应的游戏模式，设置游戏出生点后会自动创建小人供玩家操作</p>
+<h3 id="2-打包游戏"><a href="#2-打包游戏" class="headerlink" title="2.打包游戏"></a>2.打包游戏</h3><p>首先进行项目设置，其次需要安装VS，之后再进行打包,点击上方编辑栏下的打包游戏导出即可~</p>
 <p><img src="/img/image/ue4/ue4-7.png" alt="ue4-7"></p>
 
 
@@ -534,7 +515,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">虚幻四学习笔记Day4</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%83-%E5%85%89%E7%85%A7"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">七.光照</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%85%89%E7%85%A7%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.光照的种类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A0%E5%AE%9A%E5%90%91%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.1.</span> <span class="toc-nav-text">①定向光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A1%E7%82%B9%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.2.</span> <span class="toc-nav-text">②点光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A2%E8%81%9A%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.3.</span> <span class="toc-nav-text">③聚光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A3%E7%9F%A9%E5%BD%A2%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.4.</span> <span class="toc-nav-text">④矩形光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A4%E5%A4%A9%E5%85%89"><span class="toc-nav-number">1.1.1.5.</span> <span class="toc-nav-text">⑤天光</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E7%81%AF%E5%85%89%E7%9A%84%E7%A7%BB%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">2.灯光的移动性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E8%87%AA%E5%8A%A8%E6%9B%9D%E5%85%89"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">3.自动曝光</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%8C%87%E6%95%B0%E7%BA%A7%E9%AB%98%E5%BA%A6%E9%9B%BE"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">4.指数级高度雾</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%AE%9E%E7%8E%B0%E5%85%89%E6%9D%9F"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">5.实现光束</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A0%E8%B0%83%E8%8A%82%E5%85%89%E6%BA%90%E5%8F%82%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.1.5.1.</span> <span class="toc-nav-text">①调节光源参数实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A1%E4%BD%BF%E7%94%A8%E4%BD%93%E7%A7%AF%E9%9B%BE%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.1.5.2.</span> <span class="toc-nav-text">②使用体积雾实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A2%E4%BD%93%E7%A7%AF%E9%9B%BE%E6%90%AD%E9%85%8D%E5%85%89%E6%BA%90%E8%AE%BE%E7%BD%AE%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.1.5.3.</span> <span class="toc-nav-text">③体积雾搭配光源设置实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E5%A4%A9%E7%A9%BA%E7%90%83"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">6.天空球</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%AB-%E6%B8%B8%E6%88%8F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">八.游戏</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E8%A7%92%E8%89%B2%E6%8E%A7%E5%88%B6%E6%9D%83"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1.角色控制权</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%89%93%E5%8C%85%E6%B8%B8%E6%88%8F"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.打包游戏</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%99%9A%E5%B9%BB%E5%9B%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Day4"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">虚幻四学习笔记Day4</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%83-%E5%85%89%E7%85%A7"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">七.光照</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%85%89%E7%85%A7%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.光照的种类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A0%E5%AE%9A%E5%90%91%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.1.</span> <span class="toc-nav-text">①定向光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A1%E7%82%B9%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.2.</span> <span class="toc-nav-text">②点光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A2%E8%81%9A%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.3.</span> <span class="toc-nav-text">③聚光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A3%E7%9F%A9%E5%BD%A2%E5%85%89%E6%BA%90"><span class="toc-nav-number">1.1.1.4.</span> <span class="toc-nav-text">④矩形光源</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A4%E5%A4%A9%E5%85%89"><span class="toc-nav-number">1.1.1.5.</span> <span class="toc-nav-text">⑤天光</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E7%81%AF%E5%85%89%E7%9A%84%E7%A7%BB%E5%8A%A8%E6%80%A7"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">2.灯光的移动性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E8%87%AA%E5%8A%A8%E6%9B%9D%E5%85%89"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">3.自动曝光</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%8C%87%E6%95%B0%E7%BA%A7%E9%AB%98%E5%BA%A6%E9%9B%BE"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">4.指数级高度雾</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-%E5%AE%9E%E7%8E%B0%E5%85%89%E6%9D%9F"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">5.实现光束</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A0%E8%B0%83%E8%8A%82%E5%85%89%E6%BA%90%E5%8F%82%E6%95%B0%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.1.5.1.</span> <span class="toc-nav-text">①调节光源参数实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A1%E4%BD%BF%E7%94%A8%E4%BD%93%E7%A7%AF%E9%9B%BE%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.1.5.2.</span> <span class="toc-nav-text">②使用体积雾实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E2%91%A2%E4%BD%93%E7%A7%AF%E9%9B%BE%E6%90%AD%E9%85%8D%E5%85%89%E6%BA%90%E8%AE%BE%E7%BD%AE%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.1.5.3.</span> <span class="toc-nav-text">③体积雾搭配光源设置实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-%E5%A4%A9%E7%A9%BA%E7%90%83"><span class="toc-nav-number">1.1.6.</span> <span class="toc-nav-text">6.天空球</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%AB-%E6%B8%B8%E6%88%8F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">八.游戏</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E8%A7%92%E8%89%B2%E6%8E%A7%E5%88%B6%E6%9D%83"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1.角色控制权</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%89%93%E5%8C%85%E6%B8%B8%E6%88%8F"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.打包游戏</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
