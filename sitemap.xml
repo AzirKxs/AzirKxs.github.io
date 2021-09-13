@@ -172,14 +172,14 @@
 
   
   <url>
-    <loc>http://yoursite-url/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://yoursite-url/tags/Git/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Git/</loc>
+    <loc>http://yoursite-url/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -194,6 +194,13 @@
   
   <url>
     <loc>http://yoursite-url/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92/</loc>
+    <lastmod>2021-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -228,20 +235,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/node-js/</loc>
-    <lastmod>2021-09-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/%E8%8B%B1%E8%AF%AD/</loc>
-    <lastmod>2021-09-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yoursite-url/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
@@ -250,6 +243,20 @@
   
   <url>
     <loc>http://yoursite-url/tags/%E8%99%9A%E5%B9%BB4/</loc>
+    <lastmod>2021-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/node-js/</loc>
+    <lastmod>2021-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/%E8%8B%B1%E8%AF%AD/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -279,6 +286,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/categories/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E4/</loc>
+    <lastmod>2021-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/categories/node-js/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
@@ -287,13 +301,6 @@
   
   <url>
     <loc>http://yoursite-url/categories/%E7%BF%BB%E8%AF%91/</loc>
-    <lastmod>2021-09-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/categories/%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E4/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
