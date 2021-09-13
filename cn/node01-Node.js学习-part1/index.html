@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/cn/css02-理解BFC/">
+  <link rel="canonical" href="http://yoursite-url/cn/node01-Node.js学习-part1/">
   <title>
     
-      理解BFC - AzirKxs的博客 | 分享与记录
+      Node.js学习-part1 - AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('/img/featureimages/CSS.jpg');
-      --intro-header-background-image-url-page: url('//img/featureimages/CSS.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/1-1.jpg');
+      --intro-header-background-image-url-page: url('//img/featureimages/1-1.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/CSS.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/CSS.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/1-1.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/1-1.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/featureimages/CSS.jpg'); */
+        /* background-image: url('/img/featureimages/1-1.jpg'); */
       
     }
 
@@ -342,14 +342,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+              <a class="tag" href="/tags/#node.js" title="node.js">node.js</a>
               
             </div>
-            <h1>理解BFC</h1>
-            <h2 class="subheading">有关BFC的知识点</h2>
+            <h1>Node.js学习-part1</h1>
+            <h2 class="subheading">初学node第一部分总结</h2>
             <span class="meta">
               Posted by AzirKxs on
-              2020-11-21
+              2021-09-13
             </span>
 
 
@@ -357,11 +357,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
+              Estimated Reading Time <span class="post-count">4</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">740</span> In Total
+              Words <span class="post-count">1.1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -423,50 +423,101 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="0-开头例行废话">0.开头例行废话</h2>
-<p>​		CSS真是有一堆奇技淫巧，之前知道了如何清除浮动以及解决margin上下边距重叠，但却不知道原理。原来这些奇奇怪怪的解决方案是通过触发BFC实现的！</p>
-<h2 id="1-BFC的基本概念">1.BFC的基本概念</h2>
-<p>​		先扯点专业术语，<font color=#ff3838>BFC</font>全称Block Formatting Context(块级格式化上下文)。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
-<table><tr><td bgcolor=yellow color=red>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</td></tr></table>
-<h2 id="2-如何触发BFC？">2.如何触发BFC？</h2>
-<p>1.body根元素</p>
-<p>2.浮动元素</p>
-<p>3.绝对定位元素（包括absolute，fixed）</p>
-<p>4.display为inline-block,table-cells,flex</p>
-<p>5.overflow为除了visible的值</p>
-<h2 id="3-通过触发BFC来解决上下边距重叠">3.通过触发BFC来解决上下边距重叠</h2>
-<p>​		两个垂直排列的 div盒子，我们为上面的盒子设置margin-bottom:100px,为下面的盒子设置margin-top:200px</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container1</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container2</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​		之后我们在浏览器中查看效果时可以发现，两个盒子的间距为较大的200px而不是100px+200px=300px，<font color=red>这不是CSS的bug，我们可以理解为一种规范</font>。而这种规范有点不符合常理，我们有时想要避免外边距重叠，我们可以让上下两个盒子触发BFC成为与外界隔绝的独立容器！</p>
-<p>​		我们为div设置display:inline-block之后</p>
-<img src="/img/image/BFC/01.png">
-<p>​		可以看到上边距重合的问题已经解决了。</p>
-<p><font color=red>注意：为什么设置overflow:hidden无法解决上边距重合？</font></p>
-<p>​		不知道，根据某乎上热心网友的解答（👴没看懂），他们的子元素确实形成了不同的BFC，而他们的父元素在同一BFC盒子中.</p>
-<h2 id="4-通过触发BFC来解决浮动造成的高度坍塌">4.通过触发BFC来解决浮动造成的高度坍塌</h2>
-<p>​		浮动会使普通的元素脱离普通流，如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">248</span>, <span class="number">248</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/img/image/BFC/02.png">
-<p>​		如图所示子元素因为设置了浮动并没有撑开父元素，如果我们触发了容器的BFC（设置overflow，float，display），那么子元素将会撑开父元素。</p>
-<img src="/img/image/BFC/03.png">
-<p>​		如图所示已经大功告成了😄！</p>
-<h2 id="5-结尾例行废话">5.结尾例行废话</h2>
-<p>​		关于BFC还有一些其他应用，由于自己也是刚接触BFC这个概念，有一些东西还不是很清楚，但愿将来在不断应用之后我可以理解的更透彻吧！</p>
+        <h2 id="概述">概述</h2>
+<blockquote>
+<p>百度百科：</p>
+<p>Node.js发布于2009年5月，由Ryan Dahl开发，是一个基于Chrome V8引擎的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JavaScript/321142">JavaScript</a>运行环境，使用了一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8/9597519">事件驱动</a>、非阻塞式I/O模型， [1] 让JavaScript 运行在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF/6492316">服务端</a>的开发平台，它让JavaScript成为与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/PHP/9337">PHP</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Python/407313">Python</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Perl/851577">Perl</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Ruby/11419">Ruby</a>等服务端语言平起平坐的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/1379708">脚本语言</a>。 [2]</p>
+<p>Node.js对一些特殊用例进行优化，提供替代的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/API/10154">API</a>，使得V8在非浏览器环境下运行得更好，V8引擎执行Javascript的速度非常快，性能非常好，基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8/2196523">网络应用</a>。 [3]</p>
+</blockquote>
+<p>node.js的特点：</p>
+<ul>
+<li>事件驱动</li>
+<li>非阻塞型IO模型</li>
+<li>轻量和高效</li>
+</ul>
+<p>node.js的特性：</p>
+<ul>
+<li>1.可以在没有浏览器安全级别限制下运行</li>
+<li>2.进行文件管理</li>
+<li>3.进行进程管理</li>
+<li>4.进行网络通信</li>
+</ul>
+<p>node.js的应用领域：</p>
+<ul>
+<li>web开发</li>
+<li>微服务</li>
+<li>前端构建</li>
+</ul>
+<h2 id="npm基础">npm基础</h2>
+<p>npm是node.js中的包管理工具，是世界上最大的开源包管理工具！</p>
+<h3 id="①使用npm命令安装包">①使用npm命令安装包</h3>
+<p>在全局环境下安装最新版本的jquery</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery --global(-g)</span><br></pre></td></tr></table></figure>
+<p><strong>全局安装包的目录</strong></p>
+<ul>
+<li>
+<p>Mac</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/Users/</span>felix<span class="regexp">/.nvm/</span>versions<span class="regexp">/node/</span>nvm各个版本<span class="regexp">/bin/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Windows</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\U</span>sers<span class="symbol">\你</span>的用户名<span class="symbol">\A</span>ppData<span class="symbol">\R</span>oaming<span class="symbol">\n</span>pm<span class="symbol">\n</span>ode_modules</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在当前目录下安装最新版本的jquery(本地安装)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery</span><br></pre></td></tr></table></figure>
+<p>展示你本地安装过的包及其依赖关系</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm list</span><br></pre></td></tr></table></figure>
+<p>本地安装的包将存放在该目录下的node_modules文件夹下</p>
+<h3 id="②package-json">②package.json</h3>
+<p>package.json的作用：记录当前的项目信息（项目描述，安装的包等信息）</p>
+<p>拷贝项目时不需要拷贝node_modules文件夹下大量的文件，执行npm install命令会更具package.json中的信息自动下载相应版本的依赖。</p>
+<p>生成package.json文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<p><strong>项目依赖</strong></p>
+<ul>
+<li>项目依赖：在项目的开发阶段和线上运营阶段，都需要依赖的第三方包</li>
+<li>使用<code>npm install 包名</code> （或者npm install 包名 --save）将包添加到package.json文件的<code>dependencies</code>字段中</li>
+<li>重新安装时使用<code>npm install --production</code> 只安装项目依赖</li>
+</ul>
+<p><strong>开发依赖</strong></p>
+<ul>
+<li>
+<p>开发依赖：在项目的开发阶段需要依赖，线上运营阶段不需要的第三方包</p>
+</li>
+<li>
+<p>使用<code>npm install 包名 --save-dev</code>命令将包添加到package.json文件的<code>devDependencies</code>字段中</p>
+<p>示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;包名&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;jquery&quot;</span>: <span class="string">&quot;^3.6.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;underscore&quot;</span>: <span class="string">&quot;^1.13.1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="③package-lock-json">③package-lock.json</h3>
+<p>从 npm 5 版本之后只要使用 npm install 命令下载，就会自动生成 package-lock.json 文件。</p>
+<ul>
+<li>记录模块的版本以及模块与模块之间的依赖关系</li>
+<li>锁定包的版本</li>
+<li>记录项目所依赖第三方包的树状结构和包的下载地址，加快重新安装的下载速度</li>
+</ul>
+<h3 id="④版本说明">④版本说明</h3>
+<p><strong>a.b.c</strong></p>
+<p>a代表主版本号</p>
+<p>b代表次版本号</p>
+<p>c代表修正号，偶数代表正式版，奇数代表开发版本</p>
+<p><strong>package.json下的版本说明：</strong></p>
+<p>^x.x.x:锁定主版本号</p>
+<p>~x.x.x:锁定次版本号</p>
+<p>* :表示最新版本</p>
+<h3 id="⑤相关命令">⑤相关命令</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">npm install 包名 --global(-g) 全局安装</span><br><span class="line">npm install 包名 本地安装（项目依赖）</span><br><span class="line">npm install 包名 --save 本地安装（项目依赖）</span><br><span class="line">npm install 包名 --save-dev 本地安装（开发依赖）</span><br><span class="line">npm init -y 生成package.json文件</span><br><span class="line">npm list 展示你本地安装过的包及其依赖关系</span><br><span class="line">npm info 包名 展示该包的信息</span><br><span class="line">npm view 包名 versions 查看该包所有的版本</span><br><span class="line">npm outdated 查看该包的更新信息</span><br><span class="line">npm update 更新包</span><br><span class="line">npm cache clean --force 清除缓存</span><br><span class="line">npm uninstall 包名 卸载包</span><br><span class="line">npm uninstall --save</span><br><span class="line">npm uninstall --save-dev</span><br><span class="line">npm uninstall -g 包名 卸载全局安装的包</span><br><span class="line">npm config get registry 查看npm源</span><br><span class="line">npm config set registry http://registry.npmjs.org 切换源到npmjs</span><br><span class="line">================分割线===============</span><br><span class="line">没测试过，可能有不准确的地方</span><br><span class="line">npm adduser 第一次登录创建用户（需要npmjs注册）</span><br><span class="line">npm login 非第一次登录</span><br><span class="line">npm publish 上传包</span><br><span class="line">npm unpublish 包名 --force 强制撤销发布的包，只有在发包的24小时内才允许撤销发布的包</span><br></pre></td></tr></table></figure>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/ajax01-form表单与ajax/" data-toggle="tooltip" data-placement="top" title="form表单与ajax">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/js01-打字效果/" data-toggle="tooltip" data-placement="top" title="使用CSS+JS实现打字效果">Next Post &rarr;</a>
+            <a href="/cn/ue05-虚幻四学习笔记Day5/" data-toggle="tooltip" data-placement="top" title="虚幻四学习笔记Day5">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -513,7 +564,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0-%E5%BC%80%E5%A4%B4%E4%BE%8B%E8%A1%8C%E5%BA%9F%E8%AF%9D"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">0.开头例行废话</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-BFC%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1.BFC的基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91BFC%EF%BC%9F"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2.如何触发BFC？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E9%80%9A%E8%BF%87%E8%A7%A6%E5%8F%91BFC%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%B8%8A%E4%B8%8B%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">3.通过触发BFC来解决上下边距重叠</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E9%80%9A%E8%BF%87%E8%A7%A6%E5%8F%91BFC%E6%9D%A5%E8%A7%A3%E5%86%B3%E6%B5%AE%E5%8A%A8%E9%80%A0%E6%88%90%E7%9A%84%E9%AB%98%E5%BA%A6%E5%9D%8D%E5%A1%8C"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">4.通过触发BFC来解决浮动造成的高度坍塌</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E7%BB%93%E5%B0%BE%E4%BE%8B%E8%A1%8C%E5%BA%9F%E8%AF%9D"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">5.结尾例行废话</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#npm%E5%9F%BA%E7%A1%80"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">npm基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A0%E4%BD%BF%E7%94%A8npm%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">①使用npm命令安装包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A1package-json"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">②package.json</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A2package-lock-json"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">③package-lock.json</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A3%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">④版本说明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A4%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">⑤相关命令</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -536,7 +587,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+            <a class="tag" href="/tags/#node.js" title="node.js">node.js</a>
             
           </div>
         </section>

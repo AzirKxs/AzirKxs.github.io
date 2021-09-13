@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/cn/css02-理解BFC/">
+  <link rel="canonical" href="http://yoursite-url/tags/node-js/">
   <title>
     
-      理解BFC - AzirKxs的博客 | 分享与记录
+      AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('/img/featureimages/CSS.jpg');
-      --intro-header-background-image-url-page: url('//img/featureimages/CSS.jpg');
+      --intro-header-background-image-url-post: url('');
+      --intro-header-background-image-url-page: url('/img/header_img/cover.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/CSS.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/CSS.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
     }
 
     header.intro-header {
-       /*post*/
-        background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/featureimages/CSS.jpg'); */
+       /*page*/
+        background-image: var(--intro-header-background-image-url-page);
+        /* background-image: url('/img/header_img/cover.jpg'); */
       
     }
 
@@ -339,42 +339,10 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="post-heading">
-            <div class="tags">
-              
-              <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
-              
-            </div>
-            <h1>理解BFC</h1>
-            <h2 class="subheading">有关BFC的知识点</h2>
-            <span class="meta">
-              Posted by AzirKxs on
-              2020-11-21
-            </span>
-
-
-            
-            <!-- WordCount start -->
-            <div class="blank_box"></div>
-            <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
-            </span>
-            <div class="blank_box"></div>
-            <span class="meta">
-              Words <span class="post-count">740</span> In Total
-            </span>
-            <div class="blank_box"></div>
-            <!-- WordCount end -->
-            
-            
-            <!-- 不蒜子统计 start -->
-            <span class="meta" id="busuanzi_container_page_pv">
-              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
-            </span>
-            <!-- 不蒜子统计 end -->
-            
-
-
+          <div class="site-heading">
+            <h1>AzirKxs&#39;s Blog</h1>
+            <!--<hr class="small">-->
+            <span class="subheading">欢迎光临我的博客</span>
           </div>
           
         </div>
@@ -415,198 +383,522 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Modify by Yu-Hsuan Yen -->
-<!-- Post Content -->
-<article>
-  <div class="container">
-    <div class="row">
-      <!-- Post Container -->
-      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
-
-        <h2 id="0-开头例行废话">0.开头例行废话</h2>
-<p>​		CSS真是有一堆奇技淫巧，之前知道了如何清除浮动以及解决margin上下边距重叠，但却不知道原理。原来这些奇奇怪怪的解决方案是通过触发BFC实现的！</p>
-<h2 id="1-BFC的基本概念">1.BFC的基本概念</h2>
-<p>​		先扯点专业术语，<font color=#ff3838>BFC</font>全称Block Formatting Context(块级格式化上下文)。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
-<table><tr><td bgcolor=yellow color=red>具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</td></tr></table>
-<h2 id="2-如何触发BFC？">2.如何触发BFC？</h2>
-<p>1.body根元素</p>
-<p>2.浮动元素</p>
-<p>3.绝对定位元素（包括absolute，fixed）</p>
-<p>4.display为inline-block,table-cells,flex</p>
-<p>5.overflow为除了visible的值</p>
-<h2 id="3-通过触发BFC来解决上下边距重叠">3.通过触发BFC来解决上下边距重叠</h2>
-<p>​		两个垂直排列的 div盒子，我们为上面的盒子设置margin-bottom:100px,为下面的盒子设置margin-top:200px</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container1</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-bottom</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container2</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">        <span class="attribute">margin-top</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​		之后我们在浏览器中查看效果时可以发现，两个盒子的间距为较大的200px而不是100px+200px=300px，<font color=red>这不是CSS的bug，我们可以理解为一种规范</font>。而这种规范有点不符合常理，我们有时想要避免外边距重叠，我们可以让上下两个盒子触发BFC成为与外界隔绝的独立容器！</p>
-<p>​		我们为div设置display:inline-block之后</p>
-<img src="/img/image/BFC/01.png">
-<p>​		可以看到上边距重合的问题已经解决了。</p>
-<p><font color=red>注意：为什么设置overflow:hidden无法解决上边距重合？</font></p>
-<p>​		不知道，根据某乎上热心网友的解答（👴没看懂），他们的子元素确实形成了不同的BFC，而他们的父元素在同一BFC盒子中.</p>
-<h2 id="4-通过触发BFC来解决浮动造成的高度坍塌">4.通过触发BFC来解决浮动造成的高度坍塌</h2>
-<p>​		浮动会使普通的元素脱离普通流，如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">248</span>, <span class="number">248</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/img/image/BFC/02.png">
-<p>​		如图所示子元素因为设置了浮动并没有撑开父元素，如果我们触发了容器的BFC（设置overflow，float，display），那么子元素将会撑开父元素。</p>
-<img src="/img/image/BFC/03.png">
-<p>​		如图所示已经大功告成了😄！</p>
-<h2 id="5-结尾例行废话">5.结尾例行废话</h2>
-<p>​		关于BFC还有一些其他应用，由于自己也是刚接触BFC这个概念，有一些东西还不是很清楚，但愿将来在不断应用之后我可以理解的更透彻吧！</p>
-
-
-        <hr>
-        <!-- Pager -->
-        <ul class="pager">
-          
-          <li class="previous">
-            <a href="/cn/ajax01-form表单与ajax/" data-toggle="tooltip" data-placement="top" title="form表单与ajax">&larr; Previous Post</a>
-          </li>
-          
-          
-          <li class="next">
-            <a href="/cn/js01-打字效果/" data-toggle="tooltip" data-placement="top" title="使用CSS+JS实现打字效果">Next Post &rarr;</a>
-          </li>
-          
-        </ul>
-
-        
-        <!-- tip start -->
-        <!-- tip -->
-<!-- tip start -->
-<div class="tip">
-  <p>
-    
-      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
-    
-  </p>
-</div>
-<!-- tip end -->
-
-        <!-- tip end -->
-        
-
-        
-        <hr>
-
-        <!-- comments start -->
-        <!-- 1. gitalk comment -->
-
-
-<!-- 2. gitment comment -->
-
-
-<!-- 3. disqus comment -->
-
-
-        <!-- comments end -->
-        <hr>
-
-      </div>
-
-      <!-- Catalog: Tabe of Content -->
-      <!-- Table of Contents -->
-
-    
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">目录</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0-%E5%BC%80%E5%A4%B4%E4%BE%8B%E8%A1%8C%E5%BA%9F%E8%AF%9D"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">0.开头例行废话</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-BFC%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">1.BFC的基本概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91BFC%EF%BC%9F"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">2.如何触发BFC？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E9%80%9A%E8%BF%87%E8%A7%A6%E5%8F%91BFC%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%B8%8A%E4%B8%8B%E8%BE%B9%E8%B7%9D%E9%87%8D%E5%8F%A0"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">3.通过触发BFC来解决上下边距重叠</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E9%80%9A%E8%BF%87%E8%A7%A6%E5%8F%91BFC%E6%9D%A5%E8%A7%A3%E5%86%B3%E6%B5%AE%E5%8A%A8%E9%80%A0%E6%88%90%E7%9A%84%E9%AB%98%E5%BA%A6%E5%9D%8D%E5%A1%8C"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">4.通过触发BFC来解决浮动造成的高度坍塌</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E7%BB%93%E5%B0%BE%E4%BE%8B%E8%A1%8C%E5%BA%9F%E8%AF%9D"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">5.结尾例行废话</span></a></li></ol>
-        
-        </div>
-      </aside>
+		<!-- Main Content -->
+<div class="container">
+  <div class="row">
     
 
-
-
-      <!-- Sidebar Container -->
-      <div class="
+    <!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-10 col-md-offset-1
-                sidebar-container">
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
 
-        <!-- Featured Tags -->
-        
-        <section>
-          <!-- no hr -->
-          <h5>
-            <a href="/tags/">特色标签</a>
-          </h5>
-          <div class="tags">
-            
-            <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
-            
-          </div>
-        </section>
-        
+      <!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
+      <!-- 归档列表 -->
 
-        <!-- Friends Blog -->
-        
-        <hr>
-        <h5>链友</h5>
-        <ul class="list-inline">
+      
 
+      <!-- 归档列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
+          <span class="tag-text">2021</span>
+        </span>
+        <ul>
           
           <li>
-            <a href="#" target="_blank">没有朋友</a>
+            09-13
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/node01-Node.js学习-part1/" style="color: #0085a1">
+              <span>
+                Node.js学习-part1
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-05
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ue05-虚幻四学习笔记Day5/" style="color: #0085a1">
+              <span>
+                虚幻四学习笔记Day5
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-04
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/Other01-hexo博客搭建日志/" style="color: #0085a1">
+              <span>
+                hexo博客搭建日志
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-04
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ue04-虚幻四学习笔记Day4/" style="color: #0085a1">
+              <span>
+                虚幻四学习笔记Day4
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-03
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/translation01-How to make a Fantasy Map/" style="color: #0085a1">
+              <span>
+                How to make a Fantasy Map翻译
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-03
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ue03-虚幻四学习笔记Day3/" style="color: #0085a1">
+              <span>
+                虚幻四学习笔记Day3
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-02
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ue02-虚幻四学习笔记Day2/" style="color: #0085a1">
+              <span>
+                虚幻四学习笔记Day2
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            09-01
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ue01-虚幻四学习笔记Day1/" style="color: #0085a1">
+              <span>
+                虚幻四学习笔记Day1
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            06-12
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/css01-毛玻璃效果制作总结/" style="color: #0085a1">
+              <span>
+                css实现毛玻璃效果
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            05-25
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ajax01-form表单与ajax/" style="color: #0085a1">
+              <span>
+                form表单与ajax
+                
+                -- cn
+                
+              </span>
+            </a>
           </li>
           
         </ul>
-        
       </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
+          <span class="tag-text">2020</span>
+        </span>
+        <ul>
+          
+          <li>
+            11-21
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/css02-理解BFC/" style="color: #0085a1">
+              <span>
+                理解BFC
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            11-12
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/js01-打字效果/" style="color: #0085a1">
+              <span>
+                使用CSS+JS实现打字效果
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-15
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/css04-widthAndHeight/" style="color: #0085a1">
+              <span>
+                读《CSS世界》总结(1)----width与height
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-14
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/css03-liorimg/" style="color: #0085a1">
+              <span>
+                处理inline-block与img元素造成的间隙
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-14
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/Other02-gitMessage/" style="color: #0085a1">
+              <span>
+                Git--版本管理系统
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-11
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/js02-magnifier/" style="color: #0085a1">
+              <span>
+                JS特效之电商放大镜
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            08-09
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/Other03-hello-world/" style="color: #0085a1">
+              <span>
+                第一次的博客搭建历程
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            04-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
+              <span>
+                Hexo-Theme-LiveMyLife
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+      
     </div>
   </div>
-</article>
+</div>
 
 
+      <!-- 如果开启评论功能 -->
+      
+    </div>
 
-<!-- anchorjs start -->
-<!-- async load function -->
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script type="text/javascript">
-  // async load function
-  function async (u, c) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) {
-      o.addEventListener('load', function(e) {
-        c(null, e);
-      }, false);
-    }
-    s.parentNode.insertBefore(o, s);
-  };
-</script>
-<script type="text/javascript">
-  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
-  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
-    anchors.options = {
-      visible: 'hover',
-      placement: 'left',
-      // icon: 'ℬ'
-      icon: '❡'
-    };
-    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-  });
-</script>
-<style>
-  /* place left on bigger screen */
-  @media all and (min-width: 800px) {
-    .anchorjs-link {
-      position: absolute;
-      left: -0.75em;
-      font-size: 1.1em;
-      margin-top: -0.1em;
-    }
-  }
-</style>
+    <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Visitors -->
+<h5><a href="/">来访者</a></h5>
 
-<!-- anchorjs end -->
+<div class="widget">
+  <span>
+    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
+  </span>
+  <br />
+  <span>
+    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
+  </span>
+</div>
 
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+  <h5><a href="/about/">关于自己</a></h5>
+  <div class="short-about">
+
+    
+    <img id="avatar_pic" src="/img/avatar/avatar.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
+    
+
+    
+    <p>  欢迎来到我的博客，这里是AzirKxs，一个涉猎广泛的技术爱好者，如果有任何问题可以bilibili私信我（b站同名），感谢各位的支持！</p>
+    
+
+    <!-- SNS Link -->
+    <ul class="list-inline">
+      
+
+      
+      <li>
+        <a target="_blank" href="https://github.com/AzirKxs">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa  fa-stack-1x fa-inverse">知</i>
+          </span>
+        </a>
+      </li>
+      
+
+      
+
+    </ul>
+  </div>
+</section>
+
+        <hr>
+    
+        <!-- RECENT POSTS -->
+
+<h5><a href="/">最近博文</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="../../cn/node01-Node.js%E5%AD%A6%E4%B9%A0-part1/">
+      <li>Node.js学习-part1</li>
+    </a>
+    
+    <a href="../../cn/ue05-%E8%99%9A%E5%B9%BB%E5%9B%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Day5/">
+      <li>虚幻四学习笔记Day5</li>
+    </a>
+    
+    <a href="../../cn/Other01-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97/">
+      <li>hexo博客搭建日志</li>
+    </a>
+    
+    <a href="../../cn/ue04-%E8%99%9A%E5%B9%BB%E5%9B%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Day4/">
+      <li>虚幻四学习笔记Day4</li>
+    </a>
+    
+    <a href="../../cn/translation01-How%20to%20make%20a%20Fantasy%20Map/">
+      <li>How to make a Fantasy Map翻译</li>
+    </a>
+    
+  </ul>
+</div>
+
+
+        <hr>
+    
+        <!-- Archives -->
+
+<h5><a href="/archives/">archives</a></h5>
+<div class="widget">
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">September 2021</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li></ul>
+</div>
+
+
+        <hr>
+    
+        <!-- Categories -->
+
+<h5><a href="/categories/">categories</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="/categories/#其它">
+      <li>其它</li>
+    </a>
+    
+    <a href="/categories/#前端">
+      <li>前端</li>
+    </a>
+    
+    <a href="/categories/#node.js">
+      <li>node.js</li>
+    </a>
+    
+    <a href="/categories/#翻译">
+      <li>翻译</li>
+    </a>
+    
+    <a href="/categories/#虚幻引擎4">
+      <li>虚幻引擎4</li>
+    </a>
+    
+    <a href="/categories/#Hexo-Theme-LiveMyLife">
+      <li>Hexo-Theme-LiveMyLife</li>
+    </a>
+    
+  </ul>
+</div>
+
+
+        <hr>
+    
+        <!-- Featured Tags -->
+
+<section>
+  <h5><a href="/tags/">特色标签</a></h5>
+  <div class="tags">
+    
+    
+    <a href="/tags/#博客" title="博客" rel="2">博客</a>
+    
+    
+    
+    <a href="/tags/#Git" title="Git" rel="1">Git</a>
+    
+    
+    
+    <a href="/tags/#ajax" title="ajax" rel="1">ajax</a>
+    
+    
+    
+    <a href="/tags/#前后端交互" title="前后端交互" rel="1">前后端交互</a>
+    
+    
+    
+    <a href="/tags/#CSS" title="CSS" rel="5">CSS</a>
+    
+    
+    
+    <a href="/tags/#读书笔记" title="读书笔记" rel="1">读书笔记</a>
+    
+    
+    
+    <a href="/tags/#js" title="js" rel="1">js</a>
+    
+    
+    
+    <a href="/tags/#JS特效" title="JS特效" rel="1">JS特效</a>
+    
+    
+    
+    <a href="/tags/#node.js" title="node.js" rel="1">node.js</a>
+    
+    
+    
+    <a href="/tags/#英语" title="英语" rel="1">英语</a>
+    
+    
+    
+    <a href="/tags/#游戏开发" title="游戏开发" rel="5">游戏开发</a>
+    
+    
+    
+    <a href="/tags/#虚幻4" title="虚幻4" rel="5">虚幻4</a>
+    
+    
+    
+    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
+    
+    
+  </div>
+</section>
+
+
+        <hr>
+    
+</div>
+
+
+    
+  </div>
+</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
