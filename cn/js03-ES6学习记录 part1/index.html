@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/archives/2021/05/">
+  <link rel="canonical" href="http://yoursite-url/cn/js03-ES6学习记录 part1/">
   <title>
     
-      AzirKxs的博客 | 分享与记录
+      ES6学习记录 part1 - AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: url('//img/featureimages/js.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/js.png');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/cover.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/featureimages/js.png'); */
       
     }
 
@@ -339,10 +339,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>AzirKxs&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">欢迎光临我的博客</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#js" title="js">js</a>
+              
+            </div>
+            <h1>ES6学习记录 part1</h1>
+            <h2 class="subheading">对于es6的学习总结</h2>
+            <span class="meta">
+              Posted by AzirKxs on
+              2021-09-14
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">3</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">687</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -383,539 +415,192 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h2 id="1-let-与-const">1.let 与 const</h2>
+<p>学过了~</p>
+<h2 id="2-解构赋值">2.解构赋值</h2>
+<p>①数组的解构赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b,c] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];<span class="comment">//依次为a,b,c赋值为1,2,3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [one,,three] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]<span class="comment">//one =1;three =3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [top1, ...bottom] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];<span class="comment">//top1 = 1 ; bottom = [2,3,4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x, y, ...z] = [<span class="string">&#x27;a&#x27;</span>]; <span class="comment">//x = a; y = undefined; z = [];</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [first,seconed] = [<span class="number">1</span>];<span class="comment">//解构失败，都为undefined</span></span><br></pre></td></tr></table></figure>
+<p>可以设置默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [defaultValue = <span class="string">&#x27;yes&#x27;</span>] = []; <span class="comment">//defaultValue = yes;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [defaultValue2 = <span class="string">&#x27;yes&#x27;</span>] = [<span class="literal">null</span>]; defaultValue2 = <span class="literal">null</span>;<span class="comment">//当一个数组成员严格等于undefined，默认值才会生效</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;aaa&#x27;</span>);</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> [x1 = f()] = [<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这种情况下f()不会执行,只有当需要采取默认值的时候才会执行f()；</span></span><br></pre></td></tr></table></figure>
+<p>②对象的解构赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。解构失败值为undefined</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;aaa,bbb,ccc&#125; = &#123;<span class="attr">aaa</span>:<span class="string">&#x27;a&#x27;</span>,<span class="attr">ccc</span>:<span class="string">&#x27;c&#x27;</span>,<span class="attr">bbb</span>:<span class="string">&#x27;b&#x27;</span>&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> KXS = &#123;</span><br><span class="line"></span><br><span class="line">  name: <span class="string">&#x27;azirkxs&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  age: <span class="number">21</span>,</span><br><span class="line"></span><br><span class="line">  play: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">​    <span class="built_in">console</span>.log(<span class="string">&#x27;happy game&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;name,age,play&#125; = KXS; <span class="comment">//此处的变量名必须与对象中的属性名一致</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(name);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(age);</span><br><span class="line"></span><br><span class="line">play();</span><br></pre></td></tr></table></figure>
+<h2 id="3-模板字符串">3.模板字符串</h2>
+<p>申明：使用``包裹,使用${变量名}引用变量</p>
+<p>特性： ①可以保留换行符（回车） ②变量拼接</p>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> azir = <span class="string">&#x27;阿兹尔&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> info = <span class="string">`<span class="subst">$&#123;azir&#125;</span>是恕瑞玛的皇帝`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(info);</span><br></pre></td></tr></table></figure>
+<h2 id="4-对象的简化写法">4.对象的简化写法</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在学习框架阅读框架源码的时候可能会出现这种降低可读性的写法！</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> zed = <span class="string">&#x27;劫&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> R = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;劫使用了大招&quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> game = &#123;</span><br><span class="line"></span><br><span class="line">  zed, <span class="comment">// zed = zed</span></span><br><span class="line"></span><br><span class="line">  R,<span class="comment">//  R = R;</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">die</span>(<span class="params"></span>)</span>&#123; <span class="comment">// die =function()</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;劫死了&quot;</span>);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(game.zed,game.R);</span><br><span class="line"></span><br><span class="line">game.die();</span><br></pre></td></tr></table></figure>
+<h2 id="5-箭头函数">5.箭头函数</h2>
+<p>声明：func = (函数参数) = &gt;{方法体}</p>
+<p>箭头函数的特性：</p>
+<p>①this是静态的,this始终指向函数声明时所在作用域下this的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.name = <span class="string">&#x27;azirkxs&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> nickname = &#123;</span><br><span class="line"></span><br><span class="line">  name: <span class="string">&#x27;勤勉的阿库希斯教徒&#x27;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> getName0 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> getName1 =<span class="function">() =&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getName0.call(nickname);</span><br><span class="line"></span><br><span class="line">getName1.call(nickname);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>未调用call方法时，this都指向了window的name属性,调用了call方法之后，普通函数的this指向了nickname，而箭头函数的this仍指向window.因此在调用了call方法后getName0输出勤勉的阿库希斯教徒,getName1输出azirkxs</p>
+<p>②不能作为构造函数实例化对象</p>
+<p>③不能使用arguments变量</p>
+<p>④当函数体的语句只有一条时，可以省略花括号和return</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> add = <span class="function"><span class="params">a</span> =&gt;</span> a+a;</span><br></pre></td></tr></table></figure>
+<h2 id="6-函数默认值">6.函数默认值</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES6允许为形参赋默认值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b,c=<span class="number">10</span></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> a + b +c;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(test(<span class="number">1</span>,<span class="number">2</span>));<span class="comment">//13</span></span><br></pre></td></tr></table></figure>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/cn/node01-Node.js学习-part1/" data-toggle="tooltip" data-placement="top" title="Node.js学习-part1">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-let-%E4%B8%8E-const"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.let 与 const</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2.解构赋值</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3.模板字符串</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%AE%80%E5%8C%96%E5%86%99%E6%B3%95"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4.对象的简化写法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5.箭头函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-%E5%87%BD%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">6.函数默认值</span></a></li></ol>
+        
+        </div>
+      </aside>
     
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <li>
-            09-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js03-ES6学习记录 part1/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/node01-Node.js学习-part1/" style="color: #0085a1">
-              <span>
-                Node.js学习-part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue05-虚幻四学习笔记Day5/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day5
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other01-hexo博客搭建日志/" style="color: #0085a1">
-              <span>
-                hexo博客搭建日志
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue04-虚幻四学习笔记Day4/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day4
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/translation01-How to make a Fantasy Map/" style="color: #0085a1">
-              <span>
-                How to make a Fantasy Map翻译
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue03-虚幻四学习笔记Day3/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day3
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue02-虚幻四学习笔记Day2/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue01-虚幻四学习笔记Day1/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css01-毛玻璃效果制作总结/" style="color: #0085a1">
-              <span>
-                css实现毛玻璃效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ajax01-form表单与ajax/" style="color: #0085a1">
-              <span>
-                form表单与ajax
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css02-理解BFC/" style="color: #0085a1">
-              <span>
-                理解BFC
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js01-打字效果/" style="color: #0085a1">
-              <span>
-                使用CSS+JS实现打字效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css04-widthAndHeight/" style="color: #0085a1">
-              <span>
-                读《CSS世界》总结(1)----width与height
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css03-liorimg/" style="color: #0085a1">
-              <span>
-                处理inline-block与img元素造成的间隙
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other02-gitMessage/" style="color: #0085a1">
-              <span>
-                Git--版本管理系统
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js02-magnifier/" style="color: #0085a1">
-              <span>
-                JS特效之电商放大镜
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other03-hello-world/" style="color: #0085a1">
-              <span>
-                第一次的博客搭建历程
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Hexo-Theme-LiveMyLife/" style="color: #0085a1">
-              <span>
-                Hexo-Theme-LiveMyLife
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/avatar.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>  欢迎来到我的博客，这里是AzirKxs，一个涉猎广泛的技术爱好者，如果有任何问题可以bilibili私信我（b站同名），感谢各位的支持！</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/AzirKxs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-      <li>
-        <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa  fa-stack-1x fa-inverse">知</i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../../cn/js03-ES6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%20part1/">
-      <li>ES6学习记录 part1</li>
-    </a>
-    
-    <a href="../../../cn/node01-Node.js%E5%AD%A6%E4%B9%A0-part1/">
-      <li>Node.js学习-part1</li>
-    </a>
-    
-    <a href="../../../cn/ue05-%E8%99%9A%E5%B9%BB%E5%9B%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Day5/">
-      <li>虚幻四学习笔记Day5</li>
-    </a>
-    
-    <a href="../../../cn/Other01-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97/">
-      <li>hexo博客搭建日志</li>
-    </a>
-    
-    <a href="../../../cn/ue04-%E8%99%9A%E5%B9%BB%E5%9B%9B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Day4/">
-      <li>虚幻四学习笔记Day4</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../09/">September 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="">May 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/11/">November 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/08/">August 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/04/">April 2020</a><span class="archive-list-count">1</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#其它">
-      <li>其它</li>
-    </a>
-    
-    <a href="/categories/#前端">
-      <li>前端</li>
-    </a>
-    
-    <a href="/categories/#node.js">
-      <li>node.js</li>
-    </a>
-    
-    <a href="/categories/#虚幻引擎4">
-      <li>虚幻引擎4</li>
-    </a>
-    
-    <a href="/categories/#翻译">
-      <li>翻译</li>
-    </a>
-    
-    <a href="/categories/#Hexo-Theme-LiveMyLife">
-      <li>Hexo-Theme-LiveMyLife</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#js" title="js">js</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#博客" title="博客" rel="2">博客</a>
-    
-    
-    
-    <a href="/tags/#Git" title="Git" rel="1">Git</a>
-    
-    
-    
-    <a href="/tags/#ajax" title="ajax" rel="1">ajax</a>
-    
-    
-    
-    <a href="/tags/#前后端交互" title="前后端交互" rel="1">前后端交互</a>
-    
-    
-    
-    <a href="/tags/#学习记录" title="学习记录" rel="7">学习记录</a>
-    
-    
-    
-    <a href="/tags/#CSS" title="CSS" rel="5">CSS</a>
-    
-    
-    
-    <a href="/tags/#读书笔记" title="读书笔记" rel="1">读书笔记</a>
-    
-    
-    
-    <a href="/tags/#js" title="js" rel="2">js</a>
-    
-    
-    
-    <a href="/tags/#JS特效" title="JS特效" rel="1">JS特效</a>
-    
-    
-    
-    <a href="/tags/#node.js" title="node.js" rel="1">node.js</a>
-    
-    
-    
-    <a href="/tags/#游戏开发" title="游戏开发" rel="5">游戏开发</a>
-    
-    
-    
-    <a href="/tags/#虚幻4" title="虚幻4" rel="5">虚幻4</a>
-    
-    
-    
-    <a href="/tags/#英语" title="英语" rel="1">英语</a>
-    
-    
-    
-    <a href="/tags/#Hexo-Theme-LiveMyLife" title="Hexo-Theme-LiveMyLife" rel="1">Hexo-Theme-LiveMyLife</a>
-    
-    
-  </div>
-</section>
-
-
+        <!-- Friends Blog -->
+        
         <hr>
-    
-</div>
+        <h5>链友</h5>
+        <ul class="list-inline">
 
-
-    
+          
+          <li>
+            <a href="#" target="_blank">没有朋友</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->

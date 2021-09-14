@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/cn/js03-ES6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%20part1/</loc>
+    <lastmod>2021-09-14</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/cn/node01-Node.js%E5%AD%A6%E4%B9%A0-part1/</loc>
     <lastmod>2021-09-13</lastmod>
   </url>
