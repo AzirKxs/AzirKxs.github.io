@@ -204,9 +204,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
               
               
             </a>
@@ -226,20 +237,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/archive/">
-              
-              归档
+              分类
               
               
             </a>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('/img/featureimages/node.png');
-      --intro-header-background-image-url-page: url('//img/featureimages/node.png');
+      --intro-header-background-image-url-post: url('/img/featureimages/node.jpg');
+      --intro-header-background-image-url-page: url('//img/featureimages/node.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/node.png');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/node.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/node.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/node.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/featureimages/node.png'); */
+        /* background-image: url('/img/featureimages/node.jpg'); */
       
     }
 
@@ -359,11 +359,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">4</span> Minutes
+              Estimated Reading Time <span class="post-count">7</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.1k</span> In Total
+              Words <span class="post-count">1.8k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -456,16 +456,10 @@
 <p>在全局环境下安装最新版本的jquery</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery --global(-g)</span><br></pre></td></tr></table></figure>
 <p><strong>全局安装包的目录</strong></p>
-<ul>
-<li>
 <p>Mac</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/Users/</span>felix<span class="regexp">/.nvm/</span>versions<span class="regexp">/node/</span>nvm各个版本<span class="regexp">/bin/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
 <p>Windows</p>
 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\U</span>sers<span class="symbol">\你</span>的用户名<span class="symbol">\A</span>ppData<span class="symbol">\R</span>oaming<span class="symbol">\n</span>pm<span class="symbol">\n</span>ode_modules</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 <p>在当前目录下安装最新版本的jquery(本地安装)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery</span><br></pre></td></tr></table></figure>
 <p>展示你本地安装过的包及其依赖关系</p>
@@ -509,8 +503,45 @@
 <p>^x.x.x:锁定主版本号</p>
 <p>~x.x.x:锁定次版本号</p>
 <p>* :表示最新版本</p>
-<h3 id="⑤相关命令">⑤相关命令</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">npm install 包名 --global(-g) 全局安装</span><br><span class="line">npm install 包名 本地安装（项目依赖）</span><br><span class="line">npm install 包名 --save 本地安装（项目依赖）</span><br><span class="line">npm install 包名 --save-dev 本地安装（开发依赖）</span><br><span class="line">npm init -y 生成package.json文件</span><br><span class="line">npm list 展示你本地安装过的包及其依赖关系</span><br><span class="line">npm info 包名 展示该包的信息</span><br><span class="line">npm view 包名 versions 查看该包所有的版本</span><br><span class="line">npm outdated 查看该包的更新信息</span><br><span class="line">npm update 更新包</span><br><span class="line">npm cache clean --force 清除缓存</span><br><span class="line">npm uninstall 包名 卸载包</span><br><span class="line">npm uninstall --save</span><br><span class="line">npm uninstall --save-dev</span><br><span class="line">npm uninstall -g 包名 卸载全局安装的包</span><br><span class="line">npm config get registry 查看npm源</span><br><span class="line">npm config set registry http://registry.npmjs.org 切换源到npmjs</span><br><span class="line">================分割线===============</span><br><span class="line">没测试过，可能有不准确的地方</span><br><span class="line">npm adduser 第一次登录创建用户（需要npmjs注册）</span><br><span class="line">npm login 非第一次登录</span><br><span class="line">npm publish 上传包</span><br><span class="line">npm unpublish 包名 --force 强制撤销发布的包，只有在发包的24小时内才允许撤销发布的包</span><br></pre></td></tr></table></figure>
+<h3 id="⑤上传包">⑤上传包</h3>
+<p>1.编写模块</p>
+<p>2.完善package.json的信息</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;gp19-npm&quot;</span>, </span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.1&quot;</span>, </span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;gp19 self module&quot;</span>, </span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123; </span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;make test&quot;</span> </span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="attr">&quot;repository&quot;</span>: &#123; </span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;Git&quot;</span>, </span><br><span class="line">    <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;git+https://github.com/lurongtao/gp19-npm.git&quot;</span> </span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [ </span><br><span class="line">    <span class="string">&quot;demo&quot;</span> </span><br><span class="line">  ], </span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;Felixlu&quot;</span>, </span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>, </span><br><span class="line">  <span class="attr">&quot;bugs&quot;</span>: &#123; </span><br><span class="line">    <span class="attr">&quot;url&quot;</span>: <span class="string">&quot;https://github.com/lurongtao/gp19-npm/issues&quot;</span> </span><br><span class="line">  &#125;, </span><br><span class="line">  <span class="attr">&quot;homepage&quot;</span>: <span class="string">&quot;https://github.com/lurongtao/gp19-npm#readme&quot;</span>, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.注册npm账号</p>
+<p>4.添加用户</p>
+<p>5.换源上传包</p>
+<h3 id="⑥相关命令">⑥相关命令</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">npm install 包名 --global(-g) #全局安装</span><br><span class="line">npm install 包名 #本地安装（项目依赖）</span><br><span class="line">npm install 包名 --save #本地安装（项目依赖）</span><br><span class="line">npm install 包名 --save-dev #本地安装（开发依赖）</span><br><span class="line">npm init -y #生成package.json文件</span><br><span class="line">npm list #展示你本地安装过的包及其依赖关系</span><br><span class="line">npm info 包名 #展示该包的信息</span><br><span class="line">npm view 包名 #versions 查看该包所有的版本</span><br><span class="line">npm outdated #查看该包的更新信息</span><br><span class="line">npm update #更新包</span><br><span class="line">npm cache clean --force #清除缓存</span><br><span class="line">npm uninstall 包名 #卸载包</span><br><span class="line">npm uninstall --save</span><br><span class="line">npm uninstall --save-dev</span><br><span class="line">npm uninstall -g 包名 #卸载全局安装的包</span><br><span class="line">npm config get registry #查看npm源</span><br><span class="line">npm config set registry http://registry.npmjs.org #切换源到npmjs</span><br><span class="line">npm ls #查看该项目目前使用了哪些包</span><br><span class="line"><span class="meta">#</span><span class="bash">================分割线===============</span></span><br><span class="line"><span class="meta">#</span><span class="bash">没测试过，可能有不准确的地方</span></span><br><span class="line">npm adduser #第一次登录创建用户（需要npmjs注册）</span><br><span class="line">npm login #非第一次登录</span><br><span class="line">npm publish #上传包</span><br><span class="line">npm unpublish 包名 --force #强制撤销发布的包，只有在发包的24小时内才允许撤销发布的包</span><br><span class="line">npm install git+git链接 #安装git上的包 例如npm install git+https://git@github.com:lurongtao/gp-project.git</span><br></pre></td></tr></table></figure>
+<h2 id="npm脚本">npm脚本</h2>
+<p>npm 允许在 package.json 文件里面，使用 scripts 字段定义脚本命令。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;名称&quot;:&quot;指令&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="添加和执行">添加和执行</h3>
+<p>添加脚本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;hello&quot;:&quot;echo hello world&quot; ,//输出hello world</span><br><span class="line">    &quot;load1&quot;:&quot;node index1.js&quot; ,//执行index1.js</span><br><span class="line">    &quot;load2&quot;:&quot;node index2.js&quot; //执行index2.js</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm run hello #执行hello</span><br><span class="line">npm run load1 #执行index1.js</span><br><span class="line">npm run load1 &amp; npm run load2 #并行执行</span><br><span class="line">npm run load1 &amp;&amp; npm run load2 #index1.js 执行完才会执行index2.js</span><br></pre></td></tr></table></figure>
+<h3 id="变量">变量</h3>
+<p>通过 <code>npm_package_</code> 前缀，npm 脚本可以拿到 package.json 里面的字段</p>
+<p>添加test.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(process.env.npm_package_scripts_hello)</span><br></pre></td></tr></table></figure>
+<p>添加脚本</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;hello&quot;:&quot;echo hello world&quot;,</span><br><span class="line">    &quot;runCode&quot;:&quot;node test.js&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm run runCode</span><br><span class="line"><span class="meta">#</span><span class="bash">注意：必须使用执行脚本的方式运行test.js,直接在控制台输入node test.js是不行的,输出结果为undefined</span></span><br><span class="line"><span class="meta">#</span><span class="bash">结果：<span class="built_in">echo</span> hello world</span></span><br></pre></td></tr></table></figure>
+<p><strong>在控制台输出package.json中hello字段的值</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;hello&quot;:&quot;echo hello world&quot;,</span><br><span class="line">    &quot;runCode&quot;:&quot;node test.js&quot;,</span><br><span class="line">    &quot;print&quot;:&quot;echo %npm_package_scripts_hello%&quot; //mac用户为&quot;echo $npm_package_scripts_hello</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run print</span><br><span class="line"><span class="meta">#</span><span class="bash">结果：<span class="built_in">echo</span> hello world</span></span><br></pre></td></tr></table></figure>
+<h2 id="NRM">NRM</h2>
+<p>NRM (npm registry manager)是npm的镜像源管理工具，有时候国外资源太慢，使用这个就可以快速地在 npm 源间切换。</p>
+<p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+<p>相关命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nrm ls #查看可切换的源</span><br><span class="line">nrm test #测试各个源的速度</span><br><span class="line">nrm use 源的名称 #切换源</span><br></pre></td></tr></table></figure>
+<h2 id="NPX">NPX</h2>
+<p>在一些情况下使用npx命令</p>
+<p>1.直接调用安装的模块（不需要输入node_modules/.bin）</p>
+<p>2.避免全局安装（会自动下载下来执行命令然后自动删除）</p>
+<p>3.–no-install 参数和–ignore-existing 参数(不自动安装，忽略已经安装的)</p>
 
 
         <hr>
@@ -566,7 +597,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#npm%E5%9F%BA%E7%A1%80"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">npm基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A0%E4%BD%BF%E7%94%A8npm%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">①使用npm命令安装包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A1package-json"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">②package.json</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A2package-lock-json"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">③package-lock.json</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A3%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">④版本说明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A4%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">⑤相关命令</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#npm%E5%9F%BA%E7%A1%80"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">npm基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A0%E4%BD%BF%E7%94%A8npm%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">①使用npm命令安装包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A1package-json"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">②package.json</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A2package-lock-json"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">③package-lock.json</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A3%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">④版本说明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A4%E4%B8%8A%E4%BC%A0%E5%8C%85"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">⑤上传包</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E2%91%A5%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">⑥相关命令</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#npm%E8%84%9A%E6%9C%AC"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">npm脚本</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%92%8C%E6%89%A7%E8%A1%8C"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">添加和执行</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">变量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#NRM"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">NRM</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#NPX"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">NPX</span></a></li></ol>
         
         </div>
       </aside>
