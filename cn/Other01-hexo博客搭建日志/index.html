@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -423,67 +423,79 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="hexo博客搭建日志v1-0"><a href="#hexo博客搭建日志v1-0" class="headerlink" title="hexo博客搭建日志v1.0"></a>hexo博客搭建日志v1.0</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    在之前的博客停止更新和报废之后，今天再度尝试搭建全新的博客用于记录与分享我的学习生活。写这篇文章是因为去年的现在就想写一篇hexo博客搭建的记录以便自己后续查阅，结果一直咕咕咕了，正好今年就给他完成了。</p>
-<p>​    该文为本人对博客搭建过程的一个梳理，有些地方可能不太完善（话说我第一个博客折腾了好长时间呀~）</p>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>​    博客决定采用hexo框架搭建，选用功能齐全，文档详细且美观的<em>livemylife</em>主题。</p>
-<h3 id="node-js与git"><a href="#node-js与git" class="headerlink" title="node.js与git"></a>node.js与git</h3><p>​    首先需要安装node.js与git</p>
-<p>​    在下载git后，我们新建一个文件夹取名为myblog3.0，在该文件夹下右击鼠标点击git bash here</p>
+        <h1>hexo博客搭建日志v1.0</h1>
+<h2 id="前言">前言</h2>
+<p>​	在之前的博客停止更新和报废之后，今天再度尝试搭建全新的博客用于记录与分享我的学习生活。写这篇文章是因为去年的现在就想写一篇hexo博客搭建的记录以便自己后续查阅，结果一直咕咕咕了，正好今年就给他完成了。</p>
+<p>​	该文为本人对博客搭建过程的一个梳理，有些地方可能不太完善（话说我第一个博客折腾了好长时间呀~）</p>
+<h2 id="1-安装">1.安装</h2>
+<p>​	博客决定采用hexo框架搭建，选用功能齐全，文档详细且美观的<em>livemylife</em>主题。</p>
+<h3 id="node-js与git">node.js与git</h3>
+<p>​	首先需要安装node.js与git</p>
+<p>​	在下载git后，我们新建一个文件夹取名为myblog3.0，在该文件夹下右击鼠标点击git bash here</p>
 <p><img src="/img/image/myblog-img/blog1.png" alt="blog1"></p>
-<p>​    然后安装hexo框架,注意需要安装node.js才可以使用npm命令</p>
+<p>​	然后安装hexo框架,注意需要安装node.js才可以使用npm命令</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo</span><br></pre></td></tr></table></figure>
-<p>​    之后我们的文件夹会多出node_modules文件，hexo框架的文件就在该目录下</p>
-<h3 id="安装博客并启动"><a href="#安装博客并启动" class="headerlink" title="安装博客并启动"></a>安装博客并启动</h3><p>​    安装好hexo之后我们接着输入</p>
+<p>​	之后我们的文件夹会多出node_modules文件，hexo框架的文件就在该目录下</p>
+<h3 id="安装博客并启动">安装博客并启动</h3>
+<p>​	安装好hexo之后我们接着输入</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">init</span> blog</span><br></pre></td></tr></table></figure>
-<p>​    这时候等待安装完成之后我们的文件夹就会多出一个blog文件了，这就是我们的博客了,然后输入cd blog进入博客文件夹下,然后输入npm install（我也不知道这一步是干嘛的，但总之参考文档为了避免出错）</p>
+<p>​	这时候等待安装完成之后我们的文件夹就会多出一个blog文件了，这就是我们的博客了,然后输入cd blog进入博客文件夹下,然后输入npm install（我也不知道这一步是干嘛的，但总之参考文档为了避免出错）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>​    接着我们就可以在本地启动我们的博客了，输入hexo server</p>
+<p>​	接着我们就可以在本地启动我们的博客了，输入hexo server</p>
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-<p>​    这时候我们的博客就成功启动了,接着我们看到了如下信息就代表我们已经启动成功了</p>
+<p>​	这时候我们的博客就成功启动了,接着我们看到了如下信息就代表我们已经启动成功了</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INFO</span>  Validating config</span><br><span class="line"><span class="keyword">INFO</span>  <span class="keyword">Start</span> processing</span><br><span class="line"><span class="keyword">INFO</span>  Hexo <span class="keyword">is</span> running at http://localhost:<span class="number">4000</span> . Press Ctrl+C <span class="keyword">to</span> stop.</span><br></pre></td></tr></table></figure>
-<p>​    打开你的浏览器，访问<a href="http://localhost:4000，我们就可以看到我们的博客了的，这是默认的landscape主题">http://localhost:4000，我们就可以看到我们的博客了的，这是默认的landscape主题</a></p>
+<p>​	打开你的浏览器，访问http://localhost:4000，我们就可以看到我们的博客了的，这是默认的landscape主题</p>
 <p><img src="/img/image/myblog-img/blog2.png" alt="blog2"></p>
-<h2 id="2-切换主题"><a href="#2-切换主题" class="headerlink" title="2.切换主题"></a>2.切换主题</h2><h3 id="寻找主题"><a href="#寻找主题" class="headerlink" title="寻找主题"></a>寻找主题</h3><p>​    如果你不喜欢默认的主题，我们可以尝试切换主题，在hexo的官网theme查找我们想要的主题    <a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes | Hexo</a></p>
-<p>​    注意在寻找主题的时候我们也需要注意</p>
-<p>​        1.它的功能是否是你想要的</p>
-<p>​        2.它的文档是否完善与便于阅读</p>
-<p>​    一定要确定以上两点不然会给我们后续的自定义设置带来很大的麻烦</p>
-<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>​    如果我们找到了我们想要的主题，我们就可以点击它的标题进入github页面，接着我们按照他文档所给的链接在我们的博客目录下启动git进行安装。</p>
-<p>​    安装之后我们呢找到blog目录下的_config.yml文件，配置theme为博客名称。</p>
-<p>​    再次启动我们就可以看到我们新安装主题的页面了！</p>
-<p>​    </p>
-<h2 id="3-部署博客"><a href="#3-部署博客" class="headerlink" title="3.部署博客"></a>3.部署博客</h2><p>​    接着我们可以将它部署在gitee或者github上了，这里由于网络原因我们将它部署在gitee上，</p>
-<p>​    首先我们在gitee中先创建一个仓库，仓库的名称为你的用户名</p>
-<p>​    找到_config.yml文件，进行如下配置</p>
+<h2 id="2-切换主题">2.切换主题</h2>
+<h3 id="寻找主题">寻找主题</h3>
+<p>​	如果你不喜欢默认的主题，我们可以尝试切换主题，在hexo的官网theme查找我们想要的主题	<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes | Hexo</a></p>
+<p>​	注意在寻找主题的时候我们也需要注意</p>
+<p>​		1.它的功能是否是你想要的</p>
+<p>​		2.它的文档是否完善与便于阅读</p>
+<p>​	一定要确定以上两点不然会给我们后续的自定义设置带来很大的麻烦</p>
+<h3 id="安装主题">安装主题</h3>
+<p>​	如果我们找到了我们想要的主题，我们就可以点击它的标题进入github页面，接着我们按照他文档所给的链接在我们的博客目录下启动git进行安装。</p>
+<p>​	安装之后我们呢找到blog目录下的_config.yml文件，配置theme为博客名称。</p>
+<p>​	再次启动我们就可以看到我们新安装主题的页面了！</p>
+<p>​</p>
+<h2 id="3-部署博客">3.部署博客</h2>
+<p>​	接着我们可以将它部署在gitee或者github上了，这里由于网络原因我们将它部署在gitee上，</p>
+<p>​	首先我们在gitee中先创建一个仓库，仓库的名称为你的用户名</p>
+<p>​	找到_config.yml文件，进行如下配置</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">deploy:</span></span><br><span class="line"><span class="symbol">  type:</span> git</span><br><span class="line"><span class="symbol">  repo:</span> https:<span class="comment">//gitee.com/你的仓库路径</span></span><br><span class="line"><span class="symbol">  branch:</span> master</span><br></pre></td></tr></table></figure>
-<p>​    配置完成后,我们就可以使用hexo自带的部署命令进行部署了</p>
+<p>​	配置完成后,我们就可以使用hexo自带的部署命令进行部署了</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
-<p>​    稍等片刻之后，我们的博客就部署完毕了（如果你提供的路径不正确则无法成功部署），这里我们再次来到仓库页面，如果有东西代表我们已经部署成功了。点击服务列表下的Gitee Pages，开启该服务。</p>
+<p>​	稍等片刻之后，我们的博客就部署完毕了（如果你提供的路径不正确则无法成功部署），这里我们再次来到仓库页面，如果有东西代表我们已经部署成功了。点击服务列表下的Gitee Pages，开启该服务。</p>
 <p><img src="/img/image/myblog-img/blog3.png" alt="blog3"></p>
-<p>​    现在为了避免不法分子的滥用，需要严格进行实名认证！</p>
-<p>​    开启了服务之后我们就可以将你的链接分享给你的小伙伴们浏览了~！</p>
-<h2 id="4-个性化设置"><a href="#4-个性化设置" class="headerlink" title="4.个性化设置"></a>4.个性化设置</h2><p>​    接着我们可以继续参考博客的文档进行一些个性化设置了！</p>
-<p>​    参考该博客的文档根据说明进行个性化设置，这里我以livemylife主题为例</p>
-<p>​    文档地址：<a target="_blank" rel="noopener" href="https://v-vincen.life/cn/Hexo-Theme-LiveMyLife/">Hexo-Theme-LiveMyLife - JavaDev | 一如Java深似海 (v-vincen.life)</a></p>
-<p>​    首先就是对我们的网页标题进行设置了</p>
+<p>​	现在为了避免不法分子的滥用，需要严格进行实名认证！</p>
+<p>​	开启了服务之后我们就可以将你的链接分享给你的小伙伴们浏览了~！</p>
+<h2 id="4-个性化设置">4.个性化设置</h2>
+<p>​	接着我们可以继续参考博客的文档进行一些个性化设置了！</p>
+<p>​	参考该博客的文档根据说明进行个性化设置，这里我以livemylife主题为例</p>
+<p>​	文档地址：<a target="_blank" rel="noopener" href="https://v-vincen.life/cn/Hexo-Theme-LiveMyLife/">Hexo-Theme-LiveMyLife - JavaDev | 一如Java深似海 (v-vincen.life)</a></p>
+<p>​	首先就是对我们的网页标题进行设置了</p>
 <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span> AzirKxs<span class="comment">&#x27;s Blog</span></span><br><span class="line"><span class="symbol">subtitle:</span> 欢迎光临我的博客</span><br><span class="line"><span class="symbol">author:</span> AzirKxs</span><br><span class="line"><span class="symbol">timezone:</span></span><br></pre></td></tr></table></figure>
-<p>​    接着进行网页的一些基础设置</p>
+<p>​	接着进行网页的一些基础设置</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SEOTitle: AzirKxs的博客 | 分享与记录</span><br><span class="line">emai<span class="variable">l:</span> <span class="number">995586226</span>@qq.<span class="keyword">com</span></span><br><span class="line">description: <span class="string">&quot;这是我的博客，用来分享与记录我的学习（玩耍）生活&quot;</span></span><br><span class="line">keyword: <span class="string">&quot;AzirKxs,blog,Blog&quot;</span></span><br><span class="line">header-<span class="keyword">im</span><span class="variable">g:</span> img/header_img/cover.jpg</span><br><span class="line">archives-<span class="keyword">im</span><span class="variable">g:</span> img/header_img/elaina.jpg</span><br></pre></td></tr></table></figure>
-<p>​    这里我们裁切一张合适的图片作为大的banner图，并更改header-img的路径</p>
+<p>​	这里我们裁切一张合适的图片作为大的banner图，并更改header-img的路径</p>
 <p><img src="/img/image/myblog-img/blog4.png" alt="blog4"></p>
-<p>​    接着在简单制作一张网页的图标,这里用我昵称的缩写AK</p>
+<p>​	接着在简单制作一张网页的图标,这里用我昵称的缩写AK</p>
 <p><img src="/img/image/myblog-img/blog5.png" alt="blog5"></p>
-<p>​    然后更改图标路径</p>
+<p>​	然后更改图标路径</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Favicon settings</span></span><br><span class="line">favicon: img<span class="regexp">/avatar/</span>favicon.jpg</span><br></pre></td></tr></table></figure>
-<p>​    接着我们在设计一张我们的签名图片<img src="/img/image/myblog-img/blog6.png" alt="blog6"></p>
-<p>​    使用PS将文字单独抠出来之后作为我们的签名图片</p>
-<p>​    接着更改签名图片路径</p>
+<p>​	接着我们在设计一张我们的签名图片<img src="/img/image/myblog-img/blog6.png" alt="blog6"></p>
+<p>​	使用PS将文字单独抠出来之后作为我们的签名图片</p>
+<p>​	接着更改签名图片路径</p>
 <figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">signature</span>: <span class="literal">true</span> # show <span class="keyword">signature</span></span><br><span class="line"><span class="keyword">signature</span>-img: img/<span class="keyword">signature</span>/myname.png</span><br></pre></td></tr></table></figure>
-<p>​    接着我们对侧边栏的头像，板块，个人简介进行一个个性化的设置之后，我们的博客首页个性化已经大体完成了。</p>
-<p>​    接着继续对别的页面进行一个美化</p>
-<p>​    我记得之前的博客这些东西都要自己建的，这个作者还是比较贴心已经建立好了，我们在它的基础上进行修改就可以。posts为存放文章的文件夹，别的就是导航栏的页面，打开对应页面下的index.md，然后对相应的信息进行修改即可</p>
-<p>​    <img src="/img/image/myblog-img/blog7.png" alt="bloh7"></p>
-<h2 id="5-发布文章"><a href="#5-发布文章" class="headerlink" title="5.发布文章"></a>5.发布文章</h2><p>​    有待完成……</p>
-<h2 id="6-小结"><a href="#6-小结" class="headerlink" title="6.小结"></a>6.小结</h2><p>​    在保证我们博客漂亮美观的同时，也要铭记我们建立博客的初衷，不要只是美化了一通之后就不管了（就像我之前一样）！同时，我们也需要保持博客的更新，学习内容的记录与分享（这里是指原创，不要像某论坛全是抄袭与灌水，这是没有意义的）。久而久之，我们的博客会堆积的越来越多，不管你的博客是否有人看，但可以确定的是，这对你的将来会是一笔很大的财富！</p>
+<p>​	接着我们对侧边栏的头像，板块，个人简介进行一个个性化的设置之后，我们的博客首页个性化已经大体完成了。</p>
+<p>​	接着继续对别的页面进行一个美化</p>
+<p>​	我记得之前的博客这些东西都要自己建的，这个作者还是比较贴心已经建立好了，我们在它的基础上进行修改就可以。posts为存放文章的文件夹，别的就是导航栏的页面，<a target="_blank" rel="noopener" href="http://xn--index-bi1h554fqyez1ae7vx21d0o0ee6c.md">打开对应页面下的index.md</a>，然后对相应的信息进行修改即可</p>
+<p>​	<img src="/img/image/myblog-img/blog7.png" alt="bloh7"></p>
+<h2 id="5-发布文章">5.发布文章</h2>
+<p>​	有待完成……</p>
+<h2 id="6-小结">6.小结</h2>
+<p>​	在保证我们博客漂亮美观的同时，也要铭记我们建立博客的初衷，不要只是美化了一通之后就不管了（就像我之前一样）！同时，我们也需要保持博客的更新，学习内容的记录与分享（这里是指原创，不要像某论坛全是抄袭与灌水，这是没有意义的）。久而久之，我们的博客会堆积的越来越多，不管你的博客是否有人看，但可以确定的是，这对你的将来会是一笔很大的财富！</p>
 <p><img src="/img/image/myblog-img/about_bg.png" alt="about_bg"></p>
 
 
@@ -544,7 +556,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97v1-0"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">hexo博客搭建日志v1.0</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#node-js%E4%B8%8Egit"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">node.js与git</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">安装博客并启动</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">2.切换主题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%BB%E6%89%BE%E4%B8%BB%E9%A2%98"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">寻找主题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">安装主题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">3.部署博客</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">4.个性化设置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">5.发布文章</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-%E5%B0%8F%E7%BB%93"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">6.小结</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">hexo博客搭建日志v1.0</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#node-js%E4%B8%8Egit"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">node.js与git</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E5%8D%9A%E5%AE%A2%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">安装博客并启动</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%88%87%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">2.切换主题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%BB%E6%89%BE%E4%B8%BB%E9%A2%98"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">寻找主题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">安装主题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">3.部署博客</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">4.个性化设置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">5.发布文章</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-%E5%B0%8F%E7%BB%93"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">6.小结</span></a></li></ol></li></ol>
         
         </div>
       </aside>

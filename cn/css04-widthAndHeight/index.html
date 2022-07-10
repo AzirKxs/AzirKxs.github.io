@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -359,11 +359,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
+              Estimated Reading Time <span class="post-count">3</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">837</span> In Total
+              Words <span class="post-count">842</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -425,20 +425,30 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1 id="读《CSS世界》总结-1-——width与height"><a href="#读《CSS世界》总结-1-——width与height" class="headerlink" title="读《CSS世界》总结(1)——width与height"></a>读《CSS世界》总结(1)——width与height</h1><p>这几天读了张鑫旭写的《CSS世界》，虽然在网上褒贬不一，但在我的实际体验之后，amazing啊！感觉还是非常不错的，对我的css进阶提供了很大的帮助，发现了许多曾未发现的细节，以下为第三章的读书总结!</p>
-<h2 id="一-盒子"><a href="#一-盒子" class="headerlink" title="一.盒子"></a>一.盒子</h2><h3 id="1-盒子作用的具体细节"><a href="#1-盒子作用的具体细节" class="headerlink" title="1.盒子作用的具体细节"></a>1.盒子作用的具体细节</h3><p>CSS世界中每个元素都有内外两个盒子，分别由内外两个盒子组成。例如：对于inline-block元素，它既具有内联元素的性质，又具有块级元素的性质，实际上它是由外在的内联盒子和内在的块级容器盒子组成。inline元素它是由外在的内联盒子和内在的内联容器盒子组成…</p>
-<h3 id="2-height与width作用在哪个盒子上？？"><a href="#2-height与width作用在哪个盒子上？？" class="headerlink" title="2.height与width作用在哪个盒子上？？"></a>2.height与width作用在哪个盒子上？？</h3><p>作用在内在的容器盒子上</p>
-<h2 id="二-width"><a href="#二-width" class="headerlink" title="二.width"></a>二.width</h2><h3 id="1-神奇的width-auto"><a href="#1-神奇的width-auto" class="headerlink" title="1.神奇的width:auto"></a>1.神奇的width:auto</h3><p>width:auto作为一个默认值却是一个深藏不露的家伙，对不同性质的盒子，它的作用方式也不同：</p>
-<p>​    对于div这类的块级元素，它会直接撑满容器，充分利用可用空间，表现为外部尺寸</p>
-<p>​    对于行块元素，它会表现为收缩性与包裹性，大小由内部决定，表现为内部尺寸</p>
+        <h1>读《CSS世界》总结(1)----width与height</h1>
+<p>这几天读了张鑫旭写的《CSS世界》，虽然在网上褒贬不一，但在我的实际体验之后，amazing啊！感觉还是非常不错的，对我的css进阶提供了很大的帮助，发现了许多曾未发现的细节，以下为第三章的读书总结!</p>
+<h2 id="一-盒子">一.盒子</h2>
+<h3 id="1-盒子作用的具体细节">1.盒子作用的具体细节</h3>
+<p>CSS世界中每个元素都有内外两个盒子，分别由内外两个盒子组成。例如：对于inline-block元素，它既具有内联元素的性质，又具有块级元素的性质，实际上它是由外在的内联盒子和内在的块级容器盒子组成。inline元素它是由外在的内联盒子和内在的内联容器盒子组成…</p>
+<h3 id="2-height与width作用在哪个盒子上？？">2.height与width作用在哪个盒子上？？</h3>
+<p>作用在内在的容器盒子上</p>
+<h2 id="二-width">二.width</h2>
+<h3 id="1-神奇的width-auto">1.神奇的width:auto</h3>
+<p>width:auto作为一个默认值却是一个深藏不露的家伙，对不同性质的盒子，它的作用方式也不同：</p>
+<p>​	对于div这类的块级元素，它会直接撑满容器，充分利用可用空间，表现为外部尺寸</p>
+<p>​	对于行块元素，它会表现为收缩性与包裹性，大小由内部决定，表现为内部尺寸</p>
 <p>​    最小尺寸，没遇到过，不清楚啥情况，遇到了再说。</p>
-<h3 id="2-width作用的具体细节"><a href="#2-width作用的具体细节" class="headerlink" title="2.width作用的具体细节"></a>2.width作用的具体细节</h3><p>width是作用在内部盒子上的，内部盒子是由许多部分构成的，包括margin，border，padding，content且margin永远是透明的，默认情况下width会直接作用在content-box上，这就造成了设置了padding 和border之后元素的大小会变大的问题，一般会有两种解决方案：</p>
+<h3 id="2-width作用的具体细节">2.width作用的具体细节</h3>
+<p>width是作用在内部盒子上的，内部盒子是由许多部分构成的，包括margin，border，padding，content且margin永远是透明的，默认情况下width会直接作用在content-box上，这就造成了设置了padding 和border之后元素的大小会变大的问题，一般会有两种解决方案：</p>
 <p>（1）宽度分离原则</p>
-<p>​            多嵌套一层盒子，为父级盒子设置一个你想要的宽度！子级盒子自动撑满，这样在设置了padding和border            也不用担心盒子被撑大，内部容器会响应式的缩小！这是不是有点像某个属性？没错，它就是接下来要讲的！</p>
+<p>​			多嵌套一层盒子，为父级盒子设置一个你想要的宽度！子级盒子自动撑满，这样在设置了padding和border			也不用担心盒子被撑大，内部容器会响应式的缩小！这是不是有点像某个属性？没错，它就是接下来要讲的！</p>
 <p>（2）box-sizing属性</p>
-<p>​            将box-sizing设置为border-box后，width 的作用区域被改变，默认状态下它是作用在contente-box上的，修            改后，它将作用在border-box上。</p>
-<h2 id="三-height"><a href="#三-height" class="headerlink" title="三.height"></a>三.height</h2><h3 id="1-简单的height-auto"><a href="#1-简单的height-auto" class="headerlink" title="1.简单的height:auto"></a>1.简单的height:auto</h3><p>height:auto就是内部元素堆了多高，它就有多高</p>
-<h3 id="2-为何height-100-会无效？"><a href="#2-为何height-100-会无效？" class="headerlink" title="2.为何height:100%会无效？"></a>2.为何height:100%会无效？</h3><p>当为一个元素设置hegiht:100%时，若父级元素没有设置具体的高度，并且该元素不是绝对定位，则height:100%将被解释为height:auto。因为父级元素没有设置高度值，它的heght就是auto，auto与百分比是无法相互计算的。为何width支持这样写，而height不行呢？其实这种叫做未定义行为，没有标准的处理方式，全凭浏览器厂商自己决定，但现在所有的浏览器都支持这样写。</p>
+<p>​			将box-sizing设置为border-box后，width 的作用区域被改变，默认状态下它是作用在contente-box上的，修			改后，它将作用在border-box上。</p>
+<h2 id="三-height">三.height</h2>
+<h3 id="1-简单的height-auto">1.简单的height:auto</h3>
+<p>height:auto就是内部元素堆了多高，它就有多高</p>
+<h3 id="2-为何height-100-会无效？">2.为何height:100%会无效？</h3>
+<p>当为一个元素设置hegiht:100%时，若父级元素没有设置具体的高度，并且该元素不是绝对定位，则height:100%将被解释为height:auto。因为父级元素没有设置高度值，它的heght就是auto，auto与百分比是无法相互计算的。为何width支持这样写，而height不行呢？其实这种叫做未定义行为，没有标准的处理方式，全凭浏览器厂商自己决定，但现在所有的浏览器都支持这样写。</p>
 <p>如何让元素支持height:100%呢？</p>
 <p>（1）为父级盒子设定具体有效的高度值</p>
 <p>（2）使用绝对定位</p>
@@ -502,7 +512,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%AF%BB%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E6%80%BB%E7%BB%93-1-%E2%80%94%E2%80%94width%E4%B8%8Eheight"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">读《CSS世界》总结(1)——width与height</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80-%E7%9B%92%E5%AD%90"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一.盒子</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%9B%92%E5%AD%90%E4%BD%9C%E7%94%A8%E7%9A%84%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.盒子作用的具体细节</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-height%E4%B8%8Ewidth%E4%BD%9C%E7%94%A8%E5%9C%A8%E5%93%AA%E4%B8%AA%E7%9B%92%E5%AD%90%E4%B8%8A%EF%BC%9F%EF%BC%9F"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">2.height与width作用在哪个盒子上？？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8C-width"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二.width</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%A5%9E%E5%A5%87%E7%9A%84width-auto"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1.神奇的width:auto</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-width%E4%BD%9C%E7%94%A8%E7%9A%84%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.width作用的具体细节</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%89-height"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">三.height</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%AE%80%E5%8D%95%E7%9A%84height-auto"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">1.简单的height:auto</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E4%B8%BA%E4%BD%95height-100-%E4%BC%9A%E6%97%A0%E6%95%88%EF%BC%9F"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2.为何height:100%会无效？</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">读《CSS世界》总结(1)----width与height</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80-%E7%9B%92%E5%AD%90"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一.盒子</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%9B%92%E5%AD%90%E4%BD%9C%E7%94%A8%E7%9A%84%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.盒子作用的具体细节</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-height%E4%B8%8Ewidth%E4%BD%9C%E7%94%A8%E5%9C%A8%E5%93%AA%E4%B8%AA%E7%9B%92%E5%AD%90%E4%B8%8A%EF%BC%9F%EF%BC%9F"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">2.height与width作用在哪个盒子上？？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8C-width"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二.width</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%A5%9E%E5%A5%87%E7%9A%84width-auto"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1.神奇的width:auto</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-width%E4%BD%9C%E7%94%A8%E7%9A%84%E5%85%B7%E4%BD%93%E7%BB%86%E8%8A%82"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.width作用的具体细节</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%89-height"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">三.height</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%AE%80%E5%8D%95%E7%9A%84height-auto"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">1.简单的height:auto</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E4%B8%BA%E4%BD%95height-100-%E4%BC%9A%E6%97%A0%E6%95%88%EF%BC%9F"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2.为何height:100%会无效？</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

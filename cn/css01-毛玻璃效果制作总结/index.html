@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -361,7 +361,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">413</span> In Total
+              Words <span class="post-count">414</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -423,16 +423,23 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="毛玻璃效果制作总结"><a href="#毛玻璃效果制作总结" class="headerlink" title="毛玻璃效果制作总结"></a>毛玻璃效果制作总结</h2><h3 id="1-效果展示"><a href="#1-效果展示" class="headerlink" title="1.效果展示:"></a>1.效果展示:</h3><p><img src="/img/image/css/glass00.png" alt="glass00"></p>
-<h3 id="2-网页结构"><a href="#2-网页结构" class="headerlink" title="2.网页结构:"></a>2.网页结构:</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;banner&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; drop- shadow&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; glass&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>毛玻璃效果GLASS&lt;/ span&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h2 id="毛玻璃效果制作总结">毛玻璃效果制作总结</h2>
+<h3 id="1-效果展示">1.效果展示:</h3>
+<p><img src="/img/image/css/glass00.png" alt="glass00"></p>
+<h3 id="2-网页结构">2.网页结构:</h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;banner&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; drop- shadow&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; glass&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>毛玻璃效果GLASS&lt;/ span&gt;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>banner,drop- shadow,glass为相同大小的div</p>
 <p><img src="/img/image/css/glass01.png" alt="glass01"></p>
 <p>banner层用来添加总的背景，drop-shadow用来添加毛玻璃的阴影滤镜，glass用来做毛玻璃</p>
-<h3 id="3-原理与制作"><a href="#3-原理与制作" class="headerlink" title="3.原理与制作:"></a>3.原理与制作:</h3><p>​    为banner与glass添加相同的背景图片，glass区域要保证与banenr区域的背景图相等，需要先将两张相同的背景图叠在一切然后在进行裁切， 所以glass与<br>banner等大且有相同的背景图，之后使用clip-path将glass进行裁切，然后为glass设置模糊滤镜，这样就形成了一个毛玻璃效果</p>
+<h3 id="3-原理与制作">3.原理与制作:</h3>
+<p>​	为banner与glass添加相同的背景图片，glass区域要保证与banenr区域的背景图相等，需要先将两张相同的背景图叠在一切然后在进行裁切， 所以glass与<br>
+banner等大且有相同的背景图，之后使用clip-path将glass进行裁切，然后为glass设置模糊滤镜，这样就形成了一个毛玻璃效果</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.banner</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100Vw</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">ur1</span>( ./<span class="number">02</span>.jpg);</span><br><span class="line">	<span class="attribute">background</span>- <span class="attribute">position</span>: center ;</span><br><span class="line">	<span class="attribute">background-size</span>: cover;</span><br><span class="line">	<span class="attribute">display</span>: flex;</span><br><span class="line">	<span class="attribute">justify-content</span>: center;</span><br><span class="line">	align- items: center ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.glass</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">ur1</span>(./<span class="number">02</span>.jpg);</span><br><span class="line">	<span class="attribute">background-size</span>: cover;</span><br><span class="line">	<span class="attribute">background</span>- pos ition: center;</span><br><span class="line">	<span class="attribute">clip-path</span>: <span class="built_in">inset</span>(<span class="number">200px</span> <span class="number">200px</span>); <span class="comment">/*裁切*/</span></span><br><span class="line">	<span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">20px</span>); <span class="comment">/*滤镜*/</span></span><br><span class="line">	<span class="attribute">display</span>: flex;</span><br><span class="line">	<span class="attribute">justify-content</span>: center;</span><br><span class="line">	<span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后为drop- shadow添加drop- shadow滤镜为毛玻璃<br>添加阴影效果、</p>
+<p>最后为drop- shadow添加drop- shadow滤镜为毛玻璃<br>
+添加阴影效果、</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.drop-</span> shadow&#123;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">filter</span>: drop- <span class="built_in">shadow</span>( <span class="number">0px</span> <span class="number">20px</span> <span class="number">10px</span></span><br><span class="line">	<span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>));</span><br><span class="line">	<span class="attribute">display</span>: flex;</span><br><span class="line">	<span class="attribute">justify-content</span>: center;</span><br><span class="line">	<span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h3><p>​    之前看到别人制作的毛玻璃效果非常漂亮，因此自己也想学习一下，毛玻璃效果中采用了clip path裁切与filter滤镜，对我来说并没有怎么使用过，没想到还可以使用滤镜添加阴影效果!以上就是毛玻璃效果的一种实现思路了~</p>
+<h3 id="4-总结">4.总结</h3>
+<p>​	之前看到别人制作的毛玻璃效果非常漂亮，因此自己也想学习一下，毛玻璃效果中采用了clip path裁切与filter滤镜，对我来说并没有怎么使用过，没想到还可以使用滤镜添加阴影效果!以上就是毛玻璃效果的一种实现思路了~</p>
 
 
         <hr>
