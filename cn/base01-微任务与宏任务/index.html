@@ -204,9 +204,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -343,6 +343,8 @@
             <div class="tags">
               
               <a class="tag" href="/tags/#js运行机制" title="js运行机制">js运行机制</a>
+              
+              <a class="tag" href="/tags/#浏览器" title="浏览器">浏览器</a>
               
             </div>
             <h1>微任务，宏任务与Event-Loop  ——js的运行机制篇part1</h1>
@@ -477,9 +479,9 @@ Jiasm 链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/68
 </blockquote>
 <p style="color: #26c6da;font-weight:bolder; font-size:18px;">一种比较妥当的说明：</p>
 <p>1.js代码整个为一个宏任务，现在开始执行<br>
-2.setTimeout为宏任务，现在已经运行了一个宏任务,因此需要放到第二轮执行<br>
+2.setTimeout为宏任务，现在已经运行了一个宏任务,放到宏任务事件队列中排队,需要放到第二轮执行<br>
 3.现在开始执行里面的同步任务,resolve()为同步任务，直接执行，打印1,console.log(2)为同步任务，打印2，<br>
-4.微任务只有等到上一轮的宏任务结束才能运行，等待<br>
+4.遇到微任务，将微任务放到微任务队列中排队等待，微任务只有等到上一轮的宏任务结束才能运行<br>
 5.上一轮宏任务结束，微任务开始执行，Promise.then执行，打印3<br>
 6.微任务执行完毕，开始执行下一轮的宏任务setTimeout，打印4</p>
 <blockquote>
@@ -509,6 +511,10 @@ Jiasm 链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/68
         <hr>
         <!-- Pager -->
         <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/base02-浏览器运行机制/" data-toggle="tooltip" data-placement="top" title="从浏览器运行机制解析到Event Loop">&larr; Previous Post</a>
+          </li>
           
           
           <li class="next">
@@ -583,6 +589,8 @@ Jiasm 链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/68
           <div class="tags">
             
             <a class="tag" href="/tags/#js运行机制" title="js运行机制">js运行机制</a>
+            
+            <a class="tag" href="/tags/#浏览器" title="浏览器">浏览器</a>
             
           </div>
         </section>

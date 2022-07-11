@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/archives/2022/">
+  <link rel="canonical" href="http://yoursite-url/cn/base02-浏览器运行机制/">
   <title>
     
-      AzirKxs的博客 | 分享与记录
+      从浏览器运行机制解析到Event Loop - AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/ajax.jpg');
+      --intro-header-background-image-url-page: url('//img/featureimages/ajax.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/ajax.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/ajax.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/cover.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/featureimages/ajax.jpg'); */
       
     }
 
@@ -339,10 +339,44 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>AzirKxs&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">欢迎光临我的博客</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#js运行机制" title="js运行机制">js运行机制</a>
+              
+              <a class="tag" href="/tags/#浏览器" title="浏览器">浏览器</a>
+              
+            </div>
+            <h1>从浏览器运行机制解析到Event Loop</h1>
+            <h2 class="subheading">从浏览器的解析到理解Event Loop</h2>
+            <span class="meta">
+              Posted by AzirKxs on
+              2022-07-11
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">10</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2.9k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -383,651 +417,350 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1>从浏览器运行机制解析到Event Loop</h1>
+<h2 id="参考">参考:</h2>
+<blockquote>
+<p>云中桥 《前端进阶」从多线程到Event Loop全面梳理》 链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903919789801486">https://juejin.cn/post/6844903919789801486</a></p>
+<p>null仔 《从 8 道面试题看浏览器渲染过程与性能优化》链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904040346681358">https://juejin.cn/post/6844904040346681358</a></p>
+<p>可乐好喝不胖 《css加载会造成阻塞吗？》链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903667733118983">https://juejin.cn/post/6844903667733118983</a></p>
+<p>dailc 《从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理》链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903553795014663">https://juejin.cn/post/6844903553795014663</a></p>
+</blockquote>
+<p>ps：我只是通过自己学习这几篇文章进行了一个总结，另外根据自己的理解进行了拓展，仅仅是一个学习笔记，感谢大佬们写的优质文章，建议去阅读原文</p>
+<h2 id="进程与线程">进程与线程</h2>
+<p style="color: #26c6da;font-weight:bolder;font-size:18px;">什么是进程？</p>
+<p>CPU就是一座工厂，进程好比工厂的车间，一个工厂有多个车间。但是区别就是每次当一个车间工作的时候，别的车间就不能工作了。也就是说，CPU每次只能单独处理一个进程，而其他进程处于非运行状态。 <p style="font-weight: bolder; color: #eb4d4b;">CPU使用时间片轮转进度算法来实现同时运行多个进程。</p></p>
+<p style="color: #26c6da;font-weight:bolder;font-size:18px;">什么是线程？</p>
+<p>一个车间里，可以有很多工人，共享车间所有的资源，他们协同完成一个任务。</p>
+<p>线程就好比车间里的工人，一个进程可以包括多个线程，多个线程共享进程资源。</p>
+<h2 id="cpu-进程与线程之间的关系">cpu,进程与线程之间的关系</h2>
+<p>进程是cpu资源分配的最小单位（是能拥有资源和独立运行的最小单位）<br>
+线程是cpu调度的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程）<br>
+不同进程之间也可以通信，不过代价较大<br>
+单线程与多线程，都是指在一个进程内的单和多</p>
+<h2 id="浏览器">浏览器</h2>
+<blockquote>
+<p>对于计算机来说，每一个应用程序都是一个进程， 而每一个应用程序都会分别有很多的功能模块，这些功能模块实际上是通过子进程来实现的。 对于这种子进程的扩展方式，我们可以称这个应用程序是多进程的。</p>
+</blockquote>
+<p>浏览器是多进程的，每一个标签页都是一个独立的进程。</p>
+<h3 id="浏览器所包含的进程">浏览器所包含的进程</h3>
+<ul>
+<li>主进程(Browser进程)
+<ul>
+<li>协调控制其它子进程（页面的创建和销毁）</li>
+<li>浏览器界面的显示，用户的交互操作（前进，后退，收藏）</li>
+<li>将渲染进程得到的内存中的Bitmap，绘制到用户界面上</li>
+<li>处理不可见操作，网络请求，文件访问等</li>
+</ul>
+</li>
+<li>第三方插件进程
+<ul>
+<li>每种类型的插件对应一个进程，仅当使用该插件时才创建</li>
+</ul>
+</li>
+<li>GPU进程
+<ul>
+<li>用于3D绘制等</li>
+</ul>
+</li>
+<li><strong>渲染进程</strong>（浏览器内核,render进程）
+<ul>
+<li>页面渲染，脚本执行，事件处理等</li>
+</ul>
+</li>
+</ul>
+<p>浏览器多进程的优势：如果浏览器是单进程，那么某个Tab页崩溃了，就影响了整个浏览器，体验有多差；同理如果是单进程，插件崩溃了也会影响整个浏览器；</p>
+<h3 id="浏览器的渲染过程">浏览器的渲染过程</h3>
+<p><img src="/img/image/browser/browser1.png" alt="1-1"></p>
+<ol>
+<li>解析html文件，构建DOM树，同时浏览器的主进程（Browser进程）负责下载CSS文件</li>
+<li>CSS文件下载完成，解析CSS文件成树形的数据结构，然后结合DOM树合并成RenderObject树</li>
+<li>布局 RenderObject 树 （Layout/reflow）,负责 RenderObject 树中的元素的尺寸,位置等计算</li>
+<li>绘制RenderObject树（paint），绘制页面的像素信息</li>
+<li>浏览器主进程将默认的图层和复合图层交给 GPU 进程,GPU 进程再将各个图层合成（composite）,最后显示出页面</li>
+</ol>
+<h3 id="浏览器内核（render进程）">浏览器内核（render进程）</h3>
+<p>进程与线程的关系为一对多，对于浏览器的渲染进程来说，也是多线程的，具体来说，包含以下的线程</p>
+<ul>
+<li>GUI线程
+<ul>
+<li>解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。</li>
+<li>页面需要重绘和回流时，该线程就会执行</li>
+<li>与js引擎线程互斥，防止渲染结果不可预期(当JS引擎执行时GUI线程会被挂起（相当于被冻结了），GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执)行。</li>
+</ul>
+</li>
+<li>JS引擎线程
+<ul>
+<li>负责处理解析和执行JavaScript脚本</li>
+<li>只有一个JS引擎线程</li>
+<li>与GUI渲染线程互斥，防止渲染结果不可预期</li>
+</ul>
+</li>
+<li>事件触发线程
+<ul>
+<li>用来控制事件循环</li>
+<li>当事件满足触发条件时，将事件放入到JS引擎所在的执行队列中</li>
+</ul>
+</li>
+<li>定时触发器线程
+<ul>
+<li>setInterval与setTimeout所在的线程</li>
+<li>定时任务并不是由JS引擎计时的，是由定时触发线程来计时的</li>
+<li>计时完毕后，通知事件触发线程</li>
+</ul>
+</li>
+<li>异步http请求线程
+<ul>
+<li>浏览器有一个单独的线程用于处理AJAX请求</li>
+<li>当请求完成时，若有回调函数，通知事件触发线程</li>
+</ul>
+</li>
+</ul>
+<h4 id="Browser进程和浏览器内核（Renderer进程）的通信过程">Browser进程和浏览器内核（Renderer进程）的通信过程</h4>
+<ul>
+<li>
+<p>Browser进程收到用户请求，首先需要获取页面内容（譬如通过网络下载资源），随后将该任务通过RendererHost接口传递给Render进程</p>
+</li>
+<li>
+<p>Renderer进程的Renderer接口收到消息，简单解释后，交给渲染线程，然后开始渲染</p>
+<ul>
+<li>渲染线程接收请求，加载网页并渲染网页，这其中可能需要Browser进程获取资源和需要GPU进程来帮助渲染</li>
+<li>当然可能会有JS线程操作DOM（这样可能会造成回流并重绘）</li>
+<li>最后Render进程将结果传递给Browser进程</li>
+</ul>
+</li>
+<li>
+<p>Browser进程接收到结果并将结果绘制出来</p>
+</li>
+</ul>
+<h4 id="js引擎为什么是单线程的？">js引擎为什么是单线程的？</h4>
+<ol>
+<li>
+<p>历史原因<br>
+在创建 javascript 这门语言时，多进程多线程的架构并不流行，硬件支持并不好。</p>
+</li>
+<li>
+<p>多线程会引发一些问题</p>
+</li>
+</ol>
+<ul>
+<li>因为多线程的复杂性，多线程操作需要加锁，编码的复杂性会增高。</li>
+<li>如果同时操作 DOM ，在多线程不加锁的情况下，最终会导致 DOM 渲染的结果不可预期。如果 Javascript 是多线程的话,在多线程的交互下,处于 UI 中的 DOM 节点就可能成为一个临界资源,假设存在两个线程同时操作一个 DOM,一个负责修改一个负责删除,那么这个时候就需要浏览器来裁决如何生效哪个线程的执行结果。</li>
+<li>如果 JavaScript 是多线程的方式来操作这些 UI DOM,则可能出现 UI 操作的冲突。</li>
+</ul>
+<h4 id="为什么js会阻塞页面的加载">为什么js会阻塞页面的加载?</h4>
+<p>这个问题也可以换一种问法，为什么JS引擎线程与GUI线程互斥?为什么js会阻塞dom的解析?</p>
+<p>从底层来说，JavaScript是可以操控DOM和CSS的，如果在修改这些元素的同时渲染页面（同时运行JavaScript线程和GUI线程），那么渲染前后获得的元素数据可能就不一致了，因此为了防止渲染出现不可预期的结果,浏览器设置 GUI 渲染线程与 JavaScript 引擎为互斥的关系。当JS引擎线程执行时GUI渲染线程会被挂起，GUI更新则会被保存在一个队列中等待JS引擎线程空闲时立即被执行。</p>
+<p>从运行上来说，在解析html文件的过程中（GUI），如果遇到了JS脚本，那么就会先执行JS脚本（JS引擎），执行完成之后，接着在解析。</p>
+<blockquote>
+<p>浏览器接收到HTML文件后的动作：<br>
+1、HTML解析成DOM树<br>
+2、CSS解析成CSSOM树<br>
+3、若写了JavaScript代码块，且非async，则中断DOM构建，反过来执行JS，因为JS可能会修改DOM的结构内容</p>
+</blockquote>
+<h4 id="CSS的加载会不会造成阻塞">CSS的加载会不会造成阻塞?</h4>
+<p>根据浏览器渲染流程图，我们可以知道，DOM Tree和CSS Tree是并行构建的，所以<strong>CSS的加载不会阻塞DOM的解析</strong>，但是，Render Tree依赖DOM Tree和CSS Tree，因此CSS加载完毕后，才能开始渲染，因此<strong>CSS会阻塞DOM的渲染</strong>。此外，由于js可能会操作之前的Dom节点和css样式，因此浏览器会维持html中css和js的顺序。因此，样式表会在后面的js执行前先加载执行完毕，所以<strong>CSS会阻塞在其后面js的执行</strong>。</p>
+<blockquote>
+<p>由此衍生出了前端性能优化之<strong>关键路径渲染优化</strong>。</p>
+</blockquote>
+<h4 id="DOMContentLoaded与onload的区别">DOMContentLoaded与onload的区别</h4>
+<ul>
+<li>当 DOMContentLoaded 事件触发时,仅当 DOM 解析完成后,不包括样式表,图片。此外，css会阻塞js的执行，而js的执行会阻塞DOM的解析,因此我们需要把脚本放在末尾执行。</li>
+</ul>
+<blockquote>
+<p>1、当页面里同时存在css和js，并且js在css后面的时候，DomContentLoaded必须等到css和js都加载完毕才触发。<br>
+2、其他情况下，DomContentLoaded不等待css加载，DomContentLoaded事件也不等待图片、视频等资源加载。</p>
+</blockquote>
+<ul>
+<li>当 onload 事件触发时,页面上所有的 DOM,样式表,脚本,图片等资源已经加载完毕。</li>
+</ul>
+<h2 id="JS运行机制之Event-Loop">JS运行机制之Event Loop</h2>
+<p><img src="/img/image/browser/browser2.png" alt="1-2"></p>
+<blockquote>
+<p>JS 分为同步任务和异步任务<br>
+同步任务都在JS引擎线程上执行，形成一个执行栈<br>
+事件触发线程管理一个任务队列，异步任务触发条件达成，将回调事件放到任务队列中<br>
+执行栈中所有同步任务执行完毕，此时JS引擎线程空闲，系统会读取任务队列，将可运行的异步任务回调事件添加到执行栈中，开始执行</p>
+</blockquote>
+<p>具体来说：<br>
+<img src="/img/image/browser/browser3.png" alt="1-3"></p>
+<ul>
+<li>当代码执行到setTimeout/setInterval时，实际上是JS引擎线程通知定时触发器线程，间隔一个时间后，会触发一个回调事件，而定时触发器线程在接收到这个消息后，会在等待的时间后，将回调事件放入到由事件触发线程所管理的事件队列中。</li>
+<li>当代码执行到XHR/fetch时，实际上是JS引擎线程通知异步http请求线程，发送一个网络请求，并制定请求完成后的回调事件，而异步http请求线程在接收到这个消息后，会在请求成功后，将回调事件放入到由事件触发线程所管理的事件队列中。</li>
+<li>当我们的同步任务执行完，JS引擎线程会询问事件触发线程，在事件队列中是否有待执行的回调函数，如果有就会加入到执行栈中交给JS引擎线程执行</li>
+</ul>
+<p>更新到ES6之后，有了微任务与宏任务的区分，再进一步个做划分：</p>
+<ul>
+<li>宏任务的任务队列是由事件触发线程维护</li>
+<li>微任务由JS引擎线程维护</li>
+</ul>
+<p>执行过程：</p>
+<ul>
+<li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
+<li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
+<li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
+<li>当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染</li>
+<li>渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）</li>
+</ul>
+<p>执行的过程与上一篇文章一样，这篇从线程的角度做了一个深入</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/cn/base01-微任务与宏任务/" data-toggle="tooltip" data-placement="top" title="微任务，宏任务与Event-Loop  ——js的运行机制篇part1">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">从浏览器运行机制解析到Event Loop</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">参考:</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">进程与线程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#cpu-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">cpu,进程与线程之间的关系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">浏览器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%80%E5%8C%85%E5%90%AB%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">浏览器所包含的进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">浏览器的渲染过程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%EF%BC%88render%E8%BF%9B%E7%A8%8B%EF%BC%89"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">浏览器内核（render进程）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Browser%E8%BF%9B%E7%A8%8B%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%EF%BC%88Renderer%E8%BF%9B%E7%A8%8B%EF%BC%89%E7%9A%84%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">Browser进程和浏览器内核（Renderer进程）的通信过程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#js%E5%BC%95%E6%93%8E%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%EF%BC%9F"><span class="toc-nav-number">1.4.3.2.</span> <span class="toc-nav-text">js引擎为什么是单线程的？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88js%E4%BC%9A%E9%98%BB%E5%A1%9E%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="toc-nav-number">1.4.3.3.</span> <span class="toc-nav-text">为什么js会阻塞页面的加载?</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#CSS%E7%9A%84%E5%8A%A0%E8%BD%BD%E4%BC%9A%E4%B8%8D%E4%BC%9A%E9%80%A0%E6%88%90%E9%98%BB%E5%A1%9E"><span class="toc-nav-number">1.4.3.4.</span> <span class="toc-nav-text">CSS的加载会不会造成阻塞?</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#DOMContentLoaded%E4%B8%8Eonload%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.4.3.5.</span> <span class="toc-nav-text">DOMContentLoaded与onload的区别</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JS%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E4%B9%8BEvent-Loop"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">JS运行机制之Event Loop</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
     
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-          <span class="tag-text">2022</span>
-        </span>
-        <ul>
-          
-          <li>
-            07-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base02-浏览器运行机制/" style="color: #0085a1">
-              <span>
-                从浏览器运行机制解析到Event Loop
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base01-微任务与宏任务/" style="color: #0085a1">
-              <span>
-                微任务，宏任务与Event-Loop  ——js的运行机制篇part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other07-《小王子》读后感/" style="color: #0085a1">
-              <span>
-                《小王子》读后感
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other05-《谈情说爱的哲学家》读后感/" style="color: #0085a1">
-              <span>
-                《谈情说爱的哲学家：8场关于爱的讨论》书评
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-18
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other06-《微积分的力量》读后感/" style="color: #0085a1">
-              <span>
-                《微积分的力量》书评
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            01-31
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other04-我的2021年终总结/" style="color: #0085a1">
-              <span>
-                我的2021年终总结
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <li>
-            09-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js04-ES6学习记录 part2/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js03-ES6学习记录 part1/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/node01-Node.js学习-part1/" style="color: #0085a1">
-              <span>
-                Node.js学习-part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue05-虚幻四学习笔记Day5/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day5
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other01-hexo博客搭建日志/" style="color: #0085a1">
-              <span>
-                hexo博客搭建日志
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue04-虚幻四学习笔记Day4/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day4
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/translation01-How to make a Fantasy Map/" style="color: #0085a1">
-              <span>
-                How to make a Fantasy Map翻译
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue03-虚幻四学习笔记Day3/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day3
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue02-虚幻四学习笔记Day2/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue01-虚幻四学习笔记Day1/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css01-毛玻璃效果制作总结/" style="color: #0085a1">
-              <span>
-                css实现毛玻璃效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ajax01-form表单与ajax/" style="color: #0085a1">
-              <span>
-                form表单与ajax
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/frame01-bootstrap5指南/" style="color: #0085a1">
-              <span>
-                bootstrap5类名指南
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css02-理解BFC/" style="color: #0085a1">
-              <span>
-                理解BFC
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js01-打字效果/" style="color: #0085a1">
-              <span>
-                使用CSS+JS实现打字效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css04-widthAndHeight/" style="color: #0085a1">
-              <span>
-                读《CSS世界》总结(1)----width与height
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css03-liorimg/" style="color: #0085a1">
-              <span>
-                处理inline-block与img元素造成的间隙
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other02-gitMessage/" style="color: #0085a1">
-              <span>
-                Git--版本管理系统
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js02-magnifier/" style="color: #0085a1">
-              <span>
-                JS特效之电商放大镜
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other03-hello-world/" style="color: #0085a1">
-              <span>
-                第一次的博客搭建历程
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/avatar.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>  欢迎来到我的博客，这里是AzirKxs，一个涉猎广泛的技术爱好者，如果有任何问题可以bilibili私信我（b站同名），感谢各位的支持！</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/AzirKxs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-      <li>
-        <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa  fa-stack-1x fa-inverse">知</i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/base02-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
-      <li>从浏览器运行机制解析到Event Loop</li>
-    </a>
-    
-    <a href="../../cn/base01-%E5%BE%AE%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%AE%8F%E4%BB%BB%E5%8A%A1/">
-      <li>微任务，宏任务与Event-Loop  ——js的运行机制篇part1</li>
-    </a>
-    
-    <a href="../../cn/Other07-%E3%80%8A%E5%B0%8F%E7%8E%8B%E5%AD%90%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
-      <li>《小王子》读后感</li>
-    </a>
-    
-    <a href="../../cn/Other05-%E3%80%8A%E8%B0%88%E6%83%85%E8%AF%B4%E7%88%B1%E7%9A%84%E5%93%B2%E5%AD%A6%E5%AE%B6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
-      <li>《谈情说爱的哲学家：8场关于爱的讨论》书评</li>
-    </a>
-    
-    <a href="../../cn/Other06-%E3%80%8A%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8A%9B%E9%87%8F%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
-      <li>《微积分的力量》书评</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="07/">July 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="05/">May 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="04/">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="01/">January 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/09/">September 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/11/">November 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2020/08/">August 2020</a><span class="archive-list-count">5</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#其它">
-      <li>其它</li>
-    </a>
-    
-    <a href="/categories/#前端">
-      <li>前端</li>
-    </a>
-    
-    <a href="/categories/#node.js">
-      <li>node.js</li>
-    </a>
-    
-    <a href="/categories/#翻译">
-      <li>翻译</li>
-    </a>
-    
-    <a href="/categories/#虚幻引擎4">
-      <li>虚幻引擎4</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#js运行机制" title="js运行机制">js运行机制</a>
+            
+            <a class="tag" href="/tags/#浏览器" title="浏览器">浏览器</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#Git" title="Git" rel="1">Git</a>
-    
-    
-    
-    <a href="/tags/#博客" title="博客" rel="2">博客</a>
-    
-    
-    
-    <a href="/tags/#年终总结" title="年终总结" rel="1">年终总结</a>
-    
-    
-    
-    <a href="/tags/#书评" title="书评" rel="3">书评</a>
-    
-    
-    
-    <a href="/tags/#ajax" title="ajax" rel="1">ajax</a>
-    
-    
-    
-    <a href="/tags/#前后端交互" title="前后端交互" rel="1">前后端交互</a>
-    
-    
-    
-    <a href="/tags/#学习记录" title="学习记录" rel="7">学习记录</a>
-    
-    
-    
-    <a href="/tags/#js运行机制" title="js运行机制" rel="2">js运行机制</a>
-    
-    
-    
-    <a href="/tags/#浏览器" title="浏览器" rel="2">浏览器</a>
-    
-    
-    
-    <a href="/tags/#CSS" title="CSS" rel="6">CSS</a>
-    
-    
-    
-    <a href="/tags/#读书笔记" title="读书笔记" rel="1">读书笔记</a>
-    
-    
-    
-    <a href="/tags/#js" title="js" rel="3">js</a>
-    
-    
-    
-    <a href="/tags/#JS特效" title="JS特效" rel="1">JS特效</a>
-    
-    
-    
-    <a href="/tags/#bootstrap5" title="bootstrap5" rel="1">bootstrap5</a>
-    
-    
-    
-    <a href="/tags/#node.js" title="node.js" rel="1">node.js</a>
-    
-    
-    
-    <a href="/tags/#英语" title="英语" rel="1">英语</a>
-    
-    
-    
-    <a href="/tags/#游戏开发" title="游戏开发" rel="5">游戏开发</a>
-    
-    
-    
-    <a href="/tags/#虚幻4" title="虚幻4" rel="5">虚幻4</a>
-    
-    
-  </div>
-</section>
-
-
+        <!-- Friends Blog -->
+        
         <hr>
-    
-</div>
+        <h5>链友</h5>
+        <ul class="list-inline">
 
-
-    
+          
+          <li>
+            <a href="#" target="_blank">没有朋友</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
