@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/archives/2022/04/">
+  <link rel="canonical" href="http://yoursite-url/cn/base03-JavaScript是如何工作的？/">
   <title>
     
-      AzirKxs的博客 | 分享与记录
+      JavaScript的工作机制 - AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/ajax.jpg');
+      --intro-header-background-image-url-page: url('//img/featureimages/ajax.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/ajax.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/ajax.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/cover.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/featureimages/ajax.jpg'); */
       
     }
 
@@ -339,10 +339,44 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>AzirKxs&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">欢迎光临我的博客</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#js运行机制" title="js运行机制">js运行机制</a>
+              
+              <a class="tag" href="/tags/#浏览器" title="浏览器">浏览器</a>
+              
+            </div>
+            <h1>JavaScript的工作机制</h1>
+            <h2 class="subheading">v8引擎，js的内存管理，执行上下文</h2>
+            <span class="meta">
+              Posted by AzirKxs on
+              2022-07-12
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">9</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2.7k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -383,664 +417,267 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <p>注意：本篇文章不完善，有很多坑，原因是我调查了很长时间对这些概念仍然很模糊，这篇文章算是给自己挖的一个坑，等待我后续的完善</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>作者：小烜同学 链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512237670414">https://juejin.cn/post/6844903512237670414</a></p>
+<p>作者：子非 链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903682283143181">https://juejin.cn/post/6844903682283143181</a></p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习目的：前两篇文章我们了解了微任务与宏任务，浏览器的运行方式以及事件循环机制。我们了解到JavaScript是单线程的，如何写出高效率的代码成了一个问题。通过了解JavaScript的运行机制我们可以利用这些提供的 API 来写出更好的，非阻塞的应用来。</p>
+<p style="font-weight: bolder; color: #eb4d4b;">这篇文章介绍v8引擎，Javascript的调用栈，执行上下文的概念</p>
+
+<h1 id="浏览器的组成"><a href="#浏览器的组成" class="headerlink" title="浏览器的组成"></a>浏览器的组成</h1><p style="font-weight: bolder; color: #eb4d4b;">首先注意区分浏览器的组成和浏览器的进程，不要混淆</p>
+
+<ol>
+<li><p>用户界面:<br>用户界面主要包括：地址栏，后退/前进按钮，书签目录等；（除了从服务器请求到的网页窗口）</p>
+</li>
+<li><p>浏览器引擎：<br>用来查询及操作渲染引擎的接口；</p>
+</li>
+<li><p>渲染引擎：<br>用来显示请求的html内容；（包括样式，图片，js）     </p>
+</li>
+<li><p>网络：<br>主要是来完成网络调用，例如http请求，它具有平台无关的接口，可以在不同平台上工作；</p>
+</li>
+<li><p>UI后端：<br>用来绘制类似组合选择框及对话框等基本组件，具有不特定于某个平台的通用接口，底层使用操作系统的用户接口。</p>
+</li>
+<li><p>JS解释器 ：<br>用来解释执行JS代码；（v8引擎）</p>
+</li>
+<li><p>数据存储：<br>属于持久层，浏览器需要在硬盘中保存类似cookie的各种数据，HTML5定义了web database技术，这是一种轻量级完整的客户端存储技术；</p>
+</li>
+</ol>
+<h1 id="v8引擎简介"><a href="#v8引擎简介" class="headerlink" title="v8引擎简介"></a>v8引擎简介</h1><p><img src="/img/image/jsBase/jsBase3.png" alt="1-3"></p>
+<p>当今最流行的Javascript引擎就是chrome浏览器的V8引擎，这个引擎也应用于node.js，这个引擎主要由两个部分组成，内存堆和调用栈。</p>
+<ul>
+<li>内存堆：内存分配发生的地方</li>
+<li>调用栈：代码执行的地方</li>
+</ul>
+<p style="font-weight: bolder; color: #eb4d4b;">ps：最初浏览器内核的概念包括渲染引擎与JS引擎，目前习惯直接称渲染引擎为内核，JS引擎独立。v8的js引擎就是独立的</p>
+
+<p>v8引擎有两个编译器</p>
+<ul>
+<li>full-codegen — 一个简单并且速度非常快的编译器，可以生成简单但相对比较慢的机器码。</li>
+<li>Crankshaft — 一个更加复杂的 (即时) 优化编译器，生成高度优化的代码。</li>
+</ul>
+<p>v8引擎在内部使用了多个线程</p>
+<ul>
+<li>主线程完成你所期望的任务：获取你的代码，然后编译执行</li>
+<li>还有一个单独的线程用于编译，以便主线程可以继续执行，而前者就能够优化代码</li>
+<li>一个 Profiler (分析器) 线程，它会告诉运行时在哪些方法上我们花了很多的时间，以便 Crankshaft 可以去优化它们</li>
+<li>还有一些线程处理垃圾回收扫描</li>
+</ul>
+<blockquote>
+<p>当第一次执行 JavaScript 代码的时候，V8 利用 full-codegen 直接将解析的 JavaScript 代码不经过任何转换翻译成机器码。这使得它可以非常快速的开始执行机器码，请注意V8不使用任何中间字节码表示，从而不需要解释器。<br>当你的代码已经运行了一段时间了，分析器线程已经收集了足够的数据来告诉运行时哪个方法应该被优化。<br>然后， Crankshaft 在另一个线程开始优化。它将 JavaScript 抽象语法树转换成一个叫 Hydrogen 的高级静态单元分配表示(SSA)，并且尝试去优化这个 Hydrogen 图。大多数优化都是在这个级完成。</p>
+</blockquote>
+<h1 id="JavaScript的内存管理"><a href="#JavaScript的内存管理" class="headerlink" title="JavaScript的内存管理"></a>JavaScript的内存管理</h1><p>根据我之前的学习来说：基本数据类型保存在栈内存中，因为基本数据类型占用空间小、大小固定，通过按值来访问，属于被频繁使用的数据，而引用数据类型存放在堆中，栈中存放的是引用。然而，事实貌似并不是这样的，这里有两篇文章<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/482433315/answer/2083349992，https://juejin.cn/post/6844903997615128583">https://www.zhihu.com/question/482433315/answer/2083349992，https://juejin.cn/post/6844903997615128583</a></p>
+<p>我要给这个问题打上一个问号，因为我还没有想明白……还需要调查</p>
+<h1 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>执行上下文是评估和执行javascript代码运行环境的抽象概念，当 Javascript 代码在运行的时候，它都是在执行上下文中运行。</p>
+<h2 id="执行上下文的类型"><a href="#执行上下文的类型" class="headerlink" title="执行上下文的类型"></a>执行上下文的类型</h2><ul>
+<li>全局执行上下文 — 这是默认或者说基础的上下文，任何不在函数内部的代码都在全局上下文中。它会执行两件事：创建一个全局的 window 对象（浏览器的情况下），并且设置 this 的值等于这个全局对象。一个程序中只会有一个全局执行上下文。</li>
+<li>函数执行上下文 — 每当一个函数被调用时, 都会为该函数创建一个新的上下文。每个函数都有它自己的执行上下文，不过是在函数被调用时创建的。函数上下文可以有任意多个。每当一个新的执行上下文被创建，它会按定义的顺序（将在后文讨论）执行一系列步骤。</li>
+<li>Eval 函数执行上下文 — 执行在 eval 函数内部的代码也会有它属于自己的执行上下文，但由于 JavaScript 开发者并不经常使用 eval，所以在这里我不会讨论它。</li>
+</ul>
+<h2 id="调用栈（执行栈）"><a href="#调用栈（执行栈）" class="headerlink" title="调用栈（执行栈）"></a>调用栈（执行栈）</h2><p>JavaScript 是一门单线程的语言，这意味着它只有一个调用栈，因此，它同一时间只能做一件事。如果我们运行一个函数，就会先将一个函数放到栈顶，当这个函数返回的时候从栈顶弹出。</p>
+<p>理解调用栈的案例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> x * y;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">printSquare</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> s = multiply(x, x);</span><br><span class="line">     <span class="built_in">console</span>.log(s);</span><br><span class="line">   &#125;</span><br><span class="line">   printSquare(<span class="number">5</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>函数的执行过程如下图：</p>
+<p><img src="/img/image/jsBase/jsBase.png" alt="1-1"></p>
+<p>理解执行上下文的案例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;Hello World!&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Inside first function&#x27;</span>);</span><br><span class="line">  second();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Again inside first function&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">second</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;Inside second function&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">first();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;Inside Global Execution Context&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>函数的执行过程如下图：</p>
+<p><img src="/img/image/jsBase/jsBase4.png" alt="1-4"></p>
+<ol>
+<li>当上述代码在浏览器加载时，JavaScript 引擎创建了一个全局执行上下文并把它压入当前执行栈。当遇到 first() 函数调用时，JavaScript 引擎为该函数创建一个新的执行上下文并把它压入当前执行栈的顶部。</li>
+<li>当从 first() 函数内部调用 second() 函数时，JavaScript 引擎为 second() 函数创建了一个新的执行上下文并把它压入当前执行栈的顶部。当 second() 函数执行完毕，它的执行上下文会从当前栈弹出，并且控制流程到达下一个执行上下文，即 first() 函数的执行上下文。</li>
+<li>当 first() 执行完毕，它的执行上下文从栈弹出，控制流程到达全局执行上下文。一旦所有代码执行完毕，JavaScript 引擎从当前栈中移除全局执行上下文。</li>
+</ol>
+<h2 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h2><p>接下来看一段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>当我们的引擎开始执行这段代码的时候，它从 foo 函数开始。然后这是个递归的函数，并且在没有任何的终止条件的情况下开始调用自己。因此，每执行一步，就会把这个相同的函数一次又一次地添加到调用堆栈中。然后它看起来就像是这样的：</p>
+<p><img src="/img/image/jsBase/jsBase2.png" alt="1-2"></p>
+<h2 id="如何创建执行上下文"><a href="#如何创建执行上下文" class="headerlink" title="如何创建执行上下文"></a>如何创建执行上下文</h2><p>在javascript执行之前，执行上下文将经历创建阶段和执行阶段</p>
+<h3 id="创建阶段"><a href="#创建阶段" class="headerlink" title="创建阶段"></a>创建阶段</h3><ol>
+<li>this 值的决定，即我们所熟知的 This 绑定。<ul>
+<li>在全局执行上下文中，this 的值指向全局对象。(在浏览器中，this引用 Window 对象)。在函数执行上下文中，this 的值取决于该函数是如何被调用的。如果它被一个引用对象调用，那么 this 会被设置成那个对象，否则 this 的值被设置为全局对象或者 undefined（在严格模式下）。</li>
+</ul>
+</li>
+<li><p>创建词法环境组件。</p>
+<ul>
+<li><p>词法环境是一种持有标识符—变量映射的结构（这里的标识符指的是变量/函数的名字，而变量是对实际对象或原始数据的引用）</p>
+<p>词法环境的内部有两个组件：(1) 环境记录器和 (2) 一个外部环境的引用。 </p>
+</li>
+<li>环境记录器是存储变量和函数声明的实际位置。</li>
+<li><p>外部环境的引用意味着它可以访问其父级词法环境（作用域）。</p>
+<p>这里需要做一个全局环境和函数环境的区分：</p>
+</li>
+<li>全局环境（在全局执行上下文中）是没有外部环境引用的词法环境。全局环境的外部环境引用是 null。它拥有内建的 Object/Array/等、在环境记录器内的原型函数（关联全局对象，比如 window 对象）还有任何用户定义的全局变量，并且 this的值指向全局对象。</li>
+<li><p>在函数环境中，函数内部用户定义的变量存储在环境记录器中。并且引用的外部环境可能是全局环境，或者任何包含此内部函数的外部函数。</p>
+<p>环境记录器也有两种类型：</p>
+</li>
+<li>声明式环境记录器存储变量、函数和参数。</li>
+<li><p>对象环境记录器用来定义出现在全局上下文中的变量和函数的关系。</p>
+<p>也就是说：<br>在全局环境中，环境记录器是对象环境记录器。<br>在函数环境中，环境记录器是声明式环境记录器。</p>
+</li>
+</ul>
+</li>
+<li><p>创建变量环境组件。<br> 它同样是一个词法环境，其环境记录器持有变量声明语句在执行上下文中创建的绑定关系。<br> 如上所述，变量环境也是一个词法环境，所以它有着上面定义的词法环境的所有属性。<br> 在 ES6 中，词法环境组件和变量环境的一个不同就是前者被用来存储函数声明和变量（let 和 const）绑定，而后者只用来存储 var 变量绑定。</p>
+</li>
+</ol>
+<p>太逆天了，这篇文章写的乱七八糟，涉及到了三个概念，浏览器的v8引擎，js的内存管理，执行上下文，而且对于前两个概念来说还很模糊，文章很少，每一个都可以深挖。</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/cn/base02-浏览器运行机制/" data-toggle="tooltip" data-placement="top" title="从浏览器运行机制解析到Event Loop">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">参考</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">浏览器的组成</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#v8%E5%BC%95%E6%93%8E%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">v8引擎简介</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JavaScript%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">JavaScript的内存管理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">执行上下文</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">执行上下文的类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B0%83%E7%94%A8%E6%A0%88%EF%BC%88%E6%89%A7%E8%A1%8C%E6%A0%88%EF%BC%89"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">调用栈（执行栈）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">栈溢出</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">如何创建执行上下文</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E9%98%B6%E6%AE%B5"><span class="toc-nav-number">6.4.1.</span> <span class="toc-nav-text">创建阶段</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
     
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-          <span class="tag-text">2022</span>
-        </span>
-        <ul>
-          
-          <li>
-            07-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base03-JavaScript是如何工作的？/" style="color: #0085a1">
-              <span>
-                JavaScript的工作机制
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base02-浏览器运行机制/" style="color: #0085a1">
-              <span>
-                从浏览器运行机制解析到Event Loop
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base01-微任务与宏任务/" style="color: #0085a1">
-              <span>
-                微任务，宏任务与Event-Loop  ——js的运行机制篇part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other07-《小王子》读后感/" style="color: #0085a1">
-              <span>
-                《小王子》读后感
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other05-《谈情说爱的哲学家》读后感/" style="color: #0085a1">
-              <span>
-                《谈情说爱的哲学家：8场关于爱的讨论》书评
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-18
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other06-《微积分的力量》读后感/" style="color: #0085a1">
-              <span>
-                《微积分的力量》书评
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            01-31
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other04-我的2021年终总结/" style="color: #0085a1">
-              <span>
-                我的2021年终总结
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <li>
-            09-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js04-ES6学习记录 part2/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js03-ES6学习记录 part1/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/node01-Node.js学习-part1/" style="color: #0085a1">
-              <span>
-                Node.js学习-part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue05-虚幻四学习笔记Day5/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day5
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other01-hexo博客搭建日志/" style="color: #0085a1">
-              <span>
-                hexo博客搭建日志
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue04-虚幻四学习笔记Day4/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day4
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/translation01-How to make a Fantasy Map/" style="color: #0085a1">
-              <span>
-                How to make a Fantasy Map翻译
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue03-虚幻四学习笔记Day3/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day3
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue02-虚幻四学习笔记Day2/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue01-虚幻四学习笔记Day1/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css01-毛玻璃效果制作总结/" style="color: #0085a1">
-              <span>
-                css实现毛玻璃效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ajax01-form表单与ajax/" style="color: #0085a1">
-              <span>
-                form表单与ajax
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/frame01-bootstrap5指南/" style="color: #0085a1">
-              <span>
-                bootstrap5类名指南
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css02-理解BFC/" style="color: #0085a1">
-              <span>
-                理解BFC
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js01-打字效果/" style="color: #0085a1">
-              <span>
-                使用CSS+JS实现打字效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css04-widthAndHeight/" style="color: #0085a1">
-              <span>
-                读《CSS世界》总结(1)----width与height
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css03-liorimg/" style="color: #0085a1">
-              <span>
-                处理inline-block与img元素造成的间隙
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other02-gitMessage/" style="color: #0085a1">
-              <span>
-                Git--版本管理系统
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js02-magnifier/" style="color: #0085a1">
-              <span>
-                JS特效之电商放大镜
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other03-hello-world/" style="color: #0085a1">
-              <span>
-                第一次的博客搭建历程
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/avatar.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>  欢迎来到我的博客，这里是AzirKxs，一个涉猎广泛的技术爱好者，如果有任何问题可以bilibili私信我（b站同名），感谢各位的支持！</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/AzirKxs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-      <li>
-        <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa  fa-stack-1x fa-inverse">知</i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../../cn/base03-JavaScript%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F/">
-      <li>JavaScript的工作机制</li>
-    </a>
-    
-    <a href="../../../cn/base02-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">
-      <li>从浏览器运行机制解析到Event Loop</li>
-    </a>
-    
-    <a href="../../../cn/base01-%E5%BE%AE%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%AE%8F%E4%BB%BB%E5%8A%A1/">
-      <li>微任务，宏任务与Event-Loop  ——js的运行机制篇part1</li>
-    </a>
-    
-    <a href="../../../cn/Other07-%E3%80%8A%E5%B0%8F%E7%8E%8B%E5%AD%90%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
-      <li>《小王子》读后感</li>
-    </a>
-    
-    <a href="../../../cn/Other05-%E3%80%8A%E8%B0%88%E6%83%85%E8%AF%B4%E7%88%B1%E7%9A%84%E5%93%B2%E5%AD%A6%E5%AE%B6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/">
-      <li>《谈情说爱的哲学家：8场关于爱的讨论》书评</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../07/">July 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../05/">May 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../01/">January 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2021/09/">September 2021</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/11/">November 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../2020/08/">August 2020</a><span class="archive-list-count">5</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#其它">
-      <li>其它</li>
-    </a>
-    
-    <a href="/categories/#前端">
-      <li>前端</li>
-    </a>
-    
-    <a href="/categories/#node.js">
-      <li>node.js</li>
-    </a>
-    
-    <a href="/categories/#翻译">
-      <li>翻译</li>
-    </a>
-    
-    <a href="/categories/#虚幻引擎4">
-      <li>虚幻引擎4</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#js运行机制" title="js运行机制">js运行机制</a>
+            
+            <a class="tag" href="/tags/#浏览器" title="浏览器">浏览器</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#博客" title="博客" rel="2">博客</a>
-    
-    
-    
-    <a href="/tags/#Git" title="Git" rel="1">Git</a>
-    
-    
-    
-    <a href="/tags/#书评" title="书评" rel="3">书评</a>
-    
-    
-    
-    <a href="/tags/#年终总结" title="年终总结" rel="1">年终总结</a>
-    
-    
-    
-    <a href="/tags/#ajax" title="ajax" rel="1">ajax</a>
-    
-    
-    
-    <a href="/tags/#前后端交互" title="前后端交互" rel="1">前后端交互</a>
-    
-    
-    
-    <a href="/tags/#学习记录" title="学习记录" rel="7">学习记录</a>
-    
-    
-    
-    <a href="/tags/#js运行机制" title="js运行机制" rel="3">js运行机制</a>
-    
-    
-    
-    <a href="/tags/#浏览器" title="浏览器" rel="3">浏览器</a>
-    
-    
-    
-    <a href="/tags/#CSS" title="CSS" rel="6">CSS</a>
-    
-    
-    
-    <a href="/tags/#读书笔记" title="读书笔记" rel="1">读书笔记</a>
-    
-    
-    
-    <a href="/tags/#bootstrap5" title="bootstrap5" rel="1">bootstrap5</a>
-    
-    
-    
-    <a href="/tags/#js" title="js" rel="3">js</a>
-    
-    
-    
-    <a href="/tags/#JS特效" title="JS特效" rel="1">JS特效</a>
-    
-    
-    
-    <a href="/tags/#node.js" title="node.js" rel="1">node.js</a>
-    
-    
-    
-    <a href="/tags/#英语" title="英语" rel="1">英语</a>
-    
-    
-    
-    <a href="/tags/#游戏开发" title="游戏开发" rel="5">游戏开发</a>
-    
-    
-    
-    <a href="/tags/#虚幻4" title="虚幻4" rel="5">虚幻4</a>
-    
-    
-  </div>
-</section>
-
-
+        <!-- Friends Blog -->
+        
         <hr>
-    
-</div>
+        <h5>链友</h5>
+        <ul class="list-inline">
 
-
-    
+          
+          <li>
+            <a href="#" target="_blank">没有朋友</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
