@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/cn/html01-前端基础知识巩固之html/">
+  <link rel="canonical" href="http://yoursite-url/cn/node01-初识node.js/">
   <title>
     
-      html5知识梳理 - AzirKxs的博客 | 分享与记录
+      全方面认识Node.js - AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('/img/featureimages/english.jpg');
-      --intro-header-background-image-url-page: url('//img/featureimages/english.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/node.jpg');
+      --intro-header-background-image-url-page: url('//img/featureimages/node.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/english.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/english.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/node.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/node.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/featureimages/english.jpg'); */
+        /* background-image: url('/img/featureimages/node.jpg'); */
       
     }
 
@@ -342,14 +342,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#html" title="html">html</a>
+              <a class="tag" href="/tags/#node.js" title="node.js">node.js</a>
               
             </div>
-            <h1>html5知识梳理</h1>
-            <h2 class="subheading">html5的知识梳理以及面试相关知识</h2>
+            <h1>全方面认识Node.js</h1>
+            <h2 class="subheading">node基础知识</h2>
             <span class="meta">
               Posted by AzirKxs on
-              2022-08-23
+              2022-10-10
             </span>
 
 
@@ -361,7 +361,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.2k</span> In Total
+              Words <span class="post-count">1.9k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -423,123 +423,127 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="前端基础知识巩固之html">前端基础知识巩固之html</h2>
-<h3 id="参考：">参考：</h3>
-<blockquote>
-<p>CSDN博主：「JiuMeilove」 原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44368963/article/details/120054610">https://blog.csdn.net/weixin_44368963/article/details/120054610</a></p>
-<p>稀土掘金：<a target="_blank" rel="noopener" href="https://juejin.cn/user/1486195451764632">别催我码的慢   </a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904180943945742">html篇–这可能是目前较为全面的html面试知识点了吧 - 掘金 (juejin.cn)</a></p>
-<p>W3School：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/index.html">w3school 在线教程</a></p>
-<p>菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/viewport-deep-understanding.html">viewport 深入理解 | 菜鸟教程 (runoob.com)</a></p>
-<p>​				  <a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程 - 学的不仅是技术，更是梦想！ (runoob.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.xp.cn/b.php/66425.html">HTML5标签嵌套规则详解【必看】 - phpStudy (xp.cn)</a></p>
-</blockquote>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="什么是html？">什么是html？</h3>
-<blockquote>
-<p>HTML的全称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B6%85%E6%96%87%E6%9C%AC%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/6972570?fromModule=lemma_inlink">超文本标记语言</a>，是一种<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/5964436?fromModule=lemma_inlink">标记语言</a>。它包括一系列<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A0%87%E7%AD%BE/2440469?fromModule=lemma_inlink">标签</a>．通过这些标签可以将网络上的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%87%E6%A1%A3/1009768?fromModule=lemma_inlink">文档</a>格式统一，使分散的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Internet/272794?fromModule=lemma_inlink">Internet</a>资源连接为一个逻辑整| | 体。HTML文本是由HTML命令组成的描述性<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%87%E6%9C%AC/5443630?fromModule=lemma_inlink">文本</a>，HTML命令可以说明<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%87%E5%AD%97/612910?fromModule=lemma_inlink">文字</a>，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E5%BD%A2/773307?fromModule=lemma_inlink">图形</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A8%E7%94%BB/206564?fromModule=lemma_inlink">动画</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A3%B0%E9%9F%B3/33686?fromModule=lemma_inlink">声音</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%A1%A8%E6%A0%BC/3371820?fromModule=lemma_inlink">表格</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%93%BE%E6%8E%A5/2665501?fromModule=lemma_inlink">链接</a>等。 [1]</p>
-</blockquote>
-<h3 id="html的基础结构">html的基础结构</h3>
-<h4 id="1-声明">1.声明</h4>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span> <span class="comment">&lt;!-- html5的声明，它是用来告知 Web 浏览器页面使用了哪种 HTML 版本,保证浏览器按照我们声明的版本来正确的解析，其他版本的html都有不同的声明 --&gt;</span></span><br></pre></td></tr></table></figure>
-<p>作用：<strong>声明文档的解析类型(document.compatMode)，避免浏览器的怪异模式。</strong></p>
-<blockquote>
-<p>BackCompat：怪异模式，浏览器使用自己的怪异模式解析渲染页面。<br>
-CSS1Compat：标准模式，浏览器使用W3C的标准解析渲染页面。</p>
-<p>这个属性会被浏览器识别并使用，但是如果你的页面没有DOCTYPE的声明，那么compatMode默认就是BackCompat,</p>
-<p>浏览器按照自己的方式解析渲染页面，那么，在不同的浏览器就会显示不同的样式。</p>
-<p>如果你的页面添加了<!DOCTYPE html>那么，那么就等同于开启了标准模式，那么浏览器就得老老实实的按照W3C的</p>
-<p>标准解析渲染页面，这样一来，你的页面在所有的浏览器里显示的就都是一个样子了。</p>
-</blockquote>
-<h4 id="2-html标签">2.html标签</h4>
-<p>html文档的开始，所有的代码都被html标签包裹</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span> <span class="comment">&lt;!--lang属性表示当前网页使用的语言 zh-CN是中文，en表示英文--&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-head">3.head</h4>
-<p>head标签表示文档的头部，是一个包含了头部元素的容器，文档的头部描述了文档的各种属性和信息，包括文档的标题、在 Web 中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。</p>
-<p>head标签中可以包含base，link，meta，script，style，title标签</p>
-<h4 id="4-base标签">4.base标签</h4>
-<p>base标签是HTML语言中的基准网址标记，它是一个单标签，常见的url路径形式分别有相对路径与绝对路径，如果base标签指定了目标，浏览器将通过这个目标来解析当前文档中的所有相对路径，包括的标签有（a、img、link、form），也就是说，浏览器解析时会在路径前加上base给的目标，而页面中的相对路径也都转换成了绝对路径。使用了base标签就应带上href属性和target属性。</p>
-<p>target属性：规定网页窗口的打开方式</p>
+        <h1>全方面认识Node.js</h1>
+<h2 id="初识node-js">初识node.js</h2>
+<h3 id="为什么JavaScript可以在浏览器中运行？">为什么JavaScript可以在浏览器中运行？</h3>
+<p>因为浏览器有对应的JavaScript解析引擎，例如Chrome浏览器的V8引擎</p>
+<h3 id="为什么JavaScript可以操纵DOM？">为什么JavaScript可以操纵DOM？</h3>
+<p>因为浏览器提供了对应的API（DOM.BOM,Ajax,canvas等），如果宿主环境没有DOM API则不能操控DOM</p>
+<h3 id="JavaScript可以执行后端代码吗？">JavaScript可以执行后端代码吗？</h3>
+<p>JavaScript只是一种语言，代码的执行离不开运行环境，如果执行在浏览器中就可以做前端开发，如果执行在node.js环境下就可以做后端开发</p>
+<h3 id="什么是node-js">什么是node.js?</h3>
+<p>node.js是一个基于Chrome V8引擎的JavaScript运行环境</p>
+<p><img src="/img/image/node.js%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83.png" alt="node.js运行环境"></p>
+<p>node.js无法调用DOM和BOM等浏览器内置API</p>
+<h2 id="fs文件系统模块">fs文件系统模块</h2>
+<p>fs模块由node.js官方提供，提供了一些列操作文件的属性和方法</p>
+<h3 id="引入fs模块">引入fs模块</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="读写文件">读写文件</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.readfile(path,format,<span class="function"><span class="keyword">function</span>(<span class="params">err,result</span>)) //读：路径，编码格式，回调函数</span></span><br><span class="line"><span class="function"><span class="title">fs</span>.<span class="title">writefile</span>(<span class="params">path,content,<span class="keyword">function</span>(err)</span>)//写：路径，内容，回调函数,如果文件不存在会自动创建文件，但无法自动创建路径(<span class="params">文件夹</span>),新写入的内容会覆盖旧内容</span></span><br></pre></td></tr></table></figure>
+<p>如果读取成功，err为null,result为文件读取内容</p>
+<p>如果读取成功，err为错误对象，result为undefined</p>
 <ul>
-<li>_blank：在新窗口打开链接页面。</li>
-<li>_parent:在上一级窗口中打开链接。</li>
-<li>_self： 在当前窗口打开链接,此为默认值，可以省略。</li>
-<li>_top： 在浏览器的整个窗口打开链接，忽略任何框架。</li>
+<li>一个读取文件示例</li>
 </ul>
-<h4 id="5-link标签">5.link标签</h4>
-<p>link标签用来引入外部资源，最常见的是外联css，此外还有引入网页的图标等</p>
-<h4 id="6-meta标签">6.meta标签</h4>
-<p>meta标签用来设置网页的一些元数据，如字符编码，网页关键字等</p>
-<p>charset属性：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span> <span class="comment">&lt;!--设置网页的字符编码,浏览器会根据该编码格式来解析页面，防止页面乱码--&gt;</span></span><br></pre></td></tr></table></figure>
-<p>http-equiv属性：</p>
-<p>将content中的内容关联到http头部</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span> <span class="comment">&lt;!--是IE8的专属标记，用来兼容其它低版本IE浏览器的，告诉IE8浏览器以哪个低版本的IE浏览器来渲染页面。这里表示以当前IE浏览器所支持的最高版本模式来渲染页面--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span> <span class="attr">content</span>=<span class="string">&quot;300&quot;</span>&gt;</span> <span class="comment">&lt;!--定义网页的自动刷新时间间隔--&gt;</span> </span><br></pre></td></tr></table></figure>
-<p>name属性：</p>
-<p>name = viewport：</p>
-<p>name = keywords：设置网页关键字，有利于SEO优化</p>
-<p>name = description：设置网页描述，有利于SEO优化</p>
-<p>相关知识：SEO指的是搜索引擎优化，一种利用搜索引擎的搜索规则来提高目前网站在有关搜索引擎内的自然排名的方式。</p>
-<h4 id="7-title标签">7.title标签</h4>
-<p>设置网页的标题</p>
-<h4 id="8-script">8.script</h4>
-<p>引入js脚本，一般考虑到浏览器的加载问题不会在head标签中引入</p>
-<h4 id="9-style">9.style</h4>
-<p>可以在style标签下编写CSS样式</p>
-<h3 id="网页的主体-body">网页的主体-body</h3>
-<p>这里就是编写网页主体内容的地方，其中的标签会被浏览器解析渲染到网页上,html的常用标签及其属性总结</p>
-<p><img src="/img/image/html_summary/HTML%E5%AD%A6%E4%B9%A0.png" alt="HTML学习"></p>
-<p>这是我两年前的总结，思维导图的会员过期了添加不了东西，更详细的内容请参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/tags/ref-byfunc.html">HTML 标签列表（功能排序） | 菜鸟教程 (runoob.com)</a></p>
-<h3 id="html的相关知识：">html的相关知识：</h3>
-<h4 id="什么是SEO-SEO如何优化？SEO的原理">什么是SEO? SEO如何优化？SEO的原理</h4>
-<p>SEO意为搜索引擎优化，一种利用搜索引擎的搜索规则来提高目前网站在有关搜索引擎内的自然排名的方式。</p>
-<h4 id="浏览器乱码的原因是什么？如何解决？">浏览器乱码的原因是什么？如何解决？</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">&#x27;./files.txt&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">&quot;读取文件失败，错误信息&quot;</span>+err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">&quot;读取文件成功&quot;</span>+data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>网页源代码是<code>gbk</code>的编码，而内容中的中文字是<code>utf-8</code>编码的，这样浏览器打开即会出现<code>html</code>乱码，反之也会出现乱码；</li>
+<li>写入文件示例</li>
 </ul>
-<p><img src="/img/image/html_summary/%E7%BD%91%E9%A1%B5%E4%B9%B1%E7%A0%812-1.png" alt="网页乱码2-1"></p>
-<p>使用新版Edge浏览器打开：</p>
-<p><img src="/img/image/html_summary/%E7%BD%91%E9%A1%B5%E4%B9%B1%E7%A0%812-2.png" alt="网页乱码2-2"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFile(<span class="string">&#x27;./files.txt&#x27;</span>,<span class="string">&#x27;将此内容写入文件！&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">&quot;写入文件失败，错误信息&quot;</span>+err.message);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;写入文件成功&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="fs的路径动态拼接问题">fs的路径动态拼接问题</h3>
+<p>node在执行JavaScript代码时，会根据执行node命令时所处的路径去动态的拼接成完整的路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFile(<span class="string">&#x27;./files.txt&#x27;</span>,<span class="string">&#x27;将此内容写入文件！&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">&quot;写入文件失败，错误信息&quot;</span>+err.message);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;写入文件成功&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS D:\2022\node学习\fs模块\成绩处理&gt; node ./index.js #正常执行</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS D:\2022\node学习\fs模块&gt; node 成绩处理/index.js #出错</span><br></pre></td></tr></table></figure>
+<p>如果执行这种命令就会出现路径拼接错误的问题从而导致找不到文件，实际上拼接的是当前执行node所在的目录路径D:\2022\node学习\fs模块\成绩处理+writeFile提供的相对路径files.txt</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\2022\node学习\fs模块\files.txt</span><br></pre></td></tr></table></figure>
+<p>跳过了一层文件，导致没有找到files.txt，为了解决这个问题，我们需要为writeFile或者readFile提供完整的磁盘路径</p>
+<p>__dirname:表示当前文件的所处目录</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line">fs.writeFile(__dirname+<span class="string">&#x27;/files.txt&#x27;</span>,<span class="string">&#x27;将此内容写入文件！&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">&quot;写入文件失败，错误信息&quot;</span>+err.message);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;写入文件成功&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="path路径模块">path路径模块</h2>
+<p>path模块由node.js官方提供，提供了一些列处理路径的属性和方法</p>
+<h3 id="引入path模块">引入path模块</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="path-join">path.join()</h3>
+<p>path.join() 用来拼接多个路径片段</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pathStr = path.join(<span class="string">&#x27;a/b&#x27;</span>,<span class="string">&#x27;c/d&#x27;</span>,<span class="string">&#x27;../&#x27;</span>,<span class="string">&#x27;./d&#x27;</span>); <span class="comment">//a/b/d</span></span><br></pre></td></tr></table></figure>
+<h3 id="path-basename">path.basename()</h3>
+<p>path.basename()用来获取路径中的最后一部分，通常用来获取路径中的文件名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> pathUrl = path.join(__dirname, <span class="string">&#x27;file.txt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fullname = path.basename(pathUrl);</span><br><span class="line"><span class="keyword">const</span> filename = path.basename(pathUrl,<span class="string">&#x27;.txt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fullname);<span class="comment">//file.txt</span></span><br><span class="line"><span class="built_in">console</span>.log(filename);<span class="comment">//file</span></span><br></pre></td></tr></table></figure>
+<h3 id="path-extname">path.extname()</h3>
+<p>path.extname()用来获取文件扩展名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ext = path.extname(pathUrl);</span><br><span class="line"><span class="built_in">console</span>.log(ext);<span class="comment">//.txt</span></span><br></pre></td></tr></table></figure>
+<h2 id="http模块">http模块</h2>
+<p>http模块是由node.js官方提供的，用来创建web服务器的模块，不需要使用第三方的web服务器软件，可以使用node手写一个服务器从而对外提供web服务</p>
+<h3 id="创建基本的web服务器">创建基本的web服务器</h3>
 <ul>
-<li><code>html</code>网页编码是<code>gbk</code>，而程序从数据库中调出呈现是<code>utf-8</code>编码的内容也会造成编码乱码；</li>
-<li>未设置meta charset = utf-8标签，浏览器不能自动检测网页编码，造成网页乱码。<img src="/img/image/html_summary/%E7%BD%91%E9%A1%B5%E4%B9%B1%E7%A0%8103.png" alt="网页乱码03"></li>
+<li>导入模块</li>
 </ul>
-<p>这时候修改后缀为html使用IE浏览器打开<img src="/img/image/html_summary/%E7%BD%91%E9%A1%B5%E4%B9%B1%E7%A0%81-2.png" alt="网页乱码-2"></p>
-<h4 id="为什么要使用html语义化标签？">为什么要使用html语义化标签？</h4>
-<p>语义化是指根据内容的结构化（内容语义化），选择合适的标签（代码语义化），便于开发者阅读和写出更优雅的代码的同时，让浏览器的爬虫和机器很好的解析。</p>
-<p>语义化的好处：</p>
-<p>用正确的标签做正确的事情；</p>
-<p>去掉或者丢失样式的时候能够让页面呈现出清晰的结构；</p>
-<p>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；</p>
-<p>有利于<code>SEO</code>：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；</p>
-<p>便于团队开发和维护，语义化更具可读性，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
-<h4 id="HTML、XML、XHTML-的区别">HTML、XML、XHTML 的区别</h4>
-<h4 id="HTML标签的分类，行级，块级，行块">HTML标签的分类，行级，块级，行块</h4>
-<p>行级标签：又称为内联标签，表现为包裹性，内容决定宽高，不能设置宽高以及上下外边距，多个标签会占同一行</p>
-<p>常见的行级标签：span，a，i，strong，em</p>
-<p>块级标签：独占一行，默认宽度自动撑满父级，高度为0，可以设置宽高以及外边距</p>
-<p>常见的块级标签：div，p，h1-h6，ul，li，dl，dt，dd，form</p>
-<p>行块标签：  内部的块级盒子与外部的内联盒子包裹组成</p>
-<p>1.同行序跟显示，遇到父级边界换行<br>
-2.没有宽高的时候内容撑开高度<br>
-3.换行被解析</p>
-<p>行快标签：img，input等替换元素，textarea，select等表单相关的元素，表现为同占一行但又可以设置宽高的元素</p>
-<p><strong>HTML有一套嵌套规则是根据标签的分类来划分的，但在HTML5之后已经不在根据display来划分元素了，这个嵌套规则已经不适用了</strong>，相关资料：<a target="_blank" rel="noopener" href="https://www.xp.cn/b.php/66425.html">HTML5标签嵌套规则详解【必看】 - phpStudy (xp.cn)</a></p>
-<h4 id="Doctype-html-的作用">&lt;!Doctype html&gt;的作用</h4>
-<h4 id="HTML5的新特性">HTML5的新特性</h4>
-<p>​</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建实例对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> server = http.creatServer();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为服务器绑定request事件，监听服务器请求</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.on(<span class="string">&#x27;request&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;someone is visiting our web server&quot;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动服务器</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.listen(<span class="number">8080</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;server running at http://127.0.0.1:8080&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="req对象">req对象</h3>
+<p>只要服务端收到了客户端请求，就会通过server.on为服务器绑定request事件处理函数，想要在事件处理函数中访问客户端相关的数据或属性，就可以使用req对象</p>
+<ul>
+<li>访问客户端相关的数据或属性</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">req.url <span class="comment">//客户端请求的url地址</span></span><br><span class="line">req.method <span class="comment">//客户端的请求类型</span></span><br></pre></td></tr></table></figure>
+<h3 id="res响应对象">res响应对象</h3>
+<p>在request事件处理函数中，如果想访问与服务器相关的数据或属性，就可以使用res对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.end(content);<span class="comment">//向客户端发送指定的内容并结束此次请求的处理过程</span></span><br></pre></td></tr></table></figure>
+<p>使用res.end()方法发送中文内容的时候，会出现乱码的问题，需要手动设置编码格式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/html;charset=utf-8&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>示例：创建服务器并返回响应内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.createServer();</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">&#x27;request&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;someone is visiting our web server&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(req.url);</span><br><span class="line">    <span class="keyword">const</span> url  = req.url;</span><br><span class="line">    <span class="keyword">let</span> content = <span class="string">&quot;&lt;h1&gt;404 not found&lt;/h1&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(url === <span class="string">&#x27;/&#x27;</span>|| url ===<span class="string">&#x27;/index.html&#x27;</span>) &#123;</span><br><span class="line">        content = <span class="string">&quot;&lt;h1&gt;首页&lt;/h1&gt;&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(url === <span class="string">&#x27;/about.html&#x27;</span>) &#123;</span><br><span class="line">        content =<span class="string">&#x27;&lt;h1&gt;关于&lt;/h1&gt;&#x27;</span> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(req.method);</span><br><span class="line">    <span class="built_in">console</span>.log(req.headers);</span><br><span class="line">    res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/html;charset=utf-8&#x27;</span>);</span><br><span class="line">    res.end(content);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;server running at http://127.0.0.1:8080&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Node模块化">Node模块化</h2>
+<h3 id="什么是模块化？">什么是模块化？</h3>
+<p>模块化是指解决一个复杂问题时，自顶向下逐层把系统划分成若干模块的过程，对于整个系统来说，模块是可组合，分解和更换的单元</p>
+<h3 id="模块化的好处">模块化的好处</h3>
+<ul>
+<li>提高代码的复用性</li>
+<li>提高了代码的可维护性</li>
+<li>实现了按需加载</li>
+</ul>
+<p>Node.js 中根据模块来源不同，将模块分为了三大类，分别是：</p>
+<ul>
+<li>内置模块（fs，path，http等）</li>
+<li>自定义模块（用户创建的js文件）</li>
+<li>第三方模块</li>
+</ul>
+<h3 id="模块化规范">模块化规范</h3>
+<p>Node.js遵循CommonJS规范（<a target="_blank" rel="noopener" href="http://8.130.40.222/cn/base04-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/#%E6%A6%82%E8%BF%B0">前端的模块化是什么？ - AzirKxs的博客 | 分享与记录</a>）,规定了模块的特性和各模块之间如何相互依赖</p>
+<h4 id="加载模块">加载模块</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> 模块 = <span class="built_in">require</span>(<span class="string">&#x27;模块名称或路径&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>使用require加载模块时，会执行被加载模块中的代码</p>
+<p>模块作用域：在自定义模块中定义的变量，方法等，未经暴露只能在当前模块内被访问</p>
+<h4 id="module对象">module对象</h4>
+<p>每个 .js自定义模块中都有一个module对象，里面存储了和当前模块有关的信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Module &#123;</span><br><span class="line">  id: <span class="string">&#x27;.&#x27;</span>,</span><br><span class="line">  path: <span class="string">&#x27;D:\\2022\\node学习\\node模块化&#x27;</span>,</span><br><span class="line">  <span class="built_in">exports</span>: &#123;&#125;,</span><br><span class="line">  filename: <span class="string">&#x27;D:\\2022\\node学习\\node模块化\\node01.js&#x27;</span>,</span><br><span class="line">  loaded: <span class="literal">false</span>,</span><br><span class="line">  children: [],</span><br><span class="line">  paths: [</span><br><span class="line">    <span class="string">&#x27;D:\\2022\\node学习\\node模块化\\node_modules&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;D:\\2022\\node学习\\node_modules&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;D:\\2022\\node_modules&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;D:\\node_modules&#x27;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>向外暴露模块作用域中的成员</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports.要暴露的对象名 = 要暴露的内容</span><br></pre></td></tr></table></figure>
+<p><strong><font color = '#eb4d4b'>使用require()方法导入模块时，导入的结果永远以module.exports指向的对象为准</font></strong></p>
+<h4 id="exports对象">exports对象</h4>
+<p>默认情况下，module.exports和exports指向的同一对象，为了简写module.exports的写法，node提供了exports对象</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/node01-初识node.js/" data-toggle="tooltip" data-placement="top" title="全方面认识Node.js">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/base04-前端模块化是什么？/" data-toggle="tooltip" data-placement="top" title="前端的模块化是什么？">Next Post &rarr;</a>
+            <a href="/cn/html01-前端基础知识巩固之html/" data-toggle="tooltip" data-placement="top" title="html5知识梳理">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -586,7 +590,7 @@ CSS1Compat：标准模式，浏览器使用W3C的标准解析渲染页面。</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA%E4%B9%8Bhtml"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前端基础知识巩固之html</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">参考：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFhtml%EF%BC%9F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">什么是html？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#html%E7%9A%84%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">html的基础结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-%E5%A3%B0%E6%98%8E"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">1.声明</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-html%E6%A0%87%E7%AD%BE"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2.html标签</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-head"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">3.head</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-base%E6%A0%87%E7%AD%BE"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">4.base标签</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-link%E6%A0%87%E7%AD%BE"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">5.link标签</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#6-meta%E6%A0%87%E7%AD%BE"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">6.meta标签</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#7-title%E6%A0%87%E7%AD%BE"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">7.title标签</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#8-script"><span class="toc-nav-number">1.3.8.</span> <span class="toc-nav-text">8.script</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#9-style"><span class="toc-nav-number">1.3.9.</span> <span class="toc-nav-text">9.style</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E9%A1%B5%E7%9A%84%E4%B8%BB%E4%BD%93-body"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">网页的主体-body</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#html%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%EF%BC%9A"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">html的相关知识：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSEO-SEO%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9FSEO%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">什么是SEO? SEO如何优化？SEO的原理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%B1%E7%A0%81%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">浏览器乱码的原因是什么？如何解决？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8html%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE%EF%BC%9F"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">为什么要使用html语义化标签？</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HTML%E3%80%81XML%E3%80%81XHTML-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text">HTML、XML、XHTML 的区别</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HTML%E6%A0%87%E7%AD%BE%E7%9A%84%E5%88%86%E7%B1%BB%EF%BC%8C%E8%A1%8C%E7%BA%A7%EF%BC%8C%E5%9D%97%E7%BA%A7%EF%BC%8C%E8%A1%8C%E5%9D%97"><span class="toc-nav-number">1.5.5.</span> <span class="toc-nav-text">HTML标签的分类，行级，块级，行块</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Doctype-html-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">1.5.6.</span> <span class="toc-nav-text">&lt;!Doctype html&gt;的作用</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HTML5%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-nav-number">1.5.7.</span> <span class="toc-nav-text">HTML5的新特性</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">全方面认识Node.js</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%9D%E8%AF%86node-js"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">初识node.js</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88JavaScript%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8C%EF%BC%9F"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">为什么JavaScript可以在浏览器中运行？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88JavaScript%E5%8F%AF%E4%BB%A5%E6%93%8D%E7%BA%B5DOM%EF%BC%9F"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">为什么JavaScript可以操纵DOM？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JavaScript%E5%8F%AF%E4%BB%A5%E6%89%A7%E8%A1%8C%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%90%97%EF%BC%9F"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">JavaScript可以执行后端代码吗？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFnode-js"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">什么是node.js?</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">fs文件系统模块</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5fs%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">引入fs模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">读写文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fs%E7%9A%84%E8%B7%AF%E5%BE%84%E5%8A%A8%E6%80%81%E6%8B%BC%E6%8E%A5%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">fs的路径动态拼接问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#path%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">path路径模块</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5path%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">引入path模块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#path-join"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">path.join()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#path-basename"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">path.basename()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#path-extname"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">path.extname()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#http%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">http模块</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E5%9F%BA%E6%9C%AC%E7%9A%84web%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">创建基本的web服务器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#req%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">req对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#res%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">res响应对象</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Node%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Node模块化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%9F"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">什么是模块化？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">模块化的好处</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">模块化规范</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97"><span class="toc-nav-number">1.5.3.1.</span> <span class="toc-nav-text">加载模块</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#module%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.5.3.2.</span> <span class="toc-nav-text">module对象</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#exports%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.5.3.3.</span> <span class="toc-nav-text">exports对象</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -609,7 +613,7 @@ CSS1Compat：标准模式，浏览器使用W3C的标准解析渲染页面。</p>
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#html" title="html">html</a>
+            <a class="tag" href="/tags/#node.js" title="node.js">node.js</a>
             
           </div>
         </section>
