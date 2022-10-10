@@ -96,10 +96,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/categories/虚幻引擎4/">
+  <link rel="canonical" href="http://yoursite-url/cn/es601-es6之let，const，var/">
   <title>
     
-      AzirKxs的博客 | 分享与记录
+      ES6中的变量声明 - AzirKxs的博客 | 分享与记录
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -305,19 +305,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: url('//img/featureimages/js.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/js.png');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/cover.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/featureimages/js.png'); */
       
     }
 
@@ -339,10 +339,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>AzirKxs&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">欢迎光临我的博客</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#js" title="js">js</a>
+              
+            </div>
+            <h1>ES6中的变量声明</h1>
+            <h2 class="subheading">ES6中关于变量声明的新特性与变动,let,const与var</h2>
+            <span class="meta">
+              Posted by AzirKxs on
+              2022-09-20
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">3</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">868</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -383,711 +415,202 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h2 id="ES6中的变量声明">ES6中的变量声明</h2>
+<h3 id="ECMAScript与JavaScript的区别">ECMAScript与JavaScript的区别</h3>
+<p>前者是后者的规格，后者是前者的一种实现</p>
+<h3 id="1-let">1.let</h3>
+<p>let用来声明变量，用法类似于var</p>
+<h4 id="let与var的区别：">let与var的区别：</h4>
+<h5 id="1-let存在块级作用域，而var不存在块级作用域">1.let存在块级作用域，而var不存在块级作用域</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="keyword">let</span> number = <span class="number">10</span>;</span><br><span class="line"> 	<span class="keyword">var</span> number2 = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(number); <span class="comment">//error number未定义</span></span><br><span class="line"><span class="built_in">console</span>.log(number2); <span class="comment">//20</span></span><br></pre></td></tr></table></figure>
+<p>典型的for循环例子 :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//案例1</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(i);<span class="comment">//依次打印0，1，2，3，5，6，7，8，9，10</span></span><br><span class="line">    a[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>](); <span class="comment">//6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//案例2：遍历三个dom，点击时改变背景色为粉色</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;items.length;i++)&#123;</span><br><span class="line">    <span class="comment">//不触发 i=items.length时 不存在items[i]</span></span><br><span class="line">    <span class="comment">/* this.onclick = function()&#123;</span></span><br><span class="line"><span class="comment">		items[i].style.background = &#x27;pink&#x27;;</span></span><br><span class="line"><span class="comment">    &#125; */</span>  </span><br><span class="line">	items[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	items[i].style.background = <span class="string">&#x27;pink&#x27;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//var声明的i属于全局变量，作用在全局，当调用a[i]()或者事件触发的时候，for循环已经结束，i的值已经变成了items.length</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用let</span></span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//let声明的i具有块级作用域，每一次的i只在本轮循环中起作用</span></span><br><span class="line">**为什么要有块级作用域？**</span><br></pre></td></tr></table></figure>
+<p>var不合理的场景：</p>
+<p>第一种场景，内层变量可能会覆盖外层变量。</p>
+<p>第二种场景，用来计数的循环变量泄露为全局变量。</p>
+<h5 id="2-let不存在变量提升">2.let不存在变量提升</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(number); <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">var</span> number = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(number2); <span class="comment">//ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> number2 = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p>var会有变量提升,上面的代码可以等同为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number;</span><br><span class="line"><span class="built_in">console</span>.log(number); <span class="comment">// undefined</span></span><br><span class="line">number = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>而let不存在变量提升，在执行到打印number2的时候number2没有定义</p>
+<h5 id="3-暂时性死区-TDZ">3.暂时性死区(TDZ)</h5>
+<p>1.不受外部影响：只要块级作用域内存在<code>let</code>命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。</p>
+<p>2.不可以在声明前使用：ES6 明确规定，如果区块中存在<code>let</code>和<code>const</code>命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tmp = <span class="string">&#x27;abc&#x27;</span>; <span class="comment">// ReferenceError</span></span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tmp; <span class="comment">// TDZ结束</span></span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">tmp = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">console</span>.log(tmp); <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+<h5 id="4-不允许重复声明">4.不允许重复声明</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">args</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> args = <span class="number">10</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(args);<span class="comment">//10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">args</span>)</span>&#123;</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="keyword">let</span> args = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="built_in">console</span>.log(args);<span class="comment">//20</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="number">20</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">args</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> args = <span class="number">10</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">20</span>;</span><br><span class="line">test(num);</span><br></pre></td></tr></table></figure>
+<h3 id="2-const">2.const</h3>
+<p>const用来声明一个只读的常量，如果尝试更改将会报错，对于引用类型的数据来说，只要保证地址值不变，就不会报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo =&#123;&#125;;</span><br><span class="line">foo.num = <span class="number">10</span>; <span class="comment">//添加属性成功，不报错</span></span><br><span class="line"><span class="built_in">console</span>.log(foo.num);<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">foo = &#123;&#125;; <span class="comment">//尝试赋值为新的引用类型，报错</span></span><br></pre></td></tr></table></figure>
+<p>如果不希望更改对象内部的属性，可以将对象冻结，任何修改将不会起作用，Object.freeze()</p>
+<p>const拥有块级作用域，没有变量提升，存在暂时性死区</p>
+<h3 id="3-顶层对象">3.顶层对象</h3>
+<p>在ES5，顶层对象的属性(在浏览器环境下，顶层对象指的是window)与全局变量是等价的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.a = <span class="number">1</span>;</span><br><span class="line">a <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">window</span>.a <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>在ES6中，全局变量不属于顶层对象的属性了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">// 如果在 Node 的 REPL 环境，可以写成 global.a</span></span><br><span class="line"><span class="comment">// 或者采用通用方法，写成 this.a</span></span><br><span class="line"><span class="built_in">window</span>.a <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">window</span>.b <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/node01-初识node.js/" data-toggle="tooltip" data-placement="top" title="全方面认识Node.js">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/html01-前端基础知识巩固之html/" data-toggle="tooltip" data-placement="top" title="html5知识梳理">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ES6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">ES6中的变量声明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ECMAScript%E4%B8%8EJavaScript%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">ECMAScript与JavaScript的区别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-let"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.let</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#let%E4%B8%8Evar%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">let与var的区别：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-let%E5%AD%98%E5%9C%A8%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%8C%E8%80%8Cvar%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">1.let存在块级作用域，而var不存在块级作用域</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2-let%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">2.let不存在变量提升</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#3-%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA-TDZ"><span class="toc-nav-number">1.2.1.3.</span> <span class="toc-nav-text">3.暂时性死区(TDZ)</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#4-%E4%B8%8D%E5%85%81%E8%AE%B8%E9%87%8D%E5%A4%8D%E5%A3%B0%E6%98%8E"><span class="toc-nav-number">1.2.1.4.</span> <span class="toc-nav-text">4.不允许重复声明</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-const"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">2.const</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">3.顶层对象</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
     
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
+
+
+      <!-- Sidebar Container -->
+      <div class="
                 col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2022">
-          <span class="tag-text">2022</span>
-        </span>
-        <ul>
-          
-          <li>
-            10-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/node01-初识node.js/" style="color: #0085a1">
-              <span>
-                全方面认识Node.js
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-20
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/es601-es6之let，const，var/" style="color: #0085a1">
-              <span>
-                ES6中的变量声明
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/html01-前端基础知识巩固之html/" style="color: #0085a1">
-              <span>
-                html5知识梳理
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base04-前端模块化是什么？/" style="color: #0085a1">
-              <span>
-                前端的模块化是什么？
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base03-JavaScript是如何工作的？/" style="color: #0085a1">
-              <span>
-                JavaScript的工作机制
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base02-浏览器运行机制/" style="color: #0085a1">
-              <span>
-                从浏览器运行机制解析到Event Loop
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            07-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/base01-微任务与宏任务/" style="color: #0085a1">
-              <span>
-                微任务，宏任务与Event-Loop  ——js的运行机制篇part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other07-《小王子》读后感/" style="color: #0085a1">
-              <span>
-                《小王子》读后感
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other05-《谈情说爱的哲学家》读后感/" style="color: #0085a1">
-              <span>
-                《谈情说爱的哲学家：8场关于爱的讨论》书评
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-18
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other06-《微积分的力量》读后感/" style="color: #0085a1">
-              <span>
-                《微积分的力量》书评
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            01-31
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other04-我的2021年终总结/" style="color: #0085a1">
-              <span>
-                我的2021年终总结
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
-          
-          <li>
-            09-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js04-ES6学习记录 part2/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js03-ES6学习记录 part1/" style="color: #0085a1">
-              <span>
-                ES6学习记录 part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/node01-Node.js学习-part1/" style="color: #0085a1">
-              <span>
-                Node.js学习-part1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-05
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue05-虚幻四学习笔记Day5/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day5
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue04-虚幻四学习笔记Day4/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day4
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/translation01-How to make a Fantasy Map/" style="color: #0085a1">
-              <span>
-                How to make a Fantasy Map翻译
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue03-虚幻四学习笔记Day3/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day3
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue02-虚幻四学习笔记Day2/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day2
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            09-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ue01-虚幻四学习笔记Day1/" style="color: #0085a1">
-              <span>
-                虚幻四学习笔记Day1
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css01-毛玻璃效果制作总结/" style="color: #0085a1">
-              <span>
-                css实现毛玻璃效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ajax01-form表单与ajax/" style="color: #0085a1">
-              <span>
-                form表单与ajax
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-23
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/frame01-bootstrap5指南/" style="color: #0085a1">
-              <span>
-                bootstrap5类名指南
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-          <span class="tag-text">2020</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css02-理解BFC/" style="color: #0085a1">
-              <span>
-                理解BFC
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js01-打字效果/" style="color: #0085a1">
-              <span>
-                使用CSS+JS实现打字效果
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css04-widthAndHeight/" style="color: #0085a1">
-              <span>
-                读《CSS世界》总结(1)----width与height
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/css03-liorimg/" style="color: #0085a1">
-              <span>
-                处理inline-block与img元素造成的间隙
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-14
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other02-gitMessage/" style="color: #0085a1">
-              <span>
-                Git--版本管理系统
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/js02-magnifier/" style="color: #0085a1">
-              <span>
-                JS特效之电商放大镜
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-09
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Other03-hello-world/" style="color: #0085a1">
-              <span>
-                第一次的博客搭建历程
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/avatar.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>  欢迎来到我的博客，这里是AzirKxs，一个涉猎广泛的技术爱好者，如果有任何问题可以bilibili私信我（b站同名），感谢各位的支持！</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/AzirKxs">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-      <li>
-        <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa  fa-stack-1x fa-inverse">知</i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/node01-%E5%88%9D%E8%AF%86node.js/">
-      <li>全方面认识Node.js</li>
-    </a>
-    
-    <a href="../../cn/es601-es6%E4%B9%8Blet%EF%BC%8Cconst%EF%BC%8Cvar/">
-      <li>ES6中的变量声明</li>
-    </a>
-    
-    <a href="../../cn/html01-%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%B7%A9%E5%9B%BA%E4%B9%8Bhtml/">
-      <li>html5知识梳理</li>
-    </a>
-    
-    <a href="../../cn/base04-%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/">
-      <li>前端的模块化是什么？</li>
-    </a>
-    
-    <a href="../../cn/base03-JavaScript%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F/">
-      <li>JavaScript的工作机制</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">October 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">September 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">August 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/07/">July 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/05/">May 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/04/">April 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">March 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">January 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">September 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/06/">June 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/11/">November 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/08/">August 2020</a><span class="archive-list-count">5</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#其它">
-      <li>其它</li>
-    </a>
-    
-    <a href="/categories/#前端">
-      <li>前端</li>
-    </a>
-    
-    <a href="/categories/#node.js">
-      <li>node.js</li>
-    </a>
-    
-    <a href="/categories/#翻译">
-      <li>翻译</li>
-    </a>
-    
-    <a href="/categories/#虚幻引擎4">
-      <li>虚幻引擎4</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#js" title="js">js</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#Git" title="Git" rel="1">Git</a>
-    
-    
-    
-    <a href="/tags/#博客" title="博客" rel="1">博客</a>
-    
-    
-    
-    <a href="/tags/#年终总结" title="年终总结" rel="1">年终总结</a>
-    
-    
-    
-    <a href="/tags/#书评" title="书评" rel="3">书评</a>
-    
-    
-    
-    <a href="/tags/#ajax" title="ajax" rel="1">ajax</a>
-    
-    
-    
-    <a href="/tags/#前后端交互" title="前后端交互" rel="1">前后端交互</a>
-    
-    
-    
-    <a href="/tags/#学习记录" title="学习记录" rel="7">学习记录</a>
-    
-    
-    
-    <a href="/tags/#js运行机制" title="js运行机制" rel="3">js运行机制</a>
-    
-    
-    
-    <a href="/tags/#浏览器" title="浏览器" rel="3">浏览器</a>
-    
-    
-    
-    <a href="/tags/#前端模块化" title="前端模块化" rel="1">前端模块化</a>
-    
-    
-    
-    <a href="/tags/#CSS" title="CSS" rel="6">CSS</a>
-    
-    
-    
-    <a href="/tags/#读书笔记" title="读书笔记" rel="1">读书笔记</a>
-    
-    
-    
-    <a href="/tags/#js" title="js" rel="4">js</a>
-    
-    
-    
-    <a href="/tags/#html" title="html" rel="1">html</a>
-    
-    
-    
-    <a href="/tags/#bootstrap5" title="bootstrap5" rel="1">bootstrap5</a>
-    
-    
-    
-    <a href="/tags/#JS特效" title="JS特效" rel="1">JS特效</a>
-    
-    
-    
-    <a href="/tags/#node.js" title="node.js" rel="2">node.js</a>
-    
-    
-    
-    <a href="/tags/#英语" title="英语" rel="1">英语</a>
-    
-    
-    
-    <a href="/tags/#游戏开发" title="游戏开发" rel="5">游戏开发</a>
-    
-    
-    
-    <a href="/tags/#虚幻4" title="虚幻4" rel="5">虚幻4</a>
-    
-    
-  </div>
-</section>
-
-
+        <!-- Friends Blog -->
+        
         <hr>
-    
-</div>
+        <h5>链友</h5>
+        <ul class="list-inline">
 
-
-    
+          
+          <li>
+            <a href="#" target="_blank">没有朋友</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
