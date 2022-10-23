@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+
+  <!-- Baidu Tongji -->
+  
+
+  <!-- Baidu Push -->
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content=" 这是我的博客，用来分享与记录我的学习（玩耍）生活"/>
+  <meta name="keyword" content="AzirKxs,blog,Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/favicon.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/cn/js05-javascript变量类型的细节/">
+  <title>
+    
+      js变量类型的细节 - AzirKxs的博客 | 分享与记录
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'AzirKxsFriends/community'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">AzirKxs&#39;s Blog</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: url('//img/featureimages/js.png');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/js.png');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/featureimages/js.png'); */
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/myname.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#js" title="js">js</a>
+              
+            </div>
+            <h1>js变量类型的细节</h1>
+            <h2 class="subheading">变量类型转换与判别规则全解析</h2>
+            <span class="meta">
+              Posted by AzirKxs on
+              2022-10-17
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">6</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.5k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <blockquote>
+<p>[<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903983429976078">] == ![] !? 浅析JS的类型系统和隐式类型转换 - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhouhao620/article/details/117019168?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-117019168-blog-122594328.t0_edu_mix&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-117019168-blog-122594328.t0_edu_mix&amp;utm_relevant_index=2">(12条消息) 比较运算符 == 的类型转换规则_zhouhao620的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/celi_echo/article/details/100038366">(12条消息) valueOf()函数_不吃饭会饿的博客-CSDN博客_valueof</a></p>
+</blockquote>
+<h2 id="javascript之类型的细节">javascript之类型的细节</h2>
+<h3 id="javascript的变量转换">javascript的变量转换</h3>
+<h4 id="String的类型转换">String的类型转换</h4>
+<h5 id="显示转换">显示转换</h5>
+<ul>
+<li>使用toString方法</li>
+<li>调用String函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="built_in">String</span>(<span class="number">123</span>)</span><br><span class="line"><span class="keyword">let</span> num = (<span class="number">123</span>).toString()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str)<span class="comment">//string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num)<span class="comment">//string</span></span><br><span class="line"><span class="comment">//基本类型转换</span></span><br><span class="line"><span class="built_in">String</span>(<span class="number">4</span>)                    <span class="comment">// &quot;4&quot;</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">false</span>)                <span class="comment">// &quot;false&quot;</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">true</span>)                 <span class="comment">// &quot;true&quot;</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>)                 <span class="comment">// &quot;null&quot;</span></span><br><span class="line"><span class="built_in">String</span>(<span class="literal">undefined</span>)            <span class="comment">// &quot;undefined&quot;</span></span><br><span class="line"><span class="built_in">String</span>(<span class="built_in">Symbol</span>(<span class="string">&#x27;s&#x27;</span>))          <span class="comment">// &quot;Symbol(s)&quot;</span></span><br><span class="line"><span class="comment">//引用类型的转换</span></span><br><span class="line"><span class="built_in">String</span>(&#123; <span class="attr">a</span>: <span class="number">2</span> &#125;)             <span class="comment">// &quot;[object Object]&quot;</span></span><br><span class="line"><span class="built_in">String</span>([<span class="number">1</span>, <span class="number">2</span>])               <span class="comment">// &quot;1,2&quot;</span></span><br><span class="line"><span class="built_in">String</span>(<span class="regexp">/reg/g</span>)               <span class="comment">// &quot;/reg/g&quot;</span></span><br><span class="line"><span class="comment">//object类型在强制转换为string类型的时候，</span></span><br><span class="line"><span class="comment">// 实际是调用了该类型原型上的toString方法，</span></span><br><span class="line"><span class="comment">// 而Object的各个子类型基本都重写了toString方法</span></span><br><span class="line"><span class="comment">// 所以在进行String操作的时候表现有差异</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//String与toString都是将别的类型转换为String类型，但是toString无法转换null和undefined，会报错</span></span><br></pre></td></tr></table></figure>
+<h5 id="隐式转换">隐式转换</h5>
+<ul>
+<li>一个字符串和别的数值类型进行+操作</li>
+<li>某些函数的执行也会自动将参数转换成字符串类型例如console.log()</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;123&quot;</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">123</span></span><br><span class="line"><span class="keyword">let</span> unit = str+num</span><br><span class="line"><span class="built_in">console</span>.log(unit)<span class="comment">//123123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> unit)<span class="comment">//string</span></span><br></pre></td></tr></table></figure>
+<h4 id="Number的类型转换">Number的类型转换</h4>
+<h5 id="显示转换-2">显示转换</h5>
+<ul>
+<li>使用Number函数转换</li>
+</ul>
+<h5 id="隐式转换-2">隐式转换</h5>
+<ul>
+<li>除了+运算，在别的算数运算中，都会将其他类型转换成数字类型来处理</li>
+</ul>
+<h5 id="转换规则">转换规则</h5>
+<p><img src="/img/image/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/image-20221013142706917.png" alt="image-20221013142706917"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">&#x27;123hello123&#x27;</span>))<span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">&#x27;123&#x27;</span>))<span class="comment">//123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">&#x27;&#x27;</span>))<span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">true</span>))<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">false</span>))<span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(&#123;&#125;))<span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">null</span>))<span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">undefined</span>))<span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>([]))<span class="comment">//0</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="built_in">Symbol</span>(<span class="string">&#x27;s&#x27;</span>))<span class="comment">// TypeError...</span></span><br></pre></td></tr></table></figure>
+<h4 id="boolean的类型转换">boolean的类型转换</h4>
+<h5 id="转换规则-2">转换规则</h5>
+<p><img src="/img/image/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/image-20221013142857983.png" alt="image-20221013142857983"></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非空的字符串总是true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="string">&#x27;true&#x27;</span>))<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="string">&#x27;false&#x27;</span>))<span class="comment">//true </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="string">&#x27;0&#x27;</span>))<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>([]))<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(&#123;&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="string">&#x27;&#x27;</span>))<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">null</span>))<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">undefined</span>))<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="number">0</span>))<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">NaN</span>))<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//false值的七种情况</span></span><br><span class="line"><span class="comment">//false, undefined, null, NaN, 0(包括+0，-0), 空字符串，0n(BigInt)</span></span><br></pre></td></tr></table></figure>
+<h3 id="ToPrimitive">ToPrimitive</h3>
+<p>当对象需要转换成基本数据类型时，就会执行ToPrimitive过程</p>
+<p>ToPrimitive过程先回检查对象是否存在valueOf方法，如果存在并且valueOf返回基本类型的值，则使用该值进行强制类型转换，如果没有，则使用toString方法返回的值进行强制类型转换。</p>
+<p><strong>在+运算中，如果其中一个操作数是字符串；或者其中一个操作数是对象，且可以通过ToPrimitive操作转换为字符串，则执行字符串连接操作；其他情况执行加法操作。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>+<span class="literal">true</span>)<span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>+&#123;&#125;)<span class="comment">//1[object Object]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>+[<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>+[]) <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>+[<span class="number">1</span>,<span class="number">2</span>])<span class="comment">//11,2</span></span><br><span class="line"><span class="built_in">console</span>.log(&#123;&#125; + [])<span class="comment">//[object Object]</span></span><br></pre></td></tr></table></figure>
+<p>如果在浏览器控制台这样输入则会有不同的表现，那是因为{}被解析成了代码块，因此只是将[]转换成了number<br>
+<img src="/img/image/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/image-20221018195924401.png" alt="image-20221018195924401"></p>
+<h3 id="和">==和===</h3>
+<h4 id="和-的区别">==和===的区别</h4>
+<p>===比==更加严格，==在比较两个数据类型不同的值的时候，会进行自动数据类型转换，而===在比较两个数据类型不同的值的时候，会直接返回false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>==<span class="string">&#x27;1&#x27;</span>)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> == <span class="literal">true</span>)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> == <span class="literal">false</span>)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>===<span class="string">&#x27;1&#x27;</span>)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h4 id="的一些特殊表现">==的一些特殊表现</h4>
+<ul>
+<li>NaN不等于NaN</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>)<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">null</span>)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">undefined</span> == <span class="literal">undefined</span>)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>null == 0为false</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">null</span>) == <span class="number">0</span>) <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="number">0</span>) <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span>&gt;=<span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>undefined == null 为true</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以及上面探讨过的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span> + <span class="literal">true</span> === <span class="number">2</span>           <span class="comment">// true</span></span><br><span class="line"><span class="literal">false</span> === <span class="number">0</span>                 <span class="comment">// false</span></span><br><span class="line"><span class="literal">false</span> + <span class="literal">false</span> === <span class="number">0</span>         <span class="comment">// true</span></span><br><span class="line">&#123;&#125; + [] === <span class="number">0</span>               <span class="comment">// true</span></span><br><span class="line">[] + &#123;&#125; === <span class="number">0</span>               <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h4 id="的类型转换规则">== 的类型转换规则</h4>
+<p><strong>对于数字和字符串的抽象比较，将字符串进行ToNumber操作后再进行比较</strong></p>
+<p><strong>对于布尔值和其他类型的比较，将其布尔类型进行ToNumber操作后再进行比较</strong></p>
+<p><strong>对于对象和基础类型的比较，将对象进行ToPrimitive操作后在进行比较</strong></p>
+<p><strong>对象之间的比较，引用同一个对象则为true，否则为false</strong></p>
+<h3 id="valueOf">valueOf</h3>
+<p><code>valueOf()</code>函数返回指定对象的原始值。</p>
+<p>JavaScript的许多内置对象都重写了该函数，以实现更适合自身的功能需要。因此，不同类型对象的<code>valueOf()</code>方法的返回值和返回值类型均可能不同。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td>数组实例对象。</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值。</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>以毫秒数存储的时间值，从 UTC 1970 年 1 月 1 日午夜开始计算。</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>函数本身。</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>数字值。</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>对象本身。这是默认设置。</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串值。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">123</span>)</span><br><span class="line"><span class="built_in">console</span>.log(str) <span class="comment">//String &#123;&#x27;123&#x27;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str)<span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.log(str.valueOf())<span class="comment">//123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str.valueOf())<span class="comment">//string</span></span><br></pre></td></tr></table></figure>
+<h3 id="类型检测">类型检测</h3>
+<h4 id="typeof">typeof</h4>
+<p>typeof用于检测类型，但是对于引用类型来说又有一定的局限性，无法区分object类型的子类型</p>
+<p>先看两几个例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> [] === <span class="keyword">typeof</span> &#123;&#125;)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>)<span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">NaN</span>)<span class="comment">//number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">Infinity</span>)<span class="comment">//number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">document</span>.addEventListener)<span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">String</span>(<span class="number">123</span>))<span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+<p>typeof的返回值有number，string，boolean，object，undefined，function，symbol</p>
+<ul>
+<li>
+<p>对于number，string，boolean，symbol返回对应的结果</p>
+</li>
+<li>
+<p>对于对象，数组，null返回object</p>
+</li>
+<li>
+<p>对于函数返回function</p>
+</li>
+<li>
+<p>对于定义没有赋值的变量返回undefined</p>
+</li>
+</ul>
+<h4 id="Object-prototype-toString">Object.prototype.toString</h4>
+<p>可以通过Object.prototype.toString来检测每个对象的类型，而不是单纯的返回object</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Obejct.prototype.toString.call(<span class="literal">undefined</span>)；</span><br><span class="line"><span class="comment">//  &quot;[object Undefined]&quot;</span></span><br><span class="line"></span><br><span class="line">Obejct.prototype.toString.call(<span class="literal">null</span>)；</span><br><span class="line"><span class="comment">//  &quot;[object Null]&quot;</span></span><br><span class="line"></span><br><span class="line">Obejct.prototype.toString.call(<span class="literal">true</span>)；</span><br><span class="line"><span class="comment">//  &quot;[object Boolean]&quot;</span></span><br><span class="line"></span><br><span class="line">Obejct.prototype.toString.call(<span class="string">&#x27;&#x27;</span>)；</span><br><span class="line"><span class="comment">/// &quot;[object String]&quot;</span></span><br><span class="line"></span><br><span class="line">Obejct.prototype.toString.call(<span class="number">123</span>)；</span><br><span class="line"><span class="comment">//  &quot;[object Number]&quot;</span></span><br><span class="line"></span><br><span class="line">Obejct.prototype.toString.call([])；</span><br><span class="line"><span class="comment">//  &quot;[object Array]&quot;</span></span><br><span class="line"></span><br><span class="line">Obejct.prototype.toString.call(&#123;&#125;)；</span><br><span class="line"><span class="comment">//  &quot;[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+<p>使用该种方式无法鉴别基本数据类型还是包装类型，返回值都为[Object xxx]</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">42</span></span><br><span class="line"><span class="keyword">var</span> numObj = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">42</span>)</span><br><span class="line"><span class="keyword">typeof</span> num    <span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span> numObj <span class="comment">// object</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(num)         <span class="comment">// &quot;[object Number]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(numObj)      <span class="comment">// &quot;[object Number]&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/base05- 深入理解js/" data-toggle="tooltip" data-placement="top" title="深入理解js">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/vue01-Vue组件通信之VueX/" data-toggle="tooltip" data-placement="top" title="Vue组件通信之VueX">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#javascript%E4%B9%8B%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%BB%86%E8%8A%82"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">javascript之类型的细节</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#javascript%E7%9A%84%E5%8F%98%E9%87%8F%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">javascript的变量转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#String%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">String的类型转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%98%BE%E7%A4%BA%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.1.1.1.</span> <span class="toc-nav-text">显示转换</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.1.1.2.</span> <span class="toc-nav-text">隐式转换</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Number%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">Number的类型转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%98%BE%E7%A4%BA%E8%BD%AC%E6%8D%A2-2"><span class="toc-nav-number">1.1.2.1.</span> <span class="toc-nav-text">显示转换</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2-2"><span class="toc-nav-number">1.1.2.2.</span> <span class="toc-nav-text">隐式转换</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E8%BD%AC%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-nav-number">1.1.2.3.</span> <span class="toc-nav-text">转换规则</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#boolean%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">boolean的类型转换</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E8%BD%AC%E6%8D%A2%E8%A7%84%E5%88%99-2"><span class="toc-nav-number">1.1.3.1.</span> <span class="toc-nav-text">转换规则</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ToPrimitive"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">ToPrimitive</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%92%8C"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">&#x3D;&#x3D;和&#x3D;&#x3D;&#x3D;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">&#x3D;&#x3D;和&#x3D;&#x3D;&#x3D;的区别</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9A%84%E4%B8%80%E4%BA%9B%E7%89%B9%E6%AE%8A%E8%A1%A8%E7%8E%B0"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">&#x3D;&#x3D;的一些特殊表现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">&#x3D;&#x3D; 的类型转换规则</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#valueOf"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">valueOf</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">类型检测</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#typeof"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">typeof</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Object-prototype-toString"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">Object.prototype.toString</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#js" title="js">js</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="#" target="_blank">没有朋友</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/AzirKxs">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+            <li>
+              <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa  fa-stack-1x fa-inverse">知</i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          AzirKxs
+          2022
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='游戏开发,前端开发,视频剪辑,游戏爱好者,干饭王,UI设计' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
