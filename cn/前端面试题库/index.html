@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -226,9 +226,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -361,11 +361,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">5</span> Minutes
+              Estimated Reading Time <span class="post-count">6</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.6k</span> In Total
+              Words <span class="post-count">1.8k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -435,10 +435,13 @@
 <ul>
 <li><code>script</code> ：会阻碍 HTML 解析，只有下载好并执行完脚本才会继续解析 HTML。</li>
 <li><code>async script</code> ：解析 HTML 过程中进行脚本的异步下载，下载成功立马执行，有可能会阻断 HTML 的解析。</li>
-<li><code>defer script</code>：完全不会阻碍 HTML 的解析，解析完成之后再按照顺序执行脚本。</li>
+<li><code>defer script</code>：完全不会阻碍 HTML 的解析，解析完成之后再按照顺序执行脚本，defer可以提高页面的性能，并且推荐放到head元素中</li>
 </ul>
+<p><code>defer</code>通常用于需要在文档解析后操作DOM的JavaScript代码，并且对多个script文件有顺序要求的；</p>
+<p><code>async</code>通常用于独立的脚本，对其他脚本，甚至DOM没有依赖的；</p>
 <h2 id="从URL输入到页面展现到底发生什么？">从URL输入到页面展现到底发生什么？</h2>
 <ul>
+<li>输入 URL 后解析出协议、主机、端口、路径等信息，并构造一个 HTTP 请求(强缓存，协商缓存)。</li>
 <li>DNS 解析:将域名解析成 IP 地址</li>
 <li>TCP 连接：TCP 三次握手</li>
 <li>发送 HTTP 请求</li>
@@ -467,8 +470,11 @@
 <li>如果存在内联样式，那么 <code>A = 1</code>, 否则 <code>A = 0</code>;</li>
 <li><code>B</code> 的值等于 <code>ID选择器</code> 出现的次数;</li>
 <li><code>C</code> 的值等于 <code>类选择器</code> 和 <code>属性选择器</code> 和 <code>伪类</code> 出现的总次数;</li>
-<li><code>D</code> 的值等于 <code>标签选择器</code> 和 <code>伪元素</code> 出现的总次数 。</li>
+<li><code>D</code> 的值等于 <code>标签选择器</code> 和 <code>伪元素</code> 出现的总次数</li>
 </ol>
+<h2 id="伪类和伪元素的区别">伪类和伪元素的区别</h2>
+<p>1.伪类使用单冒号，而伪元素使用双冒号</p>
+<p>2.伪类和伪元素最大的区别就在于有没有创建一个文档树以外的元素，伪元素创建了一个文档树以外的元素并为它添加样式</p>
 <h2 id="重排（回流）和重绘">重排（回流）和重绘</h2>
 <ul>
 <li>
@@ -500,6 +506,8 @@
 <p>①合并多次对DOM和样式的修改，批量操作DOM</p>
 <p>②使元素脱离文档流，脱离了文档流该元素就不再渲染树了</p>
 <p>③CSS3硬件加速（GPU加速）使用transform，opacity，filters这些动画不会引起回流重绘（用 <code>translate</code> 会比使用绝对定位改变其 <code>left</code> 、<code>top</code> 等来的高效，因为它不会触发重排或重绘，<code>transform</code> 使浏览器为元素创建⼀个 GPU 图层，这使得动画元素在一个独立的层中进行渲染。当元素的内容没有发生改变，就没有必要进行重绘。）</p>
+<p><img src="C:%5CUsers%5C%E5%BA%B7%E8%BD%A9%E7%A1%95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221025153826246.png" alt="image-20221025153826246"></p>
+<p><img src="C:%5CUsers%5C%E5%BA%B7%E8%BD%A9%E7%A1%95%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221025162638486.png" alt="image-20221025162638486"></p>
 <h2 id="BFC">BFC</h2>
 <h1>JS</h1>
 <h2 id="js的基本数据类型">js的基本数据类型</h2>
@@ -526,7 +534,7 @@
         <ul class="pager">
           
           <li class="previous">
-            <a href="/cn/Other03-hello-world/" data-toggle="tooltip" data-placement="top" title="第一次的博客搭建历程">&larr; Previous Post</a>
+            <a href="/cn/知识点合集/" data-toggle="tooltip" data-placement="top" title="知识点合集">&larr; Previous Post</a>
           </li>
           
           
@@ -574,7 +582,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">HTML</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3html%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96%EF%BC%9F"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">如何理解html标签语义化？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#script-%E6%A0%87%E7%AD%BE%E4%B8%AD-defer-%E5%92%8C-async-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">script 标签中 defer 和 async 的区别？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%8E%B0%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">从URL输入到页面展现到底发生什么？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">CSS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">CSS盒子模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">CSS选择器和优先级</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%87%8D%E6%8E%92%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89%E5%92%8C%E9%87%8D%E7%BB%98"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">重排（回流）和重绘</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#BFC"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">BFC</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">JS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">js的基本数据类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#typeof"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">typeof</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#instanceof%EF%BC%9A"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">instanceof：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Object-prototype-toString-call"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Object.prototype.toString.call()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%98%AF%E5%90%A6%E4%B8%BA%E6%95%B0%E7%BB%84%EF%BC%9F"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">如何判断变量是否为数组？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0-1-0-2-0-3"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">0.1+0.2!&#x3D;&#x3D;0.3</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">HTML</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3html%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96%EF%BC%9F"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">如何理解html标签语义化？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#script-%E6%A0%87%E7%AD%BE%E4%B8%AD-defer-%E5%92%8C-async-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">script 标签中 defer 和 async 的区别？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%8EURL%E8%BE%93%E5%85%A5%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%8E%B0%E5%88%B0%E5%BA%95%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">从URL输入到页面展现到底发生什么？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">CSS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">CSS盒子模型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CSS%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">CSS选择器和优先级</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">伪类和伪元素的区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%87%8D%E6%8E%92%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89%E5%92%8C%E9%87%8D%E7%BB%98"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">重排（回流）和重绘</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#BFC"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">BFC</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">JS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#js%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">js的基本数据类型</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#typeof"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">typeof</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#instanceof%EF%BC%9A"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">instanceof：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Object-prototype-toString-call"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Object.prototype.toString.call()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%8F%98%E9%87%8F%E6%98%AF%E5%90%A6%E4%B8%BA%E6%95%B0%E7%BB%84%EF%BC%9F"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">如何判断变量是否为数组？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#0-1-0-2-0-3"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">0.1+0.2!&#x3D;&#x3D;0.3</span></a></li></ol></li></ol>
         
         </div>
       </aside>

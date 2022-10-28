@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+
+  <!-- Baidu Tongji -->
+  
+
+  <!-- Baidu Push -->
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content=" 这是我的博客，用来分享与记录我的学习（玩耍）生活"/>
+  <meta name="keyword" content="AzirKxs,blog,Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/favicon.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+      <!-- viewer start (Picture preview) -->
+      <link rel="stylesheet" href="/css/viewer.min.css"/>
+      <!-- viewer end -->
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/cn/js07-JS高级知识总结01/">
+  <title>
+    
+      JS高级知识总结01 - AzirKxs的博客 | 分享与记录
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--light">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'light';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'AzirKxsFriends/community'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">AzirKxs&#39;s Blog</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: url('//img/featureimages/js.png');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/cover.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/featureimages/js.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/featureimages/js.png');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/featureimages/js.png'); */
+      
+    }
+
+    
+      #signature {/*signature*/
+        background-image: url('/img/signature/myname.png');
+      }
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#js" title="js">js</a>
+              
+            </div>
+            <h1>JS高级知识总结01</h1>
+            <h2 class="subheading">严格模式，原型/原型链，继承，ES6类新特性</h2>
+            <span class="meta">
+              Posted by AzirKxs on
+              2022-10-28
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">11</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">2.7k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1>JS高级知识总结</h1>
+<p>执行上下文，作用域，this指向，闭包，箭头函数相关内容查看文章[深入理解js - AzirKxs的博客 | 分享与记录](<a target="_blank" rel="noopener" href="http://8.130.40.222/cn/base05-">http://8.130.40.222/cn/base05-</a> 深入理解js/)</p>
+<h2 id="严格模式">严格模式</h2>
+<h3 id="简介">简介</h3>
+<p>开启严格模式会以更加严格的方式对代码进行检测和执行，使代码脱离“懒散（sloppy）“模式</p>
+<p>严格模式有如下限制</p>
+<ul>
+<li>
+<p>通过抛出错误来消除一些原有的静默错误</p>
+</li>
+<li>
+<p>使得JS引擎在执行代码可以进行更多的优化</p>
+</li>
+<li>
+<p>禁用了在ECMAScript未来版本中可能定义的一些语法</p>
+</li>
+</ul>
+<h3 id="严格模式的限制">严格模式的限制</h3>
+<p>1.无法意外的创建全局变量</p>
+<p>2.引起静默（不报错也没有任何效果）错误抛出异常 ，例如更改只读属性，删除不可删除的属性时报错</p>
+<p>3.不允许函数参数有相同的名称</p>
+<p>4.不允许0的八进制语法</p>
+<p>5.不允许使用with</p>
+<p>6.eval不能创建外层变量</p>
+<p>7.this不会默认转成对象类型(非严格模式下undefined和null都会转化为window)</p>
+<h2 id="属性描述符">属性描述符</h2>
+<p>可以通过Object.defineProperty对一个对象的属性的描述符进行配置</p>
+<h3 id="数据属性描述符">数据属性描述符</h3>
+<ul>
+<li><code>value</code>该属性对应的值，默认<code>undefined</code></li>
+<li><code>configurable</code>该属性描述符是否可被改变、是否可被删除，默认为<code>false</code></li>
+<li><code>enumerable</code>该属性是否可被枚举，默认为<code>false</code></li>
+<li><code>writable</code>该属性是否可以被写入新的值，默认为<code>false</code></li>
+</ul>
+<h3 id="存取属性描述符">存取属性描述符</h3>
+<ul>
+<li>存储属性描述符（Accessor Properties）
+<ul>
+<li><code>get</code>当访问该属性时，会调用此函数，默认为<code>undefined</code>。</li>
+<li><code>set</code>当属性值被修改时，会调用此函数，默认为<code>undefined</code>。</li>
+</ul>
+</li>
+</ul>
+<p>注意，<code>get</code>、<code>set</code>描述符与<code>vaule</code>、<code>writable</code>描述符不共存。</p>
+<h3 id="获取对象属性描述符">获取对象属性描述符</h3>
+<p>getOwnPropertyDescriptor</p>
+<p>getOwnPropertyDescriptors</p>
+<h3 id="阻止对象扩展属性">阻止对象扩展属性</h3>
+<p>Object.preventExtensions</p>
+<h3 id="密封对象">密封对象</h3>
+<p>Object.seal() 不允许配置和删除属性</p>
+<p>实际上就是调用preventExtensions并且修改configurable：false</p>
+<h3 id="冻结对象">冻结对象</h3>
+<p>Object.freeze()不能进行写入</p>
+<p>实际上是调用seal并且修改writable:false</p>
+<h2 id="原型、原型链">原型、原型链</h2>
+<h3 id="对象的原型">对象的原型</h3>
+<p>每个对象都有自己的原型</p>
+<h4 id="获取原型对象">获取原型对象</h4>
+<p>obj.__ prototype __(隐式原型，由浏览器提供，有个别浏览器访问不到)</p>
+<p>Object.getPrototypeOf()</p>
+<h4 id="原型的作用">原型的作用</h4>
+<p>当我们通过[[get]]方式获取一个属性对应的value时，它会优先在自己的对象中查找，如果找到直接返回，如果没有找到则会去原型对象中查找</p>
+<h3 id="函数的原型">函数的原型</h3>
+<p>函数也可以看做是一个对象，因此也有proto属性</p>
+<h4 id="获取函数的原型对象">获取函数的原型对象</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo.prototype <span class="comment">//显示原型</span></span><br></pre></td></tr></table></figure>
+<h4 id="new操作中的原型">new操作中的原型</h4>
+<p>new操作的步骤如下：</p>
+<p>1.创建一个空对象</p>
+<p>2.将对象赋值给this</p>
+<p>3.对象内部的[[prototype]]属性会被赋值为该构造函数的[[prototype]]属性（将函数的显式原型赋值给对象的隐式原型）</p>
+<p>4.执行函数中的代码体</p>
+<p>5.将这个对象默认返回</p>
+<p>当多个对象拥有共同的值的时候，我们可以将它放到构造函数的原型上, 这样做的好处是节省空间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">student</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">student.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>正在吃饭`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> kxs = <span class="keyword">new</span> student(<span class="string">&#x27;kxs&#x27;</span>,<span class="number">22</span>)</span><br><span class="line">kxs.eat() <span class="comment">//kxs正在吃饭</span></span><br></pre></td></tr></table></figure>
+<h4 id="constructor">constructor</h4>
+<p>每个原型上都会添加一个属性叫constructor，这个属性指向当前函数对象</p>
+<h3 id="原型链">原型链</h3>
+<p>原型链是由原型所构成的，当我们从一个对象上获取属性的时候，如果当前对象中没有就会在它的原型链上获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> foo();</span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__) <span class="comment">//foo的显示原型foo.prototype</span></span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__.__proto__) <span class="comment">//Object </span></span><br><span class="line"><span class="built_in">console</span>.log(a.__proto__.__proto__.__proto__) <span class="comment">//null</span></span><br></pre></td></tr></table></figure>
+<h4 id="原型链继承">原型链继承</h4>
+<p>Object是所有类的父类，所有类都是Object类的子类</p>
+<h5 id="原型链继承的实现">原型链继承的实现</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.info =&#123;</span><br><span class="line">        msg:<span class="string">&#x27;该信息会被子类共享&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,height,address</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    <span class="built_in">this</span>.height = height</span><br><span class="line">    <span class="built_in">this</span>.address = address</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student.prototype = p</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> me = <span class="keyword">new</span> Student(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>,<span class="number">175</span>,<span class="string">&#x27;china&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> you = <span class="keyword">new</span> Student(<span class="string">&#x27;kxs&#x27;</span>,<span class="number">22</span>,<span class="number">185</span>,<span class="string">&#x27;china&#x27;</span>)</span><br><span class="line">me.info.msg = <span class="string">&#x27;更改信息&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(me)</span><br><span class="line"><span class="built_in">console</span>.log(you)</span><br><span class="line"><span class="built_in">console</span>.log(me.info.msg) <span class="comment">//更改信息</span></span><br><span class="line"><span class="built_in">console</span>.log(you.info.msg) <span class="comment">//更改信息</span></span><br></pre></td></tr></table></figure>
+<p>优点：</p>
+<p>父类方法可以复用</p>
+<p>缺点：</p>
+<ol>
+<li>在原型上创建了属性，此时，多个子类的实例将共享同一个父类的属性</li>
+<li>子类型实例不能给父类型构造函数传参</li>
+<li>父类引用属性将被子类共享</li>
+</ol>
+<h5 id="改进">改进</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.info =&#123;</span><br><span class="line">        msg:<span class="string">&#x27;该信息会被子类共享&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,height,address</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.height = height</span><br><span class="line">    <span class="built_in">this</span>.address = address</span><br><span class="line">    <span class="keyword">const</span> prototype = <span class="keyword">new</span> Person(name,age)</span><br><span class="line">    <span class="built_in">this</span>.__proto__ = prototype</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> me = <span class="keyword">new</span> Student(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>,<span class="number">175</span>,<span class="string">&#x27;china&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> you = <span class="keyword">new</span> Student(<span class="string">&#x27;kxs&#x27;</span>,<span class="number">22</span>,<span class="number">185</span>,<span class="string">&#x27;china&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>问题：</p>
+<ol>
+<li>在原型链上创建了属性（一般来说，这不是一种好的实践）</li>
+<li>私自篡改<code>__proto__</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(me <span class="keyword">instanceof</span> Student) <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(me.__proto__ === Student.prototype) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h4 id="盗用构造函数">盗用构造函数</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,height,address</span>)</span>&#123;</span><br><span class="line">    Person.call(<span class="built_in">this</span>,name,age)</span><br><span class="line">    <span class="built_in">this</span>.height = height</span><br><span class="line">    <span class="built_in">this</span>.address = address</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> me = <span class="keyword">new</span> Student(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>,<span class="number">175</span>,<span class="string">&#x27;china&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(me)</span><br></pre></td></tr></table></figure>
+<p>优点：</p>
+<ul>
+<li>
+<p>可以在子类构造函数中向父类传递参数</p>
+</li>
+<li>
+<p>父类的引用属性不会被共享</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>子类不能访问父类原型上定义的方法（即不能访问Parent.prototype上定义的方法），因此所有方法属性都写在构造函数中，每次创建实例都会初始化</li>
+</ul>
+<h4 id="组合继承">组合继承</h4>
+<p>组合继承结合了原型链继承和盗用构造函数继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,height,address</span>)</span>&#123;</span><br><span class="line">    Person.call(<span class="built_in">this</span>,name,age)</span><br><span class="line">    <span class="built_in">this</span>.height = height</span><br><span class="line">    <span class="built_in">this</span>.address = address</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> me = <span class="keyword">new</span> Student(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>,<span class="number">175</span>,<span class="string">&#x27;china&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(me)</span><br></pre></td></tr></table></figure>
+<p>优点：</p>
+<ol>
+<li>父类的方法可以复用</li>
+<li>可以在Child构造函数中向Parent构造函数中传参</li>
+<li>父类构造函数中的引用属性不会被共享</li>
+</ol>
+<p>缺点：</p>
+<p>父类构造函数调用了两次</p>
+<p>借用的构造函数中的name和age属性没有存在的必要</p>
+<h4 id="寄生组合式继承">寄生组合式继承</h4>
+<p>寄生组合式继承不在依赖父类的实例对象来实现继承，而依赖一个新的构造函数，使该构造函数的原型指向父类的原型</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使该构造函数的原型指向父类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatObject</span>(<span class="params">o</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    f.prototype = o</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> f()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子类原型指向新创建的对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">subType,superType</span>)</span>&#123;</span><br><span class="line">    subType.prototype = creatObject(superType.prototype)</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(subType.prototype,<span class="string">&#x27;constructior&#x27;</span>,&#123;</span><br><span class="line">        enurmable:<span class="literal">false</span>,</span><br><span class="line">        configurable:<span class="literal">true</span>,</span><br><span class="line">        writable:<span class="literal">true</span>,</span><br><span class="line">        value:subType</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,height,address</span>)</span>&#123;</span><br><span class="line">    Person.call(<span class="built_in">this</span>,name,age)</span><br><span class="line">    <span class="built_in">this</span>.height = height</span><br><span class="line">    <span class="built_in">this</span>.address = address</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inherit(Student,Person);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> me = <span class="keyword">new</span> Student(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>,<span class="number">175</span>,<span class="string">&#x27;china&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(me)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>图示</p>
+<p><img src="/img/image/%E7%BB%84%E5%90%88%E5%AF%84%E7%94%9F%E5%BC%8F%E7%BB%A7%E6%89%BF.jpg" alt="组合寄生式继承"></p>
+<p>优点：</p>
+<ol>
+<li>只调用一次父类构造函数</li>
+<li>Child可以向Parent传参</li>
+<li>父类方法可以复用</li>
+<li>父类的引用属性不会被共享</li>
+</ol>
+<h4 id="Function和Object的关系">Function和Object的关系</h4>
+<ul>
+<li>Object是Function的父类</li>
+<li>Function是Object的构造函数</li>
+</ul>
+<p>用一张图描述：</p>
+<p><img src="/img/image/Function%E5%92%8CObject%E7%9A%84%E5%85%B3%E7%B3%BB.jpg" alt="Function和Object的关系"></p>
+<p>最后的null是为了避免死循环而设计的</p>
+<h4 id="类方法">类方法</h4>
+<p>添加到原型上的方法不能够通过类名直接调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.prototype.running = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.running() <span class="comment">//error foo.running is not a function</span></span><br></pre></td></tr></table></figure>
+<p>那是因为foo本身没有running属性，因此会去隐式原型上找，而foo的隐式原型式Function的显式原型，因此找不到，在原型上添加的方法也可以被称之为实例方法</p>
+<p>正确添加类方法的方式是作为构造函数对象本身的属性添加</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.running = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo.running() <span class="comment">//running~</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象的方法补充">对象的方法补充</h2>
+<p>hasOwnProperty() 判断对象自己是否有某个属性</p>
+<p>in() 判断原型上是否有某个属性/for in 遍历原型上的属性（不包括不可枚举的属性）</p>
+<p>instanceof （） 检测某个对象是否是某个构造函数的实例（检测构造函数的prototype，是否出现在了实例对象的原型链上）</p>
+<p>isPrototypeOf（） 用于检测某个对象，是否出现在了某个实例对象的原型链上</p>
+<h2 id="ES6中的类">ES6中的类</h2>
+<h3 id="使用class定义类">使用class定义类</h3>
+<p>ES6中可以直接使用class关键字来定义一个类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">//new对象时自动调用constructor方法</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">        <span class="built_in">this</span>.age = age</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//实例方法</span></span><br><span class="line">    <span class="function"><span class="title">running</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>)</span><br></pre></td></tr></table></figure>
+<p>使用class定义的类与用构造函数定义的类没有什么异同，唯一的区别是使用class定义的类不能作为一个函数去调用</p>
+<h3 id="访问器get与set">访问器get与set</h3>
+<p>当读取对象的属性时回调用get方法，更改属性时会调用set方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">//new对象时自动调用constructor方法</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._name = name</span><br><span class="line">        <span class="built_in">this</span>._age = age</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//实例方法</span></span><br><span class="line">    <span class="function"><span class="title">running</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">get</span> <span class="title">name</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>._name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">set</span> <span class="title">name</span>(<span class="params">value</span>)&#123;</span><br><span class="line">        <span class="built_in">this</span>._name = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p.name) <span class="comment">//azir</span></span><br><span class="line">p.name = <span class="string">&#x27;kxs&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name) <span class="comment">//kxs</span></span><br></pre></td></tr></table></figure>
+<h3 id="静态方法">静态方法</h3>
+<p>类方法也叫做静态方法，可以通过类直接调用(不能通过实例对象调用)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="comment">//new对象时自动调用constructor方法</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._name = name</span><br><span class="line">        <span class="built_in">this</span>._age = age</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//实例方法</span></span><br><span class="line">    <span class="function"><span class="title">running</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">get</span> <span class="title">name</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>._name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">set</span> <span class="title">name</span>(<span class="params">value</span>)&#123;</span><br><span class="line">        <span class="built_in">this</span>._name = value</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="function"><span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;这是一个静态方法&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">&#x27;azir&#x27;</span>,<span class="number">22</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p.name) <span class="comment">//azir</span></span><br><span class="line">p.name = <span class="string">&#x27;kxs&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name) <span class="comment">//kxs</span></span><br><span class="line">Person.test()<span class="comment">//这是一个类方法</span></span><br></pre></td></tr></table></figure>
+<h3 id="继承">继承</h3>
+<p>ES6引入了extends和super关键字来实现继承</p>
+<h4 id="extends和super实现继承"><strong>extends和super实现继承</strong></h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>._name = name</span><br><span class="line">    	<span class="built_in">this</span>._age = age</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="title">running</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name,age,height,id</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name,age)</span><br><span class="line">        <span class="built_in">this</span>._height = height</span><br><span class="line">        <span class="built_in">this</span>._id = id</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">get</span> <span class="title">info</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`姓名：<span class="subst">$&#123;<span class="built_in">this</span>._name&#125;</span></span></span><br><span class="line"><span class="string">         年龄：<span class="subst">$&#123;<span class="built_in">this</span>._age&#125;</span></span></span><br><span class="line"><span class="string">         身高：<span class="subst">$&#123;<span class="built_in">this</span>._height&#125;</span></span></span><br><span class="line"><span class="string">         学号：<span class="subst">$&#123;<span class="built_in">this</span>._id&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Student(<span class="string">&#x27;azirkxs&#x27;</span>,<span class="number">18</span>,<span class="number">175</span>,<span class="string">&#x27;2019006152&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p.info)</span><br><span class="line">p.running()</span><br></pre></td></tr></table></figure>
+<h4 id="super关键字">super关键字</h4>
+<p>super可以用于继承，super必须放在构造函数的第一行使用</p>
+<p>super也可以用来调用父类的方法</p>
+<h4 id="mixin混入实现多继承">mixin混入实现多继承</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixinAnimal</span>(<span class="params">baseClass</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">baseClass</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="title">running</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;running~&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mixinFlying</span>(<span class="params">baseClass</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">baseClass</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="title">flying</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;flying~&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">eating</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;eating~&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewBird</span> <span class="keyword">extends</span> <span class="title">mixinFlying</span>(<span class="title">mixinAnimal</span>(<span class="title">Bird</span>))</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> NewBird())</span><br></pre></td></tr></table></figure>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/手写系列--applycallbind/" data-toggle="tooltip" data-placement="top" title="手写系列--apply/call/bind">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/base06-探究缓存机制/" data-toggle="tooltip" data-placement="top" title="探究缓存机制">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果这篇文章对你有帮助，可以bilibili关注一波 ~ ！此外，如果你觉得本人的文章侵犯了你的著作权，请联系我删除~谢谢！
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">JS高级知识总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">严格模式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">严格模式的限制</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">属性描述符</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">数据属性描述符</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%98%E5%8F%96%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">存取属性描述符</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">获取对象属性描述符</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%BB%E6%AD%A2%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95%E5%B1%9E%E6%80%A7"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">阻止对象扩展属性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%86%E5%B0%81%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">密封对象</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%86%BB%E7%BB%93%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">冻结对象</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8E%9F%E5%9E%8B%E3%80%81%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">原型、原型链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8E%9F%E5%9E%8B"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">对象的原型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">获取原型对象</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8E%9F%E5%9E%8B%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">原型的作用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%8E%9F%E5%9E%8B"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">函数的原型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E7%9A%84%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">获取函数的原型对象</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#new%E6%93%8D%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%9E%8B"><span class="toc-nav-number">1.3.2.2.</span> <span class="toc-nav-text">new操作中的原型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#constructor"><span class="toc-nav-number">1.3.2.3.</span> <span class="toc-nav-text">constructor</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">原型链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">原型链继承</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.3.3.1.1.</span> <span class="toc-nav-text">原型链继承的实现</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%94%B9%E8%BF%9B"><span class="toc-nav-number">1.3.3.1.2.</span> <span class="toc-nav-text">改进</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9B%97%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">盗用构造函数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BB%84%E5%90%88%E7%BB%A7%E6%89%BF"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">组合继承</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AF%84%E7%94%9F%E7%BB%84%E5%90%88%E5%BC%8F%E7%BB%A7%E6%89%BF"><span class="toc-nav-number">1.3.3.4.</span> <span class="toc-nav-text">寄生组合式继承</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Function%E5%92%8CObject%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">1.3.3.5.</span> <span class="toc-nav-text">Function和Object的关系</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.3.3.6.</span> <span class="toc-nav-text">类方法</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%E8%A1%A5%E5%85%85"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">对象的方法补充</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ES6%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">ES6中的类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8class%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">使用class定义类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%BF%E9%97%AE%E5%99%A8get%E4%B8%8Eset"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">访问器get与set</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">静态方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text">继承</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#extends%E5%92%8Csuper%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF"><span class="toc-nav-number">1.5.4.1.</span> <span class="toc-nav-text">extends和super实现继承</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#super%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-nav-number">1.5.4.2.</span> <span class="toc-nav-text">super关键字</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mixin%E6%B7%B7%E5%85%A5%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="toc-nav-number">1.5.4.3.</span> <span class="toc-nav-text">mixin混入实现多继承</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#js" title="js">js</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="#" target="_blank">没有朋友</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/AzirKxs">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+            <li>
+              <a target="_blank" href="https://www.zhihu.com/people/qin-mian-de-a-ku-xi-si-jiao-tu">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa  fa-stack-1x fa-inverse">知</i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          AzirKxs
+          2022
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='游戏开发,前端开发,视频剪辑,游戏爱好者,干饭王,UI设计' color='#9933CC,#339933,#66CCCC,#FF99CC,#CCCCFF,#6666CC,#663399,#66CC99,#FF0033'></script>
+  
+
+  
+    <!-- ribbon -->
+    <script type="text/javascript" src="/js/ribbonDynamic.js"></script>
+  
+
+  
+
+
+
+
+
+
+  <!-- viewer start -->
+  <!-- viewer start (Picture preview) -->
+  
+    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
+    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
+  
+
+  <!-- viewer end -->
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

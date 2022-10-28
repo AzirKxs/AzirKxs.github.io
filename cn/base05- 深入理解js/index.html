@@ -215,9 +215,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -226,9 +226,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -361,11 +361,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">12</span> Minutes
+              Estimated Reading Time <span class="post-count">13</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">3.2k</span> In Total
+              Words <span class="post-count">3.3k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -580,13 +580,17 @@
 <p>不急，我们从执行上下文作栈的角度再来分析一下上面的代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js代码执行，将全局执行上下文压栈</span></span><br><span class="line">ECStack.push(globalContext);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用了anonymous0函数，将anonymous0函数上下文压栈</span></span><br><span class="line">ECStack.push(&lt;fun1&gt; anonymous0Context);</span><br><span class="line"><span class="comment">// anonymous0执行完毕,anonymous0变量对象出栈</span></span><br><span class="line">ECStack.pop();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用了anonymous1函数，将anonymous1函数上下文压栈</span></span><br><span class="line">ECStack.push(&lt;fun1&gt; anonymous1Context);</span><br><span class="line"><span class="comment">// anonymous1执行完毕,anonymous1变量对象出栈</span></span><br><span class="line">ECStack.pop();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用了anonymous2函数，将anonymous2函数上下文压栈</span></span><br><span class="line">ECStack.push(&lt;fun1&gt; anonymous2Context);</span><br><span class="line"><span class="comment">// anonymous2执行完毕,anonymous2变量对象出栈</span></span><br><span class="line">ECStack.pop();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用了data[0]函数，将data[0]函数上下文压栈</span></span><br><span class="line">ECStack.push(&lt;fun1&gt; data[<span class="number">0</span>]Context);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>你可能已经发现问题了，三个匿名函数的执行上下文应该都已经出栈了，为什么变量对象还能存在呢？</p>
-<p>那是因为即使 anonymousContext被销毁了，但是 JavaScript 依然会让 <a target="_blank" rel="noopener" href="http://anonymousContext.AO">anonymousContext.AO</a> 活在内存中，data函数依然可以通过 data函数的作用域链找到它，正是因为 JavaScript 做到了这一点，从而实现了闭包这个概念。</p>
+<p>那是因为即使 anonymousContext被销毁了，但是 JavaScript 依然会让 <a target="_blank" rel="noopener" href="http://anonymousContext.AO">anonymousContext.AO</a> 活在内存中，data函数依然可以通过 data函数的作用域链找到它(从内存，垃圾回收机制标记清除，以及浏览器的垃圾回收优化的角度，只是执行上下文出战了，内存中没有被销毁)，正是因为 JavaScript 做到了这一点，从而实现了闭包这个概念。</p>
 <p>闭包，了然了！</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/js06-this的指向问题/" data-toggle="tooltip" data-placement="top" title="js的this指向问题">&larr; Previous Post</a>
+          </li>
           
           
           <li class="next">
